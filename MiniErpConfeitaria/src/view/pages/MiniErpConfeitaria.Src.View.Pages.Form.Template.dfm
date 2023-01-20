@@ -1,7 +1,6 @@
 object FormTemplate: TFormTemplate
   Left = 0
   Top = 0
-  ActiveControl = edtPesquisa
   Align = alClient
   BorderStyle = bsNone
   Caption = 'FormTemplate'
@@ -15,6 +14,7 @@ object FormTemplate: TFormTemplate
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnResize = FormResize
   PixelsPerInch = 115
   TextHeight = 16
   object pnlMain: TPanel
@@ -52,30 +52,38 @@ object FormTemplate: TFormTemplate
           Height = 16
           Align = alTop
           Caption = 'Nome da p'#225'gina'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
           ExplicitWidth = 93
         end
         object pnlLinhaNomePagina: TPanel
           Left = 0
           Top = 16
           Width = 193
-          Height = 1
+          Height = 2
           Align = alTop
           TabOrder = 0
         end
         object pnlBodyBotao: TPanel
           Left = 0
-          Top = 17
+          Top = 18
           Width = 193
-          Height = 94
+          Height = 93
           Align = alClient
           BevelOuter = bvNone
           ParentBackground = False
           TabOrder = 1
-          object btnCadastro: TSpeedButton
+          ExplicitTop = 17
+          ExplicitHeight = 94
+          object btnAtualizar: TSpeedButton
             Left = 94
             Top = 0
             Width = 94
-            Height = 94
+            Height = 93
             Align = alLeft
             Caption = 'Atualizar'
             ImageIndex = 1
@@ -83,58 +91,22 @@ object FormTemplate: TFormTemplate
             Flat = True
             Layout = blGlyphTop
             ExplicitLeft = 0
+            ExplicitHeight = 94
           end
-          object btnAtualizar: TSpeedButton
+          object btnCadastro: TSpeedButton
             Left = 0
             Top = 0
             Width = 94
-            Height = 94
+            Height = 93
             Align = alLeft
             Caption = 'Novo'
             ImageIndex = 0
             Images = lstImagens
             Flat = True
             Layout = blGlyphTop
-            OnClick = btnAtualizarClick
-            ExplicitLeft = 8
+            OnClick = btnCadastroClick
+            ExplicitTop = 4
           end
-        end
-      end
-      object pnlBodyPesquisa: TPanel
-        Left = 576
-        Top = 30
-        Width = 330
-        Height = 111
-        Align = alRight
-        BevelOuter = bvNone
-        TabOrder = 1
-        object lblPesquisa: TLabel
-          Left = 0
-          Top = 72
-          Width = 330
-          Height = 16
-          Align = alBottom
-          Caption = 'Pesquisa'
-          ExplicitWidth = 50
-        end
-        object pnlLinhaPesquisa: TPanel
-          Left = 0
-          Top = 110
-          Width = 330
-          Height = 1
-          Align = alBottom
-          TabOrder = 0
-        end
-        object edtPesquisa: TEdit
-          Left = 0
-          Top = 88
-          Width = 330
-          Height = 22
-          Align = alBottom
-          BorderStyle = bsNone
-          CharCase = ecUpperCase
-          Color = clBtnFace
-          TabOrder = 1
         end
       end
     end
@@ -146,26 +118,26 @@ object FormTemplate: TFormTemplate
       Align = alClient
       BevelOuter = bvNone
       Padding.Left = 200
-      Padding.Top = 50
+      Padding.Top = 10
       Padding.Right = 200
       Padding.Bottom = 50
       ParentBackground = False
       TabOrder = 1
       object pnlBodyData: TPanel
-        Left = 200
-        Top = 50
-        Width = 706
-        Height = 382
+        Left = 530
+        Top = 10
+        Width = 376
+        Height = 422
         Align = alClient
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 0
         object DBGrid1: TDBGrid
-          Left = 0
-          Top = 0
-          Width = 706
-          Height = 382
-          Align = alClient
+          Left = 232
+          Top = 49
+          Width = 144
+          Height = 377
+          Align = alRight
           DataSource = DataSource1
           TabOrder = 0
           TitleFont.Charset = DEFAULT_CHARSET
@@ -174,15 +146,72 @@ object FormTemplate: TFormTemplate
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
         end
+        object pnlBodyPesquisa: TPanel
+          Left = 0
+          Top = 0
+          Width = 376
+          Height = 49
+          Align = alTop
+          BevelOuter = bvNone
+          Padding.Right = 15
+          Padding.Bottom = 5
+          TabOrder = 1
+          object pnlPesquisa: TPanel
+            Left = 87
+            Top = 0
+            Width = 274
+            Height = 44
+            Align = alRight
+            BevelOuter = bvNone
+            TabOrder = 0
+            ExplicitLeft = 72
+            ExplicitHeight = 49
+            object lblPesquisa: TLabel
+              Left = 0
+              Top = 0
+              Width = 274
+              Height = 16
+              Align = alTop
+              Caption = 'Pesquisa'
+              ExplicitLeft = 6
+              ExplicitTop = -4
+              ExplicitWidth = 374
+            end
+            object edtPesquisa: TEdit
+              Left = 0
+              Top = 16
+              Width = 274
+              Height = 22
+              Align = alTop
+              BorderStyle = bsNone
+              CharCase = ecUpperCase
+              Color = clBtnFace
+              TabOrder = 0
+              ExplicitWidth = 376
+            end
+            object pnlLinhaPesquisa: TPanel
+              Left = 0
+              Top = 38
+              Width = 274
+              Height = 2
+              Align = alTop
+              TabOrder = 1
+              ExplicitTop = 0
+              ExplicitWidth = 376
+            end
+          end
+        end
       end
       object pnlCadastro: TPanel
         Left = 200
-        Top = 50
-        Width = 706
-        Height = 382
-        Align = alClient
+        Top = 10
+        Width = 330
+        Height = 422
+        Align = alLeft
         BevelOuter = bvNone
         TabOrder = 1
+        ExplicitLeft = 294
+        ExplicitTop = 6
       end
     end
   end

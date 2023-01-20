@@ -10,7 +10,10 @@ const
 
   FONT_COLOR = $000000;
   FONT_SIZE_LABEL = 10;
-  FONT_SIZE_EDIT = 9;
+  FONT_SIZE_EDIT = 8;
+  FONT_SIZE_TITLE = 15;
+
+  FONT_NAME = 'Arial';
 
 implementation
 

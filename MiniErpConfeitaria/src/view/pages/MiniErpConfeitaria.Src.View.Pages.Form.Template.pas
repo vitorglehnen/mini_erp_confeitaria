@@ -33,41 +33,62 @@ type
   TFormTemplate = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlMain: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlTop: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlCenter: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlCabecalho: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlBodyData: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
-    pnlBodyPesquisa: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlLinhaPesquisa: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlLinhaNomePagina: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlCadastro: TPanel;
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_COLOR, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlBodyBotao: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_TITLE, FONT_COLOR)]
+    lblNomePagina: TLabel;
+
+    lblPesquisa: TLabel;
+
+    btnAtualizar: TSpeedButton;
+    btnCadastro: TSpeedButton;
+
     DBGrid1: TDBGrid;
     lstImagens: TImageList;
-    edtPesquisa: TEdit;
-    lblPesquisa: TLabel;
-    btnCadastro: TSpeedButton;
-    lblNomePagina: TLabel;
-    btnAtualizar: TSpeedButton;
     FDMemTable1: TFDMemTable;
     DataSource1: TDataSource;
 
+    [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
+    edtPesquisa: TEdit;
+
     procedure FormCreate(Sender: TObject);
-    procedure btnAtualizarClick(Sender: TObject);
+    procedure btnCadastroClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
     FEndPoint, FPK, FSort, FOrder, FTitle : String;
     procedure ApplyStyle;
     procedure GetEndPoint;
+    procedure formataLista;
   public
     { Public declarations }
     function Render : TForm;
@@ -87,13 +108,15 @@ implementation
 procedure TFormTemplate.ApplyStyle;
 begin
   lblNomePagina.Caption := FTitle;
+  DBGrid1.Align := AlClient;
 
   pnlCadastro.Visible := False;
 end;
 
-procedure TFormTemplate.btnAtualizarClick(Sender: TObject);
+procedure TFormTemplate.btnCadastroClick(Sender: TObject);
 begin
   pnlCadastro.Visible := not pnlCadastro.Visible;
+  pnlCadastro.Align := AlClient;
 end;
 
 procedure TFormTemplate.FormCreate(Sender: TObject);
@@ -105,7 +128,11 @@ begin
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .SetStyleComponents;
   ApplyStyle;
-  GetEndPoint;
+end;
+
+procedure TFormTemplate.FormResize(Sender: TObject);
+begin
+  //GetEndPoint;
 end;
 
 procedure TFormTemplate.GetEndPoint;
@@ -116,6 +143,8 @@ begin
       .Accept('application/json')
       .DataSetAdapter(FDMemTable1)
     .Get;
+
+  //formataLista;
 end;
 
 function TFormTemplate.Render: TForm;
@@ -126,6 +155,11 @@ end;
 procedure TFormTemplate.UnRender;
 begin
   //
+end;
+
+procedure TFormTemplate.formataLista;
+begin
+  TBind4D.New.Form(self).BindFormatListDataSet(FDMemTable1, DBGrid1);
 end;
 
 end.
