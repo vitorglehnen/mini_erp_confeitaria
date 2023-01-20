@@ -1,0 +1,57 @@
+unit MIniErpConfeitaria.Src.View.Pages.Main;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4d.Interfaces, Vcl.StdCtrls;
+
+type
+  TPageMain = class(TForm, iRouter4DComponent)
+    Panel1: TPanel;
+    Label1: TLabel;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure UnRender;
+    function Render : TForm;
+  end;
+
+var
+  PageMain: TPageMain;
+
+implementation
+
+uses
+  MIniErpConfeitaria.Src.View.Styles.Colors;
+
+{$R *.dfm}
+
+{ TPageMain }
+
+procedure TPageMain.FormCreate(Sender: TObject);
+begin
+  panel1.Color := COLOR_BACKGROUND;
+end;
+
+function TPageMain.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TPageMain.UnRender;
+begin
+
+end;
+
+end.

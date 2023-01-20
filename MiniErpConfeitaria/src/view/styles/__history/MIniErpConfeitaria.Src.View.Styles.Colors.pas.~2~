@@ -1,0 +1,15 @@
+unit MIniErpConfeitaria.Src.View.Styles.Colors;
+
+interface
+
+const
+
+  COLOR_BACKGROUND = $00b8cad4;
+  COLOR_TOP = $00;
+
+  FONT_COLOR = $00;
+  FONT_SIZE = $00;
+
+implementation
+
+end.

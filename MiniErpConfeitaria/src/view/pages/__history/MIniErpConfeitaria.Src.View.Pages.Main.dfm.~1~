@@ -1,0 +1,17 @@
+object PageMain: TPageMain
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'PageMain'
+  ClientHeight = 513
+  ClientWidth = 950
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 115
+  TextHeight = 16
+end

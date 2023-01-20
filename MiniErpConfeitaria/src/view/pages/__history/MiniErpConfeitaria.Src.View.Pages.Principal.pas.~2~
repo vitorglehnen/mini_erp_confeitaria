@@ -1,0 +1,82 @@
+unit MiniErpConfeitaria.Src.View.Pages.Principal;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4d.Interfaces,
+  Router4D,
+  MIniErpConfeitaria.Src.View.Pages.Main, Vcl.Buttons, System.ImageList,
+  Vcl.ImgList;
+
+type
+  TFormPrincipal = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    pnlTop: TPanel;
+    pnlCenter: TPanel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
+    SpeedButton7: TSpeedButton;
+    ImageList1: TImageList;
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    procedure UnRender;
+    function Render : TForm;
+  published
+    procedure FormCreate(Sender: TObject);
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+uses
+  MIniErpConfeitaria.Src.View.Styles.Colors;
+
+
+{$R *.dfm}
+
+procedure TFormPrincipal.FormCreate(Sender: TObject);
+begin
+    pnlTop.Color := COLOR_BACKGROUND;
+
+    TRouter4d.Render<TPageMain>.SetElement(pnlCenter, pnlMain);
+end;
+
+
+function TFormPrincipal.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Teste');
+end;
+
+procedure TFormPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Principal');
+end;
+
+procedure TFormPrincipal.UnRender;
+begin
+
+end;
+
+end.

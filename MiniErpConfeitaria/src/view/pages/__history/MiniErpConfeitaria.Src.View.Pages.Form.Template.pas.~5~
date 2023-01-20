@@ -1,0 +1,96 @@
+unit MiniErpConfeitaria.Src.View.Pages.Form.Template;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4D.Interfaces,
+  Vcl.StdCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.Src.View.Styles.Colors;
+
+type
+  TFormTemplate = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    pnlTop: TPanel;
+    pnlCenter: TPanel;
+    Panel4: TPanel;
+    pnlBodyData: TPanel;
+    DBGrid1: TDBGrid;
+    ImageList1: TImageList;
+    Panel8: TPanel;
+    Panel9: TPanel;
+    Edit1: TEdit;
+    lblPesquisa: TLabel;
+    Panel6: TPanel;
+    btnCadastro: TSpeedButton;
+    lblNomePagina: TLabel;
+    Panel1: TPanel;
+    btnAtualizar: TSpeedButton;
+    procedure FormCreate(Sender: TObject);
+  private
+    { Private declarations }
+    FEndPoint, FPK, FSort, FOrder, FTitle : String;
+    procedure ApplyStyle;
+  public
+    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
+  end;
+
+var
+  FormTemplate : TFormTemplate;
+
+implementation
+
+
+{$R *.dfm}
+
+{ TFormTemplate }
+
+procedure TFormTemplate.ApplyStyle;
+begin
+  Edit1.Color := COLOR_MAIN;
+
+  lblNomePagina.Caption := FTitle;
+end;
+
+procedure TFormTemplate.FormCreate(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(Self)
+      .BindFormDefault(FTitle)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .SetStyleComponents;
+  ApplyStyle;
+end;
+
+function TFormTemplate.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormTemplate.UnRender;
+begin
+  //
+end;
+
+end.

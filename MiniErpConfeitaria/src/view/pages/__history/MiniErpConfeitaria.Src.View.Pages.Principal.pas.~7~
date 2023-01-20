@@ -1,0 +1,96 @@
+unit MiniErpConfeitaria.Src.View.Pages.Principal;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4d.Interfaces,
+  Router4D,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.StdCtrls,
+  MIniErpConfeitaria.Src.View.Styles.Colors,
+  MiniErpConfeitaria.Src.View.Pages.Padrao;
+
+type
+  TFormPrincipal = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    pnlTop: TPanel;
+    pnlCenter: TPanel;
+    btnPedidos: TSpeedButton;
+    btProdutos: TSpeedButton;
+    btRelatorios: TSpeedButton;
+    btnConfiguracoes: TSpeedButton;
+    btnClientes: TSpeedButton;
+    ImageList1: TImageList;
+    btnInicial: TSpeedButton;
+    procedure btnClientesClick(Sender: TObject);
+    procedure btnInicialClick(Sender: TObject);
+    procedure btnPedidosClick(Sender: TObject);
+    procedure btProdutosClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure UnRender;
+    function Render : TForm;
+  published
+    { Published declarations }
+    procedure FormCreate(Sender: TObject);
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormPrincipal.btnClientesClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Clientes');
+end;
+
+procedure TFormPrincipal.btnInicialClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Padrao');
+end;
+
+procedure TFormPrincipal.btnPedidosClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Pedidos');
+end;
+
+procedure TFormPrincipal.btProdutosClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Produtos');
+end;
+
+procedure TFormPrincipal.FormCreate(Sender: TObject);
+begin
+  pnlTop.Color := COLOR_BACKGROUND;
+
+  TRouter4D.Render<TPagePadrao>.SetElement(pnlCenter, pnlMain);
+end;
+
+function TFormPrincipal.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormPrincipal.UnRender;
+begin
+
+end;
+
+end.

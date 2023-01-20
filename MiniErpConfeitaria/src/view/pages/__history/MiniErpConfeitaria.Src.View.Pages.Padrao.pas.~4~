@@ -1,0 +1,53 @@
+unit MiniErpConfeitaria.Src.View.Pages.Padrao;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4D.Interfaces,
+  Vcl.StdCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids;
+
+type
+  TPagePadrao = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    Label1: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
+  end;
+
+var
+  PagePadrao: TPagePadrao;
+
+implementation
+
+{$R *.dfm}
+
+{ TPagePadrao }
+
+function TPagePadrao.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TPagePadrao.UnRender;
+begin
+  //
+end;
+
+end.

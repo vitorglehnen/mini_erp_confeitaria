@@ -1,0 +1,54 @@
+object FormPrincipal: TFormPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Confeitaria'
+  ClientHeight = 666
+  ClientWidth = 1115
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 115
+  TextHeight = 16
+  object pnlMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 1115
+    Height = 666
+    Align = alClient
+    BevelOuter = bvNone
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitLeft = -8
+    ExplicitTop = 8
+    object pnlTop: TPanel
+      Left = 0
+      Top = 0
+      Width = 1115
+      Height = 89
+      Align = alTop
+      BevelOuter = bvNone
+      ParentBackground = False
+      TabOrder = 0
+    end
+    object pnlCenter: TPanel
+      Left = 0
+      Top = 89
+      Width = 1115
+      Height = 577
+      Align = alClient
+      BevelOuter = bvNone
+      Caption = 'pnlCenter'
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitLeft = 616
+      ExplicitTop = 320
+      ExplicitWidth = 185
+      ExplicitHeight = 41
+    end
+  end
+end

@@ -1,0 +1,47 @@
+unit MIniErpConfeitaria.Src.View.Pages.Main;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4d.Interfaces;
+
+type
+  TPageMain = class(TForm, iRouter4DComponent)
+    Panel1: TPanel;
+  private
+    { Private declarations }
+  public
+    procedure UnRender;
+    function Render : TForm;
+  end;
+
+var
+  PageMain: TPageMain;
+
+implementation
+
+{$R *.dfm}
+
+{ TPageMain }
+
+function TPageMain.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TPageMain.UnRender;
+begin
+
+end;
+
+end.

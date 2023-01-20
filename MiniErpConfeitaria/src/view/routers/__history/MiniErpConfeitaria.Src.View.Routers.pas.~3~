@@ -1,0 +1,44 @@
+unit MiniErpConfeitaria.Src.View.Routers;
+
+interface
+
+type
+  TRouters = class
+    private
+    public
+      constructor Create;
+      destructor Destroy; override;
+  end;
+
+var
+  Router : TRouters;
+
+implementation
+
+uses
+  Router4D, MIniErpConfeitaria.Src.View.Pages.Main,
+  MIniErpConfeitaria.Src.View.Pages.Teste;
+
+{ TRouters }
+
+constructor TRouters.Create;
+begin
+  TRouter4D
+    .Switch
+      .Router('Principal', TPageMain)
+        .Router('Teste', TPageTeste);
+end;
+
+destructor TRouters.Destroy;
+begin
+
+  inherited;
+end;
+
+initialization
+  Router := TRouters.Create;
+
+finalization
+  Router.Free;
+
+end.

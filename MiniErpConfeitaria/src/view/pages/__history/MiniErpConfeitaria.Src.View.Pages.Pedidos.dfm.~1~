@@ -1,0 +1,43 @@
+inherited PagePedidos: TPagePedidos
+  Caption = 'PagePedidos'
+  PixelsPerInch = 115
+  TextHeight = 16
+  inherited Panel1: TPanel
+    inherited Panel2: TPanel
+      inherited Panel4: TPanel
+        ExplicitHeight = 111
+        inherited lblTeste: TLabel
+          Width = 193
+        end
+        inherited Panel6: TPanel
+          Top = 21
+          ExplicitTop = 21
+        end
+      end
+      inherited Panel8: TPanel
+        inherited lblPesquisa: TLabel
+          Width = 330
+        end
+        inherited Panel9: TPanel
+          ExplicitLeft = 0
+          ExplicitTop = 110
+          ExplicitWidth = 330
+        end
+        inherited Edit1: TEdit
+          ExplicitLeft = 0
+          ExplicitTop = 88
+          ExplicitWidth = 330
+        end
+      end
+    end
+    inherited Panel3: TPanel
+      ExplicitTop = 141
+      inherited Panel5: TPanel
+        ExplicitLeft = 200
+        ExplicitTop = 50
+        ExplicitWidth = 706
+        ExplicitHeight = 382
+      end
+    end
+  end
+end

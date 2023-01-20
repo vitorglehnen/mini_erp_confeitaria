@@ -1,0 +1,11 @@
+inherited PageClientes: TPageClientes
+  Caption = 'PageClientes'
+  PixelsPerInch = 115
+  TextHeight = 16
+  inherited Panel1: TPanel
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitWidth = 1106
+    ExplicitHeight = 623
+  end
+end

@@ -1,0 +1,121 @@
+unit MiniErpConfeitaria.Src.View.Pages.Form.Template;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4D.Interfaces,
+  Vcl.StdCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.Src.View.Styles.Colors,
+  RESTRequest4D, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFormTemplate = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    pnlTop: TPanel;
+    pnlCenter: TPanel;
+    pnlCabecalho: TPanel;
+    pnlBodyData: TPanel;
+    DBGrid1: TDBGrid;
+    lstImagens: TImageList;
+    pnlBodyPesquisa: TPanel;
+    pnlLinhaPesquisa: TPanel;
+    edtPesquisa: TEdit;
+    lblPesquisa: TLabel;
+    pnlLinhaNomePagina: TPanel;
+    btnCadastro: TSpeedButton;
+    lblNomePagina: TLabel;
+    pnlBodyBotao: TPanel;
+    btnAtualizar: TSpeedButton;
+    FDMemTable1: TFDMemTable;
+    DataSource1: TDataSource;
+    pnlCadastro: TPanel;
+    procedure FormCreate(Sender: TObject);
+    procedure btnAtualizarClick(Sender: TObject);
+  private
+    { Private declarations }
+    FEndPoint, FPK, FSort, FOrder, FTitle : String;
+    procedure ApplyStyle;
+    procedure GetEndPoint;
+  public
+    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
+  end;
+
+var
+  FormTemplate : TFormTemplate;
+
+implementation
+
+
+{$R *.dfm}
+
+{ TFormTemplate }
+
+procedure TFormTemplate.ApplyStyle;
+begin
+  edtPesquisa.Color := COLOR_MAIN;
+  lblNomePagina.Caption := FTitle;
+
+  pnlCadastro.Visible := False;
+end;
+
+procedure TFormTemplate.btnAtualizarClick(Sender: TObject);
+begin
+  pnlCadastro.Visible := not pnlCadastro.Visible;
+end;
+
+procedure TFormTemplate.FormCreate(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(Self)
+      .BindFormDefault(FTitle)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .SetStyleComponents;
+  ApplyStyle;
+  GetEndPoint;
+end;
+
+procedure TFormTemplate.GetEndPoint;
+begin
+  TRequest
+    .New
+      .BaseURL('http://localhost:9000' + FEndPoint)
+      .Accept('application/json')
+      .DataSetAdapter(FDMemTable1)
+    .Get;
+end;
+
+function TFormTemplate.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormTemplate.UnRender;
+begin
+  //
+end;
+
+end.

@@ -1,0 +1,35 @@
+inherited PageClientes: TPageClientes
+  Caption = 'PageClientes'
+  PixelsPerInch = 115
+  TextHeight = 16
+  inherited Panel1: TPanel
+    object Label1: TLabel [0]
+      Left = 464
+      Top = 256
+      Width = 115
+      Height = 31
+      Caption = 'CLIENTES'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -26
+      Font.Name = 'Tahoma'
+      Font.Style = []
+      ParentFont = False
+    end
+    inherited Panel2: TPanel
+      inherited Panel4: TPanel
+        inherited lblTeste: TLabel
+          Width = 193
+        end
+        inherited Panel6: TPanel
+          Top = 21
+        end
+      end
+      inherited Panel8: TPanel
+        inherited lblPesquisa: TLabel
+          Width = 330
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,5 @@
+inherited FormTemplate1: TFormTemplate1
+  Caption = 'FormTemplate1'
+  PixelsPerInch = 115
+  TextHeight = 16
+end

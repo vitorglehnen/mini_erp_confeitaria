@@ -1,0 +1,30 @@
+object PagePadrao: TPagePadrao
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'PagePadrao'
+  ClientHeight = 617
+  ClientWidth = 1102
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 115
+  TextHeight = 16
+  object pnlMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 1102
+    Height = 617
+    Align = alClient
+    Caption = 'pnlMain'
+    TabOrder = 0
+    ExplicitLeft = 424
+    ExplicitTop = 264
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

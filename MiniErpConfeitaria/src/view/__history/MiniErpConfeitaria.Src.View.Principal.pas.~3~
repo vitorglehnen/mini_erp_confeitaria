@@ -1,0 +1,59 @@
+unit MiniErpConfeitaria.Src.View.Principal;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  MIniErpConfeitaria.Src.View.Styles.Colors,
+  Router4d.Interfaces,
+  Router4D,
+  MIniErpConfeitaria.Src.View.Pages.Main;
+
+type
+  TFormPrincipal = class(TForm, iRouter4DComponent)
+    pnlMain: TPanel;
+    pnlTop: TPanel;
+    pnlCenter: TPanel;
+  private
+    { Private declarations }
+  public
+    procedure FormCreate(Sender: TObject);
+    procedure UnRender;
+    function Render : TForm;
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+
+{$R *.dfm}
+
+procedure TFormPrincipal.FormCreate(Sender: TObject);
+begin
+  pnlTop.Color := COLOR_BACKGROUND;
+
+  TRouter4d.Render<TPageMain>.SetElement(pnlCenter, pnlMain);
+end;
+
+function TFormPrincipal.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormPrincipal.UnRender;
+begin
+
+end;
+
+end.

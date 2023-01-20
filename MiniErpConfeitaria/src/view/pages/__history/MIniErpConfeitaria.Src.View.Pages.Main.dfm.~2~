@@ -1,0 +1,30 @@
+object PageMain: TPageMain
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'PageMain'
+  ClientHeight = 513
+  ClientWidth = 950
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 115
+  TextHeight = 16
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 950
+    Height = 513
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 472
+    ExplicitTop = 200
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end

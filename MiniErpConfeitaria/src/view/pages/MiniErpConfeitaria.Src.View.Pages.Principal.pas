@@ -1,0 +1,106 @@
+unit MiniErpConfeitaria.Src.View.Pages.Principal;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4d.Interfaces,
+  Router4D,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Vcl.StdCtrls,
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.Src.View.Styles.Colors,
+  MiniErpConfeitaria.Src.View.Pages.Padrao, Vcl.Imaging.pngimage;
+
+type
+  TFormPrincipal = class(TForm, iRouter4DComponent)
+    [ComponentBindStyle(COLOR_BACKGROUND)]
+    pnlMain: TPanel;
+    [ComponentBindStyle(COLOR_TOP)]
+    pnlTop: TPanel;
+    [ComponentBindStyle(COLOR_BACKGROUND)]
+    pnlCenter: TPanel;
+    btnPedidos: TSpeedButton;
+    btnProdutos: TSpeedButton;
+    btnRelatorios: TSpeedButton;
+    btnConfiguracoes: TSpeedButton;
+    btnClientes: TSpeedButton;
+    btnInicial: TSpeedButton;
+    lstImagens: TImageList;
+    imgLogoTipo: TImage;
+
+    procedure btnClientesClick(Sender: TObject);
+    procedure btnInicialClick(Sender: TObject);
+    procedure btnPedidosClick(Sender: TObject);
+    procedure btnProdutosClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure UnRender;
+    function Render : TForm;
+  published
+    { Published declarations }
+    procedure FormCreate(Sender: TObject);
+  end;
+
+var
+  FormPrincipal: TFormPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+procedure TFormPrincipal.btnClientesClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Clientes');
+end;
+
+procedure TFormPrincipal.btnInicialClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Padrao');
+end;
+
+procedure TFormPrincipal.btnPedidosClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Pedidos');
+end;
+
+procedure TFormPrincipal.btnProdutosClick(Sender: TObject);
+begin
+  TRouter4D.Link.&To('Produtos');
+end;
+
+procedure TFormPrincipal.FormCreate(Sender: TObject);
+begin
+  TRouter4D.Render<TPagePadrao>.SetElement(pnlCenter, pnlMain);
+  TBind4D
+    .New
+      .Form(Self)
+      .SetStyleComponents;
+end;
+
+function TFormPrincipal.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormPrincipal.UnRender;
+begin
+
+end;
+
+end.

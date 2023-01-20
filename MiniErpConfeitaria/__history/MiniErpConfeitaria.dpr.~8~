@@ -1,0 +1,21 @@
+program MiniErpConfeitaria;
+
+uses
+  Vcl.Forms,
+  MIniErpConfeitaria.Src.View.Styles.Colors in 'src\view\styles\MIniErpConfeitaria.Src.View.Styles.Colors.pas',
+  MiniErpConfeitaria.Src.View.Routers in 'src\view\routers\MiniErpConfeitaria.Src.View.Routers.pas',
+  MiniErpConfeitaria.Src.View.Pages.Principal in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Principal.pas' {FormPrincipal},
+  MiniErpConfeitaria.Src.View.Pages.Form.Template in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Form.Template.pas' {FormTemplate},
+  MiniErpConfeitaria.Src.View.Pages.Usuarios in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Usuarios.pas' {PageUsuarios};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  ReportMemoryLeaksOnShutdown := True;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFormPrincipal, FormPrincipal);
+  Application.CreateForm(TFormTemplate, FormTemplate);
+  Application.CreateForm(TPageUsuarios, PageUsuarios);
+  Application.Run;
+end.
