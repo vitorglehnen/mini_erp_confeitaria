@@ -2,14 +2,15 @@ program MiniErpConfeitaria;
 
 uses
   Vcl.Forms,
-  MIniErpConfeitaria.Src.View.Styles.Colors in 'src\view\styles\MIniErpConfeitaria.Src.View.Styles.Colors.pas',
-  MiniErpConfeitaria.Src.View.Routers in 'src\view\routers\MiniErpConfeitaria.Src.View.Routers.pas',
-  MiniErpConfeitaria.Src.View.Pages.Principal in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Principal.pas' {FormPrincipal},
-  MiniErpConfeitaria.Src.View.Pages.Form.Template in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Form.Template.pas' {FormTemplate},
-  MiniErpConfeitaria.Src.View.Pages.Clientes in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Clientes.pas' {PageClientes},
-  MiniErpConfeitaria.Src.View.Pages.Padrao in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Padrao.pas' {PagePadrao},
-  MiniErpConfeitaria.Src.View.Pages.Pedidos in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Pedidos.pas' {PagePedidos},
-  MiniErpConfeitaria.Src.View.Pages.Produtos in 'src\view\pages\MiniErpConfeitaria.Src.View.Pages.Produtos.pas' {PageProdutos};
+  MIniErpConfeitaria.View.Styles.Colors in 'src\view\styles\MIniErpConfeitaria.View.Styles.Colors.pas',
+  MiniErpConfeitaria.View.Routers in 'src\view\routers\MiniErpConfeitaria.View.Routers.pas',
+  MiniErpConfeitaria.View.Pages.Principal in 'src\view\pages\MiniErpConfeitaria.View.Pages.Principal.pas' {FormPrincipal},
+  MiniErpConfeitaria.View.Pages.Form.Template in 'src\view\pages\MiniErpConfeitaria.View.Pages.Form.Template.pas' {FormTemplate},
+  MiniErpConfeitaria.View.Pages.Clientes in 'src\view\pages\MiniErpConfeitaria.View.Pages.Clientes.pas' {PageClientes},
+  MiniErpConfeitaria.View.Pages.Padrao in 'src\view\pages\MiniErpConfeitaria.View.Pages.Padrao.pas' {PagePadrao},
+  MiniErpConfeitaria.View.Pages.Pedidos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Pedidos.pas' {PagePedidos},
+  MiniErpConfeitaria.View.Pages.Produtos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Produtos.pas' {PageProdutos},
+  MiniErpConfeitaria.Model.DAO.Interfaces in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas';
 
 {$R *.res}
 

@@ -1,4 +1,4 @@
-unit MIniErpConfeitaria.Src.View.Styles.Colors;
+unit MIniErpConfeitaria.View.Styles.Colors;
 
 interface
 

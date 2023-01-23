@@ -1,4 +1,4 @@
-unit MiniErpConfeitaria.Src.View.Pages.Padrao;
+unit MiniErpConfeitaria.View.Pages.Padrao;
 
 interface
 
@@ -13,11 +13,12 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ExtCtrls,
-  Router4D.Interfaces,
   Vcl.StdCtrls,
   Data.DB,
   Vcl.Grids,
-  Vcl.DBGrids, Vcl.Imaging.pngimage;
+  Vcl.DBGrids, Vcl.Imaging.pngimage,
+
+  Router4D.Interfaces;
 
 type
   TPagePadrao = class(TForm, iRouter4DComponent)
@@ -39,7 +40,7 @@ var
 implementation
 
 uses
-  MIniErpConfeitaria.Src.View.Styles.Colors;
+  MIniErpConfeitaria.View.Styles.Colors;
 
 {$R *.dfm}
 

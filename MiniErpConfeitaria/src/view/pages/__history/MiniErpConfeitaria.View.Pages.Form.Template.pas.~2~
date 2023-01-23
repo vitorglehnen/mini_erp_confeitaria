@@ -1,0 +1,224 @@
+unit MiniErpConfeitaria.View.Pages.Form.Template;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Router4D.Interfaces,
+  Vcl.StdCtrls,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  System.ImageList,
+  Vcl.ImgList,
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.View.Styles.Colors,
+  RESTRequest4D, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  TFormTemplate = class(TForm, iRouter4DComponent)
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlMain: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlTop: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlCenter: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlCabecalho: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyData: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlLinhaPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlLinhaNomePagina: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlCadastro: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyBotao: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_TITLE, FONT_COLOR)]
+    lblNomePagina: TLabel;
+
+    lblPesquisa: TLabel;
+
+    btnAtualizar: TSpeedButton;
+    btnCadastro: TSpeedButton;
+
+    DBGrid1: TDBGrid;
+    lstImagens: TImageList;
+    FDMemTable1: TFDMemTable;
+    DataSource1: TDataSource;
+
+    [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
+    edtPesquisa: TEdit;
+    pnlAcoes: TPanel;
+    btFechar: TSpeedButton;
+    btSalvar: TSpeedButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure btnCadastroClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure btFecharClick(Sender: TObject);
+    procedure btSalvarClick(Sender: TObject);
+  private
+    { Private declarations }
+    FEndPoint, FPK, FSort, FOrder, FTitle : String;
+    procedure ApplyStyle;
+    procedure GetEndPoint;
+    procedure formataLista;
+    procedure AlteraForm;
+  public
+    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
+  end;
+
+var
+  FormTemplate : TFormTemplate;
+
+implementation
+
+uses
+  System.JSON;
+
+
+{$R *.dfm}
+
+{ TFormTemplate }
+
+procedure TFormTemplate.ApplyStyle;
+begin
+  lblNomePagina.Caption := FTitle;
+  DBGrid1.Align := AlClient;
+  pnlCadastro.Visible := False;
+  pnlCadastro.Align := AlClient;
+end;
+
+procedure TFormTemplate.btFecharClick(Sender: TObject);
+begin
+  AlteraForm;
+end;
+
+procedure TFormTemplate.btnCadastroClick(Sender: TObject);
+begin
+  AlteraForm;
+  formataLista;
+
+  TBind4D
+    .New
+      .Form(Self)
+      .ClearFieldForm;
+end;
+
+procedure TFormTemplate.btSalvarClick(Sender: TObject);
+var
+  aJson : TJsonObject;
+  aTeste : String;
+begin
+  aJson := TBind4D.New.Form(self).FormToJson(fbPost);
+  aTeste := aJson.ToString;
+  try
+    TRequest
+      .New
+        .BaseURL('http://localhost:9000' + FEndPoint)
+        .Accept('application/json')
+        .AddBody(aJson.ToString)
+    .Post;
+  finally
+    aJson.Free;
+  end;
+
+  AlteraForm;
+end;
+
+procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(self)
+      .BindDataSetToForm(FDMemTable1);
+
+  AlteraForm;
+end;
+
+procedure TFormTemplate.FormCreate(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(Self)
+      .BindFormDefault(FTitle)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .SetStyleComponents;
+  ApplyStyle;
+end;
+
+procedure TFormTemplate.FormResize(Sender: TObject);
+begin
+  GetEndPoint;
+end;
+
+procedure TFormTemplate.GetEndPoint;
+begin
+  TRequest
+    .New
+      .BaseURL('http://localhost:9000' + FEndPoint)
+      .Accept('application/json')
+      .DataSetAdapter(FDMemTable1)
+    .Get;
+
+  formataLista;
+end;
+
+function TFormTemplate.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormTemplate.UnRender;
+begin
+  //
+end;
+
+procedure TFormTemplate.AlteraForm;
+begin
+  pnlCadastro.Visible := True;
+end;
+
+procedure TFormTemplate.formataLista;
+begin
+  TBind4D
+    .New
+      .Form(self)
+      .BindFormatListDataSet(FDMemTable1, DBGrid1);
+end;
+
+end.

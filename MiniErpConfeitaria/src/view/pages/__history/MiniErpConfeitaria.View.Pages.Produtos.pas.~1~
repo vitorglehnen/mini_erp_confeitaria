@@ -1,4 +1,4 @@
-unit MiniErpConfeitaria.Src.View.Pages.Pedidos;
+unit MiniErpConfeitaria.View.Pages.Produtos;
 
 interface
 
@@ -27,9 +27,9 @@ uses
 
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]
-  [FormDefault('Pedidos')]
+  [FormDefault('Produtos')]
 
-  TPagePedidos = class(TFormTemplate)
+  TPageProdutos = class(TFormTemplate)
   private
     { Private declarations }
   public
@@ -37,7 +37,7 @@ type
   end;
 
 var
-  PagePedidos: TPagePedidos;
+  PageProdutos: TPageProdutos;
 
 implementation
 

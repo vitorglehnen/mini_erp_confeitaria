@@ -1,4 +1,4 @@
-unit MiniErpConfeitaria.Src.View.Pages.Principal;
+unit MiniErpConfeitaria.View.Pages.Principal;
 
 interface
 
