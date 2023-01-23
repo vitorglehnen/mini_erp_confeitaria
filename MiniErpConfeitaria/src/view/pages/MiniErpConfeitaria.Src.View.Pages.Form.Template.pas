@@ -79,16 +79,23 @@ type
 
     [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
     edtPesquisa: TEdit;
+    pnlAcoes: TPanel;
+    btFechar: TSpeedButton;
+    btSalvar: TSpeedButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure btFecharClick(Sender: TObject);
+    procedure btSalvarClick(Sender: TObject);
   private
     { Private declarations }
     FEndPoint, FPK, FSort, FOrder, FTitle : String;
     procedure ApplyStyle;
     procedure GetEndPoint;
     procedure formataLista;
+    procedure AlteraForm;
   public
     { Public declarations }
     function Render : TForm;
@@ -100,6 +107,9 @@ var
 
 implementation
 
+uses
+  System.JSON;
+
 
 {$R *.dfm}
 
@@ -109,14 +119,53 @@ procedure TFormTemplate.ApplyStyle;
 begin
   lblNomePagina.Caption := FTitle;
   DBGrid1.Align := AlClient;
-
   pnlCadastro.Visible := False;
+  pnlCadastro.Align := AlClient;
+end;
+
+procedure TFormTemplate.btFecharClick(Sender: TObject);
+begin
+  AlteraForm;
 end;
 
 procedure TFormTemplate.btnCadastroClick(Sender: TObject);
 begin
-  pnlCadastro.Visible := not pnlCadastro.Visible;
-  pnlCadastro.Align := AlClient;
+  AlteraForm;
+  TBind4D
+    .New
+      .Form(Self)
+      .ClearFieldForm;
+end;
+
+procedure TFormTemplate.btSalvarClick(Sender: TObject);
+var
+  aJson : TJsonObject;
+  aTeste : String;
+begin
+  aJson := TBind4D.New.Form(self).FormToJson(fbPost);
+  aTeste := aJson.ToString;
+  try
+    TRequest
+      .New
+        .BaseURL('http://localhost:9000' + FEndPoint)
+        .Accept('application/json')
+        .AddBody(aJson.ToString)
+    .Post;
+  finally
+    aJson.Free;
+  end;
+
+  AlteraForm;
+end;
+
+procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(self)
+      .BindDataSetToForm(FDMemTable1);
+
+  AlteraForm;
 end;
 
 procedure TFormTemplate.FormCreate(Sender: TObject);
@@ -132,7 +181,7 @@ end;
 
 procedure TFormTemplate.FormResize(Sender: TObject);
 begin
-  //GetEndPoint;
+  GetEndPoint;
 end;
 
 procedure TFormTemplate.GetEndPoint;
@@ -144,7 +193,7 @@ begin
       .DataSetAdapter(FDMemTable1)
     .Get;
 
-  //formataLista;
+  formataLista;
 end;
 
 function TFormTemplate.Render: TForm;
@@ -155,6 +204,11 @@ end;
 procedure TFormTemplate.UnRender;
 begin
   //
+end;
+
+procedure TFormTemplate.AlteraForm;
+begin
+  pnlCadastro.Visible := not pnlCadastro.Visible;
 end;
 
 procedure TFormTemplate.formataLista;
