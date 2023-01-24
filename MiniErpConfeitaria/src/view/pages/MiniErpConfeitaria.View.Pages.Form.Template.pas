@@ -20,24 +20,20 @@ uses
   Vcl.DBGrids,
   Vcl.Buttons,
   Vcl.ImgList,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-  FireDAC.Stan.Error,
-  FireDAC.DatS,
-  FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
+  System.JSON,
 
   Bind4D,
   Bind4D.Attributes,
   Bind4D.Types,
   Router4D.Interfaces,
+  MiniErpConfeitaria.Model.DAO.Rest,
   MIniErpConfeitaria.View.Styles.Colors,
-  RESTRequest4D;
+  RESTRequest4D,
+  MiniErpConfeitaria.Model.DAO.Interfaces;
 
 type
+  TTypeOperation = (toNull, toPost, toPut);
+
   TFormTemplate = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlMain: TPanel;
@@ -82,7 +78,6 @@ type
 
     DBGrid1: TDBGrid;
     lstImagens: TImageList;
-    FDMemTable1: TFDMemTable;
     DataSource1: TDataSource;
 
     [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
@@ -90,6 +85,7 @@ type
     pnlAcoes: TPanel;
     btFechar: TSpeedButton;
     btSalvar: TSpeedButton;
+    btExcluir: TSpeedButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
@@ -97,26 +93,27 @@ type
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
+    procedure btExcluirClick(Sender: TObject);
+
   private
     { Private declarations }
+    FTypeOperation : TTypeOperation;
     FEndPoint, FPK, FSort, FOrder, FTitle : String;
+    FDAO : IDAOInterface;
     procedure ApplyStyle;
     procedure GetEndPoint;
     procedure formataLista;
     procedure AlteraForm;
+    procedure restOperationPost;
+    procedure restOperationPut;
   public
     { Public declarations }
     function Render : TForm;
     procedure UnRender;
   end;
 
-var
-  FormTemplate : TFormTemplate;
 
 implementation
-
-uses
-  System.JSON;
 
 
 {$R *.dfm}
@@ -131,13 +128,23 @@ begin
   pnlCadastro.Align := AlClient;
 end;
 
+procedure TFormTemplate.btExcluirClick(Sender: TObject);
+begin
+  FDAO.Delete;
+  GetEndPoint;
+  AlteraForm;
+  FTypeOperation := toNull;
+end;
+
 procedure TFormTemplate.btFecharClick(Sender: TObject);
 begin
   AlteraForm;
+  FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.btnCadastroClick(Sender: TObject);
 begin
+  FTypeOperation := toPost;
   AlteraForm;
   formataLista;
 
@@ -148,21 +155,10 @@ begin
 end;
 
 procedure TFormTemplate.btSalvarClick(Sender: TObject);
-var
-  aJson : TJsonObject;
-  aTeste : String;
 begin
-  aJson := TBind4D.New.Form(self).FormToJson(fbPost);
-  aTeste := aJson.ToString;
-  try
-    TRequest
-      .New
-        .BaseURL('http://localhost:9000' + FEndPoint)
-        .Accept('application/json')
-        .AddBody(aJson.ToString)
-    .Post;
-  finally
-    aJson.Free;
+  case FTypeOperation of
+    toPost : restOperationPost;
+    toPut: restOperationPut;
   end;
 
   AlteraForm;
@@ -170,22 +166,27 @@ end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
 begin
+  FTypeOperation := toPut;
   TBind4D
     .New
       .Form(self)
-      .BindDataSetToForm(FDMemTable1);
+      .BindDataSetToForm(FDAO.DataSet);
 
   AlteraForm;
 end;
 
 procedure TFormTemplate.FormCreate(Sender: TObject);
 begin
+  FTypeOperation := toNull;
+  FDAO := TDAOREST.New(Self).DataSource(DataSource1);
+
   TBind4D
     .New
       .Form(Self)
       .BindFormDefault(FTitle)
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .SetStyleComponents;
+
   ApplyStyle;
 end;
 
@@ -196,12 +197,7 @@ end;
 
 procedure TFormTemplate.GetEndPoint;
 begin
-  TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndPoint)
-      .Accept('application/json')
-      .DataSetAdapter(FDMemTable1)
-    .Get;
+  FDAO.Get;
 
   formataLista;
 end;
@@ -211,6 +207,20 @@ begin
   Result := Self;
 end;
 
+procedure TFormTemplate.restOperationPost;
+begin
+  FDAO.Post;
+  GetEndPoint;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.restOperationPut;
+begin
+  FDAO.Put;
+  GetEndPoint;
+  FTypeOperation := toNull;
+end;
+
 procedure TFormTemplate.UnRender;
 begin
 
@@ -218,7 +228,7 @@ end;
 
 procedure TFormTemplate.AlteraForm;
 begin
-  pnlCadastro.Visible := True;
+  pnlCadastro.Visible := not pnlCadastro.Visible;
 end;
 
 procedure TFormTemplate.formataLista;
@@ -226,7 +236,7 @@ begin
   TBind4D
     .New
       .Form(self)
-      .BindFormatListDataSet(FDMemTable1, DBGrid1);
+      .BindFormatListDataSet(FDAO.DataSet, DBGrid1);
 end;
 
 end.

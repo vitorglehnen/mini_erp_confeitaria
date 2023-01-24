@@ -10,7 +10,8 @@ uses
   MiniErpConfeitaria.View.Pages.Padrao in 'src\view\pages\MiniErpConfeitaria.View.Pages.Padrao.pas' {PagePadrao},
   MiniErpConfeitaria.View.Pages.Pedidos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Pedidos.pas' {PagePedidos},
   MiniErpConfeitaria.View.Pages.Produtos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Produtos.pas' {PageProdutos},
-  MiniErpConfeitaria.Model.DAO.Interfaces in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas';
+  MiniErpConfeitaria.Model.DAO.Interfaces in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas',
+  MiniErpConfeitaria.Model.DAO.Rest in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas';
 
 {$R *.res}
 

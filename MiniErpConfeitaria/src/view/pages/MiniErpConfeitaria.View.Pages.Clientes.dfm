@@ -2,7 +2,6 @@ inherited PageClientes: TPageClientes
   Caption = 'PageClientes'
   ClientHeight = 794
   ClientWidth = 1350
-  ExplicitLeft = -346
   ExplicitWidth = 1350
   ExplicitHeight = 794
   PixelsPerInch = 115
@@ -15,11 +14,6 @@ inherited PageClientes: TPageClientes
     inherited pnlTop: TPanel
       Width = 1350
       ExplicitWidth = 1350
-      inherited pnlCabecalho: TPanel
-        inherited lblNomePagina: TLabel
-          Width = 193
-        end
-      end
     end
     inherited pnlCenter: TPanel
       Width = 1350
@@ -47,9 +41,6 @@ inherited PageClientes: TPageClientes
           inherited pnlPesquisa: TPanel
             Left = 68
             ExplicitLeft = 68
-            inherited lblPesquisa: TLabel
-              Width = 274
-            end
           end
         end
       end
@@ -102,8 +93,6 @@ inherited PageClientes: TPageClientes
             end>
           Spacing = 6
           TabOrder = 0
-          ExplicitLeft = 241
-          ExplicitTop = -6
           object lblDataNascimento: TLabel
             Left = 0
             Top = 0
@@ -323,13 +312,18 @@ inherited PageClientes: TPageClientes
           ExplicitTop = 528
           ExplicitWidth = 593
           inherited btFechar: TSpeedButton
-            Left = 464
+            Left = 400
             ImageIndex = 4
-            ExplicitLeft = 464
+            ExplicitLeft = 376
+            ExplicitTop = 6
           end
           inherited btSalvar: TSpeedButton
             Left = 529
             ExplicitLeft = 529
+          end
+          inherited btExcluir: TSpeedButton
+            Left = 465
+            ImageIndex = 3
           end
         end
       end
