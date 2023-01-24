@@ -151,6 +151,7 @@ object FormTemplate: TFormTemplate
           TitleFont.Name = 'Tahoma'
           TitleFont.Style = []
           OnDblClick = DBGrid1DblClick
+          OnTitleClick = DBGrid1TitleClick
         end
         object pnlBodyPesquisa: TPanel
           Left = 0
@@ -189,6 +190,8 @@ object FormTemplate: TFormTemplate
               CharCase = ecUpperCase
               Color = clBtnFace
               TabOrder = 0
+              OnKeyPress = edtPesquisaKeyPress
+              ExplicitTop = 21
             end
             object pnlLinhaPesquisa: TPanel
               Left = 0

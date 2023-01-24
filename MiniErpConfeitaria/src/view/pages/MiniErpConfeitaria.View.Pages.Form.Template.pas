@@ -94,6 +94,8 @@ type
     procedure btFecharClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
 
   private
     { Private declarations }
@@ -101,7 +103,7 @@ type
     FEndPoint, FPK, FSort, FOrder, FTitle : String;
     FDAO : IDAOInterface;
     procedure ApplyStyle;
-    procedure GetEndPoint;
+    procedure GetData;
     procedure formataLista;
     procedure AlteraForm;
     procedure restOperationPost;
@@ -131,7 +133,7 @@ end;
 procedure TFormTemplate.btExcluirClick(Sender: TObject);
 begin
   FDAO.Delete;
-  GetEndPoint;
+  GetData;
   AlteraForm;
   FTypeOperation := toNull;
 end;
@@ -139,6 +141,11 @@ end;
 procedure TFormTemplate.btFecharClick(Sender: TObject);
 begin
   AlteraForm;
+  TBind4D
+    .New
+      .Form(self)
+      .ClearFieldForm;
+
   FTypeOperation := toNull;
 end;
 
@@ -175,6 +182,33 @@ begin
   AlteraForm;
 end;
 
+procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
+begin
+  FDAO
+    .AddParam('sort', Column.Field.FullName)
+    .AddParam('order', FOrder)
+  .Get;
+
+  if FOrder = 'asc' then FOrder := 'desc' else FOrder := 'asc';
+  formataLista;
+end;
+
+procedure TFormTemplate.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #$D then
+  begin
+    FDAO
+      .AddParam('sort', FSort)
+      .AddParam('order', FOrder)
+      .AddParam('searchfields', 'name')
+      .AddParam('searchvalue', edtPesquisa.Text)
+    .Get;
+
+    formataLista;
+  end;
+
+end;
+
 procedure TFormTemplate.FormCreate(Sender: TObject);
 begin
   FTypeOperation := toNull;
@@ -187,17 +221,21 @@ begin
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
       .SetStyleComponents;
 
+  formataLista;
   ApplyStyle;
 end;
 
 procedure TFormTemplate.FormResize(Sender: TObject);
 begin
-  GetEndPoint;
+  GetData;
 end;
 
-procedure TFormTemplate.GetEndPoint;
+procedure TFormTemplate.GetData;
 begin
-  FDAO.Get;
+  FDAO
+    .AddParam('sort', FSort)
+    .AddParam('order', FOrder)
+  .Get;
 
   formataLista;
 end;
@@ -210,14 +248,14 @@ end;
 procedure TFormTemplate.restOperationPost;
 begin
   FDAO.Post;
-  GetEndPoint;
+  GetData;
   FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.restOperationPut;
 begin
   FDAO.Put;
-  GetEndPoint;
+  GetData;
   FTypeOperation := toNull;
 end;
 

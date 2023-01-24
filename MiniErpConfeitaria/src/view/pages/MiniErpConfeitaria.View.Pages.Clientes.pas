@@ -36,7 +36,7 @@ uses
   Bind4D.Attributes,
   Bind4D.Types,
   MIniErpConfeitaria.View.Styles.Colors,
-  MiniErpConfeitaria.View.Pages.Form.Template;
+  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.Mask;
 
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]
@@ -54,39 +54,40 @@ type
     [FieldDataSetBind('idoccupation', ftString, False, 0, 'Código da profissão')]
     edtCodigoOcupacao: TEdit;
 
-    [FieldJsonBind('name')]
+    [FieldJsonBind('name'), FbGet]
     [FieldDataSetBind('name', ftString, True, 24, 'Nome')]
     [fvNotNull('Campo Nome não pode ser Nulo', COLOR_BACKGROUND)]
     edtNome: TEdit;
 
-    [FieldJsonBind('phone')]
+    [FieldJsonBind('phone'), FbGet]
     [FieldDataSetBind('phone', ftString, True, 14, 'Telefone', '!\(##\) #####-####;0;_')]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCell)]
+    edtTelefone: TEdit;
 
-    [FieldJsonBind('balance')]
+    [FieldJsonBind('balance'), FbGet]
     [FieldDataSetBind('balance', ftCurrency, True, 9, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCoin)]
     edtSaldo: TEdit;
 
-    [FieldJsonBind('birthdate')]
+    [FieldJsonBind('birthdate'), FbGet]
     [FieldDataSetBind('birthdate', ftDate, True, 9, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
     dateNascimento: TDateTimePicker;
 
-    [FieldJsonBind('lasttransaction')]
+    [FieldJsonBind('lasttransaction'), FbGet]
     [FieldDataSetBind('lasttransaction', ftTime, True, 9, 'Ult. Trans', '##:##:##;0;_', taLeftJustify)]
     dateUltimaTransacao: TDateTimePicker;
 
-    [FieldJsonBind('cpf')]
+    [FieldJsonBind('cpf'), FbGet]
     [FieldDataSetBind('cpf', ftString, True, 15, 'CPF', '###.###.###-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCPF)]
     edtCpf: TEdit;
 
-    [FieldJsonBind('cnpj')]
+    [FieldJsonBind('cnpj'), FbGet]
     [FieldDataSetBind('cnpj', ftString, True, 15, 'CNPJ', '##.###.###/####-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCNPJ)]
     edtCnpj: TEdit;
 
-    [FieldJsonBind('occupation')]
+    [FieldJsonBind('occupation'), FbGet]
     [FieldDataSetBind('occupation', ftString, True, 10, 'Profissão')]
     edtProfissao: TEdit;
 
@@ -104,7 +105,6 @@ type
     lblCpf: TLabel;
     lblCnpj: TLabel;
     lblCodigoOcupacao: TLabel;
-    edtTelefone: TEdit;
     pnlBodyAcoes: TPanel;
 
   private

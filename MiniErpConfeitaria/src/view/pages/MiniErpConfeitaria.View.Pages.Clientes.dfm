@@ -324,6 +324,7 @@ inherited PageClientes: TPageClientes
           inherited btExcluir: TSpeedButton
             Left = 465
             ImageIndex = 3
+            ExplicitLeft = 465
           end
         end
       end

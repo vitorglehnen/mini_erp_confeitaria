@@ -16,7 +16,10 @@ uses
   MiniErpConfeitaria.Model.DAO.Interfaces,
   RestRequest4D,
   Vcl.Forms,
-  Bind4D;
+  Bind4D,
+  System.SysUtils,
+  System.JSON,
+  Bind4D.Types, System.Generics.Collections;
 
 type
   TDAORest = class(TInterfacedObject, iDAOInterface)
@@ -25,6 +28,7 @@ type
       FBaseUrl : String;
       FEndPoint, FPK, FOrder, FSort : String;
       FForm : TForm;
+      FParamList : TDictionary<String, String>;
       function PreparaGuuid (aValue : String) : String;
     public
       constructor Create(aForm : TForm);
@@ -36,19 +40,24 @@ type
       function Delete : iDAOInterface;
       function DataSource ( aValue : TDataSource ) : iDAOInterface;
       function DataSet : TDataSet;
+      function AddParam (aKey : String; aValue : String) : iDAOInterface;
   end;
 
 implementation
 
-uses
-  System.SysUtils, System.JSON, Bind4D.Types;
-
 
 { TDAORest }
+
+function TDAORest.AddParam(aKey, aValue: String): iDAOInterface;
+begin
+  Result := Self;
+  FParamList.Add(aKey, aValue);
+end;
 
 constructor TDAORest.Create(aForm : TForm);
 begin
   FDMemTable := TFDMemTable.Create(nil);
+  FParamList := TDictionary<String, String>.Create;
   FBaseUrl := 'http://localhost:9000';
   FForm := aForm;
 
@@ -87,18 +96,32 @@ end;
 
 destructor TDAORest.Destroy;
 begin
-  FDMemTable.free;
+  FDMemTable.Free;
+  FParamList.Free;
   inherited;
 end;
 
 function TDAORest.Get: iDAOInterface;
+var
+  aURL : String;
 begin
+  aURL := FBaseUrl + FEndPoint + '?';
+
+  if FParamList.Count > 0 then
+  begin
+    for var Param in FParamList do
+      aURL := aURL + Param.Key + '=' + Param.Value + '&';
+  end;
+  aURL := Copy(aURL, 0, Length(aURL) -1);
+
   TRequest
     .New
-      .BaseURL(FBaseUrl + FEndPoint)
+      .BaseURL(aURL)
       .Accept('application/json')
       .DataSetAdapter(FDMemTable)
     .Get;
+
+  FParamList.Clear
 end;
 
 class function TDAORest.New(aForm : TForm) : iDAOInterface;
