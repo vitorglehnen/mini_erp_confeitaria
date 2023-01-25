@@ -86,6 +86,10 @@ type
     btFechar: TSpeedButton;
     btSalvar: TSpeedButton;
     btExcluir: TSpeedButton;
+    Panel1: TPanel;
+    btnVoltarPagina: TSpeedButton;
+    btnProximaPagina: TSpeedButton;
+    Página: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
@@ -235,6 +239,7 @@ begin
   FDAO
     .AddParam('sort', FSort)
     .AddParam('order', FOrder)
+    .Page(FDAO.Page)
   .Get;
 
   formataLista;

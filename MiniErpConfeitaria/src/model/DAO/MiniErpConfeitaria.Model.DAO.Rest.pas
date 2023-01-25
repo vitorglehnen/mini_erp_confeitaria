@@ -19,7 +19,9 @@ uses
   Bind4D,
   System.SysUtils,
   System.JSON,
-  Bind4D.Types, System.Generics.Collections;
+  Bind4D.Types,
+  System.Generics.Collections,
+  DataSet.Serialize;
 
 type
   TDAORest = class(TInterfacedObject, iDAOInterface)
@@ -28,6 +30,10 @@ type
       FBaseUrl : String;
       FEndPoint, FPK, FOrder, FSort : String;
       FForm : TForm;
+      FPage : Integer;
+      FLimit : Integer;
+      FTotal : Integer;
+      FPages : Integer;
       FParamList : TDictionary<String, String>;
       function PreparaGuuid (aValue : String) : String;
     public
@@ -41,6 +47,14 @@ type
       function DataSource ( aValue : TDataSource ) : iDAOInterface;
       function DataSet : TDataSet;
       function AddParam (aKey : String; aValue : String) : iDAOInterface;
+      function Page : Integer; overload;
+      function Page ( aValue : Integer) : IDAOInterface; overload;
+      function Limit : Integer; overload;
+      function Limit ( aValue : Integer) : IDAOInterface; overload;
+      function Total : Integer; overload;
+      function Total ( aValue : Integer) : IDAOInterface; overload;
+      function Pages : Integer; overload;
+      function Pages ( aValue : Integer) : IDAOInterface; overload;
   end;
 
 implementation
@@ -60,6 +74,8 @@ begin
   FParamList := TDictionary<String, String>.Create;
   FBaseUrl := 'http://localhost:9000';
   FForm := aForm;
+  FPage := 1;
+  FLimit := 10;
 
   TBind4D
     .New
@@ -104,6 +120,8 @@ end;
 function TDAORest.Get: iDAOInterface;
 var
   aURL : String;
+  aJsonResult : TJsonObject;
+  aResult : String;
 begin
   aURL := FBaseUrl + FEndPoint + '?';
 
@@ -112,21 +130,72 @@ begin
     for var Param in FParamList do
       aURL := aURL + Param.Key + '=' + Param.Value + '&';
   end;
-  aURL := Copy(aURL, 0, Length(aURL) -1);
 
-  TRequest
-    .New
-      .BaseURL(aURL)
-      .Accept('application/json')
-      .DataSetAdapter(FDMemTable)
-    .Get;
+  aUrl := aURL + 'limit='+IntToStr(FLimit)+'&page='+IntToStr(FPage);
+
+  aResult :=
+    TRequest
+      .New
+        .BaseURL(aURL)
+        .Accept('application/json')
+        .DataSetAdapter(FDMemTable)
+        .AddHeader('X-Paginate', 'true')
+      .Get
+    .Content;
+
+  aJsonResult := TJSONObject.ParseJSONValue(aResult) as TJsonObject;
+  try
+    FDMemTable.Close;
+    FDMemTable.DisableControls;
+    FTotal := aJsonResult.GetValue<Integer>('total');
+    FLimit := aJsonResult.GetValue<Integer>('limit');
+    FPage := aJsonResult.GetValue<Integer>('page');
+    FPages := aJsonResult.GetValue<Integer>('pages');
+    FDMemTable.LoadFromJSON(aJsonResult.GetValue<TJsonArray>('docs'), False);
+    FDMemTable.EnableControls;
+  finally
+    aJsonResult.Free;
+  end;
 
   FParamList.Clear
+end;
+
+function TDAORest.Limit(aValue: Integer): IDAOInterface;
+begin
+  Result := Self;
+  FLimit := aValue;
+end;
+
+function TDAORest.Limit: Integer;
+begin
+  Result := FLimit;
 end;
 
 class function TDAORest.New(aForm : TForm) : iDAOInterface;
 begin
   Result := Self.Create(aForm);
+end;
+
+function TDAORest.Page(aValue: Integer): IDAOInterface;
+begin
+  Result := Self;
+  FPage := aValue;
+end;
+
+function TDAORest.Pages: Integer;
+begin
+  Result := FPages
+end;
+
+function TDAORest.Pages(aValue: Integer): IDAOInterface;
+begin
+  Result := Self;
+  FPages := aValue;
+end;
+
+function TDAORest.Page: Integer;
+begin
+  Result := FPage;
 end;
 
 function TDAORest.Post: iDAOInterface;
@@ -169,6 +238,17 @@ begin
   finally
     aJson.Free;
   end;
+end;
+
+function TDAORest.Total: Integer;
+begin
+  Result := FTotal;
+end;
+
+function TDAORest.Total(aValue: Integer): IDAOInterface;
+begin
+  Result := Self;
+  FTotal := aValue;
 end;
 
 end.

@@ -1,4 +1,4 @@
-object FormTemplate: TFormTemplate
+﻿object FormTemplate: TFormTemplate
   Left = 0
   Top = 0
   Align = alClient
@@ -134,7 +134,7 @@ object FormTemplate: TFormTemplate
           Left = 232
           Top = 49
           Width = 144
-          Height = 373
+          Height = 332
           Align = alRight
           DataSource = DataSource1
           Font.Charset = DEFAULT_CHARSET
@@ -191,7 +191,6 @@ object FormTemplate: TFormTemplate
               Color = clBtnFace
               TabOrder = 0
               OnKeyPress = edtPesquisaKeyPress
-              ExplicitTop = 21
             end
             object pnlLinhaPesquisa: TPanel
               Left = 0
@@ -201,6 +200,48 @@ object FormTemplate: TFormTemplate
               Align = alTop
               TabOrder = 1
             end
+          end
+        end
+        object Panel1: TPanel
+          Left = 0
+          Top = 381
+          Width = 376
+          Height = 41
+          Align = alBottom
+          BevelOuter = bvNone
+          TabOrder = 2
+          ExplicitLeft = 112
+          ExplicitTop = 152
+          ExplicitWidth = 185
+          object btnVoltarPagina: TSpeedButton
+            Left = 238
+            Top = 0
+            Width = 50
+            Height = 41
+            Align = alRight
+            Flat = True
+            ExplicitLeft = 260
+            ExplicitTop = 6
+          end
+          object btnProximaPagina: TSpeedButton
+            Left = 326
+            Top = 0
+            Width = 50
+            Height = 41
+            Align = alRight
+            Flat = True
+            ExplicitLeft = 353
+          end
+          object Página: TLabel
+            Left = 288
+            Top = 0
+            Width = 38
+            Height = 41
+            Align = alRight
+            Caption = 'P'#225'gina'
+            Layout = tlCenter
+            ExplicitLeft = 289
+            ExplicitHeight = 16
           end
         end
       end
