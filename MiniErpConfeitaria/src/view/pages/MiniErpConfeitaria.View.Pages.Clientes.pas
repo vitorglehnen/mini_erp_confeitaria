@@ -55,26 +55,26 @@ type
     edtCodigoOcupacao: TEdit;
 
     [FieldJsonBind('name')]
-    [FieldDataSetBind('name', ftString, True, 24, 'Nome')]
+    [FieldDataSetBind('name', ftString, True, 34, 'Nome', '', taLeftJustify)]
     [fvNotNull('Campo Nome não pode ser Nulo', COLOR_BACKGROUND)]
     edtNome: TEdit;
 
     [FieldJsonBind('phone')]
-    [FieldDataSetBind('phone', ftString, True, 14, 'Telefone', '!\(##\) #####-####;0;_')]
+    [FieldDataSetBind('phone', ftString, True, 15, 'Telefone', '!\(##\) #####-####;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCell)]
     edtTelefone: TEdit;
 
     [FieldJsonBind('balance')]
-    [FieldDataSetBind('balance', ftCurrency, True, 9, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
+    [FieldDataSetBind('balance', ftCurrency, True, 13, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCoin)]
     edtSaldo: TEdit;
 
     [FieldJsonBind('birthdate')]
-    [FieldDataSetBind('birthdate', ftDate, True, 9, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
+    [FieldDataSetBind('birthdate', ftDate, True, 14, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
     dateNascimento: TDateTimePicker;
 
     [FieldJsonBind('lasttransaction')]
-    [FieldDataSetBind('lasttransaction', ftTime, True, 9, 'Ult. Trans', '##:##:##;0;_', taLeftJustify)]
+    [FieldDataSetBind('lasttransaction', ftTime, False, 7, 'Ult. Trans', '##:##:##;0;_', taLeftJustify)]
     dateUltimaTransacao: TDateTimePicker;
 
     [FieldJsonBind('cpf')]
@@ -83,12 +83,12 @@ type
     edtCpf: TEdit;
 
     [FieldJsonBind('cnpj')]
-    [FieldDataSetBind('cnpj', ftString, True, 15, 'CNPJ', '##.###.###/####-##;0;_', taLeftJustify)]
+    [FieldDataSetBind('cnpj', ftString, False, 16, 'CNPJ', '##.###.###/####-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCNPJ)]
     edtCnpj: TEdit;
 
     [FieldJsonBind('occupation')]
-    [FieldDataSetBind('occupation', ftString, True, 10, 'Profissão')]
+    [FieldDataSetBind('occupation', ftString, True, 14, 'Profissão', '', taLeftJustify)]
     edtProfissao: TEdit;
 
     [FieldJsonBind('picture')]

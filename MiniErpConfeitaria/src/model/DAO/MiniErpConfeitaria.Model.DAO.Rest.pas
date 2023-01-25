@@ -30,10 +30,10 @@ type
       FBaseUrl : String;
       FEndPoint, FPK, FOrder, FSort : String;
       FForm : TForm;
-      FPage : Integer;
       FLimit : Integer;
       FTotal : Integer;
       FPages : Integer;
+      FPage : Integer;
       FParamList : TDictionary<String, String>;
       function PreparaGuuid (aValue : String) : String;
     public
@@ -138,8 +138,7 @@ begin
       .New
         .BaseURL(aURL)
         .Accept('application/json')
-        .DataSetAdapter(FDMemTable)
-        .AddHeader('X-Paginate', 'true')
+        .AddHeader('X-PAGINATE', 'true')
       .Get
     .Content;
 
@@ -157,7 +156,7 @@ begin
     aJsonResult.Free;
   end;
 
-  FParamList.Clear
+  FParamList.Clear;
 end;
 
 function TDAORest.Limit(aValue: Integer): IDAOInterface;
@@ -184,7 +183,7 @@ end;
 
 function TDAORest.Pages: Integer;
 begin
-  Result := FPages
+  Result := FPages;
 end;
 
 function TDAORest.Pages(aValue: Integer): IDAOInterface;

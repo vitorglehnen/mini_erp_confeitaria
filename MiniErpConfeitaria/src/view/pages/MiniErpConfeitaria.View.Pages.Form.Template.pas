@@ -77,7 +77,6 @@ type
     btnCadastro: TSpeedButton;
 
     DBGrid1: TDBGrid;
-    lstImagens: TImageList;
     DataSource1: TDataSource;
 
     [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
@@ -86,10 +85,11 @@ type
     btFechar: TSpeedButton;
     btSalvar: TSpeedButton;
     btExcluir: TSpeedButton;
-    Panel1: TPanel;
+    pnlBotoesPagina: TPanel;
     btnVoltarPagina: TSpeedButton;
     btnProximaPagina: TSpeedButton;
-    Página: TLabel;
+    lblNumeroPagina: TLabel;
+    lstImagens: TImageList;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
@@ -100,6 +100,8 @@ type
     procedure btExcluirClick(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnProximaPaginaClick(Sender: TObject);
+    procedure btnVoltarPaginaClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -165,6 +167,24 @@ begin
       .ClearFieldForm;
 end;
 
+procedure TFormTemplate.btnProximaPaginaClick(Sender: TObject);
+begin
+  if FDAO.Page < FDAO.Pages then
+  begin
+    FDAO.Page(FDAO.Page + 1);
+    GetData;
+  end;
+end;
+
+procedure TFormTemplate.btnVoltarPaginaClick(Sender: TObject);
+begin
+  if FDAO.Page > 1 then
+  begin
+    FDAO.Page(FDAO.Page - 1);
+    GetData;
+  end;
+end;
+
 procedure TFormTemplate.btSalvarClick(Sender: TObject);
 begin
   case FTypeOperation of
@@ -208,7 +228,7 @@ begin
       .AddParam('searchvalue', edtPesquisa.Text)
     .Get;
 
-    formataLista;
+    FormataLista;
   end;
 
 end;
@@ -280,6 +300,8 @@ begin
     .New
       .Form(self)
       .BindFormatListDataSet(FDAO.DataSet, DBGrid1);
+
+  lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
 end;
 
 end.
