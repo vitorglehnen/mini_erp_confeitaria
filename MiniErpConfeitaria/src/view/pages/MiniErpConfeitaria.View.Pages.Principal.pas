@@ -42,7 +42,6 @@ type
     btnConfiguracoes: TSpeedButton;
     btnClientes: TSpeedButton;
     btnInicial: TSpeedButton;
-    lstImagens: TImageList;
     imgLogoTipo: TImage;
 
     procedure btnClientesClick(Sender: TObject);

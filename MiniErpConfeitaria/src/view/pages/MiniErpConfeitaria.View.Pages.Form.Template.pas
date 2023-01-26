@@ -76,6 +76,7 @@ type
     btnAtualizar: TSpeedButton;
     btnCadastro: TSpeedButton;
 
+    [AdjustResponsive]
     DBGrid1: TDBGrid;
     DataSource1: TDataSource;
 
@@ -89,11 +90,9 @@ type
     btnVoltarPagina: TSpeedButton;
     btnProximaPagina: TSpeedButton;
     lblNumeroPagina: TLabel;
-    lstImagens: TImageList;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
     procedure btSalvarClick(Sender: TObject);
@@ -221,6 +220,7 @@ procedure TFormTemplate.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
 begin
   if Key = #$D then
   begin
+    Key := #$0;
     FDAO
       .AddParam('sort', FSort)
       .AddParam('order', FOrder)
@@ -247,10 +247,6 @@ begin
 
   formataLista;
   ApplyStyle;
-end;
-
-procedure TFormTemplate.FormResize(Sender: TObject);
-begin
   GetData;
 end;
 
@@ -299,7 +295,8 @@ begin
   TBind4D
     .New
       .Form(self)
-      .BindFormatListDataSet(FDAO.DataSet, DBGrid1);
+      .BindFormatListDataSet(FDAO.DataSet, DBGrid1)
+      .ResponsiveAdjustment;
 
   lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
 end;
