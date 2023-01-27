@@ -271,7 +271,7 @@ object FormTemplate: TFormTemplate
             OnClick = btFecharClick
             ExplicitLeft = -6
           end
-          object btSalvar: TSpeedButton
+          object btnSalvar: TSpeedButton
             Left = 266
             Top = 0
             Width = 64
@@ -281,7 +281,7 @@ object FormTemplate: TFormTemplate
             ImageIndex = 3
             Flat = True
             Layout = blGlyphTop
-            OnClick = btSalvarClick
+            OnClick = btnSalvarClick
             ExplicitLeft = 71
           end
           object btExcluir: TSpeedButton

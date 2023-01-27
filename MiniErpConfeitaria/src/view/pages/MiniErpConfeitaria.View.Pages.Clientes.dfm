@@ -2,8 +2,6 @@ inherited PageClientes: TPageClientes
   Caption = 'PageClientes'
   ClientHeight = 794
   ClientWidth = 1350
-  ExplicitLeft = -344
-  ExplicitTop = -257
   ExplicitWidth = 1350
   ExplicitHeight = 794
   PixelsPerInch = 115
@@ -23,48 +21,51 @@ inherited PageClientes: TPageClientes
       ExplicitWidth = 1350
       ExplicitHeight = 653
       inherited pnlBodyData: TPanel
-        Left = 793
-        Width = 357
+        Left = 881
+        Width = 319
         Height = 593
-        ExplicitLeft = 793
-        ExplicitWidth = 357
+        ExplicitLeft = 743
+        ExplicitWidth = 457
         ExplicitHeight = 593
         inherited DBGrid1: TDBGrid
           Left = 0
-          Width = 357
+          Width = 319
           Height = 503
           Align = alClient
           BorderStyle = bsNone
           Font.Name = 'Verdana'
         end
         inherited pnlBodyPesquisa: TPanel
-          Width = 357
-          ExplicitWidth = 357
+          Width = 319
+          ExplicitWidth = 457
           inherited pnlPesquisa: TPanel
-            Left = 68
-            ExplicitLeft = 68
+            Left = 30
+            ExplicitLeft = 168
           end
         end
         inherited pnlBotoesPagina: TPanel
           Top = 552
-          Width = 357
+          Width = 319
           ExplicitTop = 552
-          ExplicitWidth = 357
+          ExplicitWidth = 457
           inherited btnVoltarPagina: TSpeedButton
-            Left = 219
+            Left = 181
+            ExplicitLeft = 219
           end
           inherited btnProximaPagina: TSpeedButton
-            Left = 307
+            Left = 269
+            ExplicitLeft = 307
           end
           inherited lblNumeroPagina: TLabel
-            Left = 269
+            Left = 231
+            ExplicitLeft = 269
           end
         end
       end
       inherited pnlCadastro: TPanel
-        Width = 593
+        Width = 731
         Height = 593
-        ExplicitWidth = 593
+        ExplicitWidth = 731
         ExplicitHeight = 593
         object pnlLeftCadastro: TStackPanel [0]
           Left = 249
@@ -99,17 +100,14 @@ inherited PageClientes: TPageClientes
               Control = edtCnpj
             end
             item
-              Control = imgCliente
-              HorizontalPositioning = sphpRight
-              VerticalPositioning = spvpFill
-            end
-            item
               Control = pnlBodyAcoes
               HorizontalPositioning = sphpFill
               VerticalPositioning = spvpBottom
             end>
           Spacing = 6
           TabOrder = 0
+          ExplicitLeft = 241
+          ExplicitTop = -4
           object lblDataNascimento: TLabel
             Left = 0
             Top = 0
@@ -171,16 +169,9 @@ inherited PageClientes: TPageClientes
             Height = 24
             TabOrder = 4
           end
-          object imgCliente: TImage
-            Left = 335
-            Top = 208
-            Width = 105
-            Height = 105
-            Align = alRight
-          end
           object pnlBodyAcoes: TPanel
             Left = 0
-            Top = 319
+            Top = 208
             Width = 440
             Height = 217
             Align = alBottom
@@ -324,22 +315,50 @@ inherited PageClientes: TPageClientes
         end
         inherited pnlAcoes: TPanel
           Top = 528
-          Width = 593
+          Width = 731
           TabOrder = 2
           ExplicitTop = 528
           ExplicitWidth = 593
           inherited btFechar: TSpeedButton
-            Left = 400
+            Left = 602
             ExplicitLeft = 376
             ExplicitTop = 6
           end
-          inherited btSalvar: TSpeedButton
-            Left = 529
-            ExplicitLeft = 529
+          inherited btnSalvar: TSpeedButton
+            Left = 538
           end
           inherited btExcluir: TSpeedButton
-            Left = 465
+            Left = 667
             ExplicitLeft = 465
+          end
+        end
+        object pnlBodyImgCliente: TPanel
+          Left = 528
+          Top = 0
+          Width = 203
+          Height = 528
+          Align = alRight
+          BevelOuter = bvNone
+          TabOrder = 3
+          ExplicitLeft = 384
+          object pnlImgCliente: TPanel
+            Left = 0
+            Top = 0
+            Width = 203
+            Height = 202
+            Align = alTop
+            BevelOuter = bvNone
+            TabOrder = 0
+            object imgCliente: TImage
+              Left = 0
+              Top = 0
+              Width = 203
+              Height = 202
+              Align = alClient
+              ExplicitLeft = -23
+              ExplicitWidth = 105
+              ExplicitHeight = 526
+            end
           end
         end
       end

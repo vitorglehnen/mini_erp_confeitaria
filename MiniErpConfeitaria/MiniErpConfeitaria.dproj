@@ -128,6 +128,59 @@
         </DCCReference>
         <DCCReference Include="src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas"/>
         <DCCReference Include="src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas"/>
+        <DCCReference Include="src\model\Services\MiniErpConfeitaria.Model.Services.Register.pas"/>
+        <RcItem Include="assets\icons\ico_adicionar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_adicionar</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_anterior.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_anterior</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_atualizar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_atualizar</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_cancelar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_cancelar</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_cliente.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_cliente</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_config.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_config</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_excluir.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_excluir</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_page_inicial.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_page_inicial</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_pedidos.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_pedido</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_produto.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_produto</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_proximo.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_proximo</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_relatorio.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_relatorio</ResourceId>
+        </RcItem>
+        <RcItem Include="assets\icons\ico_salvar.png">
+            <ResourceType>RCDATA</ResourceType>
+            <ResourceId>ico_salvar</ResourceId>
+        </RcItem>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -154,9 +207,87 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="assets\icons\ico_anterior.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_excluir.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_relatorio.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_atualizar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_cliente.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_config.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_salvar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\MiniErpConfeitaria.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>MiniErpConfeitaria.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_produto.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_proximo.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_cancelar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_adicionar.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_page_inicial.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="assets\icons\ico_pedidos.png" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

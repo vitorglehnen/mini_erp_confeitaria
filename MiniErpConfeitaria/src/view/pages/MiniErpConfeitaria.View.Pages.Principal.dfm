@@ -28,7 +28,7 @@ object FormPrincipal: TFormPrincipal
       Left = 0
       Top = 0
       Width = 1037
-      Height = 81
+      Height = 113
       Align = alTop
       BevelOuter = bvNone
       Padding.Left = 5
@@ -41,7 +41,7 @@ object FormPrincipal: TFormPrincipal
         Left = 133
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Pedidos'
@@ -57,12 +57,13 @@ object FormPrincipal: TFormPrincipal
         ParentBiDiMode = False
         OnClick = btnPedidosClick
         ExplicitLeft = 5
+        ExplicitHeight = 71
       end
       object btnProdutos: TSpeedButton
         Left = 389
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Produtos'
@@ -78,12 +79,13 @@ object FormPrincipal: TFormPrincipal
         ParentBiDiMode = False
         OnClick = btnProdutosClick
         ExplicitLeft = 177
+        ExplicitHeight = 71
       end
       object btnRelatorios: TSpeedButton
         Left = 517
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Relat'#243'rios'
@@ -98,12 +100,13 @@ object FormPrincipal: TFormPrincipal
         ParentFont = False
         ParentBiDiMode = False
         ExplicitLeft = 273
+        ExplicitHeight = 71
       end
       object btnConfiguracoes: TSpeedButton
         Left = 645
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Configura'#231#245'es'
@@ -118,12 +121,13 @@ object FormPrincipal: TFormPrincipal
         ParentFont = False
         ParentBiDiMode = False
         ExplicitLeft = 377
+        ExplicitHeight = 71
       end
       object btnClientes: TSpeedButton
         Left = 261
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Clientes'
@@ -140,12 +144,13 @@ object FormPrincipal: TFormPrincipal
         OnClick = btnClientesClick
         ExplicitLeft = 127
         ExplicitTop = 4
+        ExplicitHeight = 71
       end
       object btnInicial: TSpeedButton
         Left = 5
         Top = 5
         Width = 128
-        Height = 71
+        Height = 103
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'P'#225'gina inicial'
@@ -162,22 +167,25 @@ object FormPrincipal: TFormPrincipal
         OnClick = btnInicialClick
         ExplicitLeft = -1
         ExplicitTop = 4
+        ExplicitHeight = 71
       end
     end
     object pnlCenter: TPanel
       Left = 0
-      Top = 81
+      Top = 113
       Width = 1037
-      Height = 657
+      Height = 625
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
+      ExplicitTop = 81
+      ExplicitHeight = 657
       object imgLogoTipo: TImage
         Left = 0
         Top = 0
         Width = 1037
-        Height = 657
+        Height = 625
         Align = alClient
         Center = True
         Picture.Data = {

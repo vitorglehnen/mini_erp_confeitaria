@@ -1,5 +1,7 @@
 program MiniErpConfeitaria;
 
+{$R *.dres}
+
 uses
   Vcl.Forms,
   MIniErpConfeitaria.View.Styles.Colors in 'src\view\styles\MIniErpConfeitaria.View.Styles.Colors.pas',
@@ -11,7 +13,8 @@ uses
   MiniErpConfeitaria.View.Pages.Pedidos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Pedidos.pas' {PagePedidos},
   MiniErpConfeitaria.View.Pages.Produtos in 'src\view\pages\MiniErpConfeitaria.View.Pages.Produtos.pas' {PageProdutos},
   MiniErpConfeitaria.Model.DAO.Interfaces in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas',
-  MiniErpConfeitaria.Model.DAO.Rest in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas';
+  MiniErpConfeitaria.Model.DAO.Rest in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas',
+  MiniErpConfeitaria.Model.Services.Register in 'src\model\Services\MiniErpConfeitaria.Model.Services.Register.pas';
 
 {$R *.res}
 

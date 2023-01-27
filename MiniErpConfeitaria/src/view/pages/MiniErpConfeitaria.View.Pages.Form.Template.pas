@@ -68,34 +68,53 @@ type
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlBodyPesquisa: TPanel;
 
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesPagina: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlAcoes: TPanel;
+
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_TITLE, FONT_COLOR)]
     lblNomePagina: TLabel;
 
     lblPesquisa: TLabel;
 
+    lblNumeroPagina: TLabel;
+
+    [ImageAttribute('ico_atualizar')]
     btnAtualizar: TSpeedButton;
+
+    [ImageAttribute('ico_adicionar')]
     btnCadastro: TSpeedButton;
+
+    [ImageAttribute('ico_cancelar')]
+    btFechar: TSpeedButton;
+
+    [ImageAttribute('ico_salvar')]
+    btnSalvar: TSpeedButton;
+
+    [ImageAttribute('ico_excluir')]
+    btExcluir: TSpeedButton;
+
+    [ImageAttribute('ico_anterior')]
+    btnVoltarPagina: TSpeedButton;
+
+    [ImageAttribute('ico_proximo')]
+    btnProximaPagina: TSpeedButton;
 
     [AdjustResponsive]
     DBGrid1: TDBGrid;
+
     DataSource1: TDataSource;
 
     [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
     edtPesquisa: TEdit;
-    pnlAcoes: TPanel;
-    btFechar: TSpeedButton;
-    btSalvar: TSpeedButton;
-    btExcluir: TSpeedButton;
-    pnlBotoesPagina: TPanel;
-    btnVoltarPagina: TSpeedButton;
-    btnProximaPagina: TSpeedButton;
-    lblNumeroPagina: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
-    procedure btSalvarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
     procedure btExcluirClick(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
@@ -184,7 +203,7 @@ begin
   end;
 end;
 
-procedure TFormTemplate.btSalvarClick(Sender: TObject);
+procedure TFormTemplate.btnSalvarClick(Sender: TObject);
 begin
   case FTypeOperation of
     toPost : restOperationPost;
@@ -243,9 +262,9 @@ begin
       .Form(Self)
       .BindFormDefault(FTitle)
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .SetImageComponents
       .SetStyleComponents;
 
-  formataLista;
   ApplyStyle;
   GetData;
 end;

@@ -32,16 +32,31 @@ type
   TFormPrincipal = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND)]
     pnlMain: TPanel;
+
     [ComponentBindStyle(COLOR_TOP)]
     pnlTop: TPanel;
+
     [ComponentBindStyle(COLOR_BACKGROUND)]
     pnlCenter: TPanel;
+
+    [ImageAttribute('ico_pedido')]
     btnPedidos: TSpeedButton;
+
+    [ImageAttribute('ico_produto')]
     btnProdutos: TSpeedButton;
+
+    [ImageAttribute('ico_relatorio')]
     btnRelatorios: TSpeedButton;
+
+    [ImageAttribute('ico_config')]
     btnConfiguracoes: TSpeedButton;
+
+    [ImageAttribute('ico_cliente')]
     btnClientes: TSpeedButton;
+
+    [ImageAttribute('ico_page_inicial')]
     btnInicial: TSpeedButton;
+
     imgLogoTipo: TImage;
 
     procedure btnClientesClick(Sender: TObject);
@@ -92,6 +107,7 @@ begin
   TBind4D
     .New
       .Form(Self)
+      .SetImageComponents
       .SetStyleComponents;
 end;
 
