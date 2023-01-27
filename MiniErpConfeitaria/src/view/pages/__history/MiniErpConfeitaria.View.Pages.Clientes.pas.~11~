@@ -36,76 +36,61 @@ uses
   Bind4D.Attributes,
   Bind4D.Types,
   MIniErpConfeitaria.View.Styles.Colors,
-  MiniErpConfeitaria.View.Pages.Form.Template;
+  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.Mask;
 
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]
   [FormDefault('Clientes')]
 
   TPageClientes = class(TFormTemplate)
-    pnlLeftCadastro: TStackPanel;
-    pnlRightCadastro: TStackPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
 
     [FieldJsonBind('guuid'), FbIgnorePost, FbIgnorePut]
     [FieldDataSetBind('guuid', ftString, False, 0, 'Código')]
-    edtCodigo: TEdit;
 
     [FieldJsonBind('idoccupation')]
     [FieldDataSetBind('idoccupation', ftString, False, 0, 'Código da profissão')]
-    edtCodigoOcupacao: TEdit;
 
     [FieldJsonBind('name')]
-    [FieldDataSetBind('name', ftString, True, 24, 'Nome')]
+    [FieldDataSetBind('name', ftString, True, 20, 'Nome', '', taLeftJustify)]
     [fvNotNull('Campo Nome não pode ser Nulo', COLOR_BACKGROUND)]
-    edtNome: TEdit;
 
     [FieldJsonBind('phone')]
-    [FieldDataSetBind('phone', ftString, True, 14, 'Telefone', '!\(##\) #####-####;0;_')]
+    [FieldDataSetBind('phone', ftString, True, 10, 'Telefone', '!\(##\) #####-####;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCell)]
 
     [FieldJsonBind('balance')]
-    [FieldDataSetBind('balance', ftCurrency, True, 9, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
+    [FieldDataSetBind('balance', ftCurrency, True, 5, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCoin)]
-    edtSaldo: TEdit;
 
     [FieldJsonBind('birthdate')]
-    [FieldDataSetBind('birthdate', ftDate, True, 9, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
-    dateNascimento: TDateTimePicker;
+    [FieldDataSetBind('birthdate', ftDate, True, 10, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
 
     [FieldJsonBind('lasttransaction')]
-    [FieldDataSetBind('lasttransaction', ftTime, True, 9, 'Ult. Trans', '##:##:##;0;_', taLeftJustify)]
-    dateUltimaTransacao: TDateTimePicker;
+    [FieldDataSetBind('lasttransaction', ftTime, False, 7, 'Ult. Trans', '##:##:##;0;_', taLeftJustify)]
 
     [FieldJsonBind('cpf')]
-    [FieldDataSetBind('cpf', ftString, True, 15, 'CPF', '###.###.###-##;0;_', taLeftJustify)]
+    [FieldDataSetBind('cpf', ftString, True, 10, 'CPF', '###.###.###-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCPF)]
-    edtCpf: TEdit;
 
     [FieldJsonBind('cnpj')]
-    [FieldDataSetBind('cnpj', ftString, True, 15, 'CNPJ', '##.###.###/####-##;0;_', taLeftJustify)]
+    [FieldDataSetBind('cnpj', ftString, False, 16, 'CNPJ', '##.###.###/####-##;0;_', taLeftJustify)]
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCNPJ)]
-    edtCnpj: TEdit;
 
     [FieldJsonBind('occupation')]
-    [FieldDataSetBind('occupation', ftString, True, 10, 'Profissão')]
-    edtProfissao: TEdit;
+    [FieldDataSetBind('occupation', ftString, True, 10, 'Profissão', '', taLeftJustify)]
 
     [FieldJsonBind('picture')]
     [FieldDataSetBind('picture', ftBlob, False, 0, 'Foto')]
-    imgCliente: TImage;
-
-    lblCodigo: TLabel;
-    lblNome: TLabel;
-    lblTelefone: TLabel;
-    lblProfissao: TLabel;
-    lblSaldo: TLabel;
-    lblDataNascimento: TLabel;
-    lblUltimaTransacao: TLabel;
-    lblCpf: TLabel;
-    lblCnpj: TLabel;
-    lblCodigoOcupacao: TLabel;
-    edtTelefone: TEdit;
-    pnlBodyAcoes: TPanel;
 
   private
     { Private declarations }
@@ -119,7 +104,5 @@ var
 implementation
 
 {$R *.dfm}
-
-
 
 end.

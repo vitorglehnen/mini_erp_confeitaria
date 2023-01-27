@@ -33,7 +33,7 @@ uses
   Bind4D,
   Bind4D.Attributes,
   Bind4D.Types,
-  MiniErpConfeitaria.View.Pages.Form.Template;
+  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.WinXPanels;
 
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]

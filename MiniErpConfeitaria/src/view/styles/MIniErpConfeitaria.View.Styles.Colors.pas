@@ -13,7 +13,7 @@ const
   FONT_SIZE_EDIT = 8;
   FONT_SIZE_TITLE = 15;
 
-  FONT_NAME = 'Arial';
+  FONT_NAME = 'SEGOE UI';
 
 implementation
 

@@ -1,0 +1,101 @@
+inherited PageClientes: TPageClientes
+  Caption = 'PageClientes'
+  ClientHeight = 794
+  ClientWidth = 1350
+  ExplicitLeft = 2
+  ExplicitWidth = 1350
+  ExplicitHeight = 794
+  PixelsPerInch = 115
+  TextHeight = 16
+  inherited pnlMain: TPanel
+    Width = 1350
+    Height = 794
+    ExplicitLeft = 0
+    ExplicitTop = 0
+    ExplicitWidth = 1350
+    ExplicitHeight = 794
+    inherited CardPanel1: TCardPanel
+      Width = 1348
+      Height = 792
+      ExplicitLeft = 1
+      ExplicitTop = 1
+      ExplicitWidth = 1348
+      ExplicitHeight = 792
+      inherited cardGrid: TCard
+        Width = 1348
+        Height = 792
+        ExplicitWidth = 1348
+        ExplicitHeight = 792
+        inherited pnlTop: TPanel
+          Width = 1348
+          ExplicitWidth = 1348
+          inherited pnlPesquisa: TPanel
+            Left = 960
+            ExplicitLeft = 960
+            ExplicitTop = 20
+            ExplicitHeight = 141
+            inherited lblPesquisa: TLabel
+              Top = 114
+              Height = 20
+              ExplicitTop = 109
+              ExplicitWidth = 61
+              ExplicitHeight = 20
+            end
+            inherited edtPesquisa: TEdit
+              ExplicitTop = 114
+            end
+            inherited pnlLinhaPesquisa: TPanel
+              ExplicitTop = 139
+              ExplicitWidth = 288
+            end
+          end
+          inherited pnlBodyCabecalho: TPanel
+            ExplicitTop = 20
+            ExplicitHeight = 141
+            inherited pnlTitulo: TPanel
+              ExplicitWidth = 229
+            end
+            inherited pnlBotoes: TPanel
+              ExplicitTop = 50
+              inherited btnAdicionar: TSpeedButton
+                OnClick = btnAdicionarClick
+              end
+            end
+          end
+        end
+        inherited pnlBodyGrid: TPanel
+          Width = 1348
+          Height = 631
+          ExplicitLeft = 0
+          ExplicitTop = 161
+          ExplicitWidth = 1348
+          ExplicitHeight = 631
+          inherited pnlGrid: TPanel
+            Width = 1348
+            Height = 611
+            ExplicitLeft = 0
+            ExplicitTop = 20
+            ExplicitWidth = 1348
+            ExplicitHeight = 611
+            inherited DBGrid1: TDBGrid
+              Width = 1148
+              Height = 511
+            end
+          end
+        end
+      end
+      inherited cardCadastro: TCard
+        Width = 1348
+        Height = 792
+        ExplicitWidth = 1348
+        ExplicitHeight = 792
+        inherited pnlCadastro: TPanel
+          Height = 792
+          inherited pnlAcoes: TPanel
+            Top = 727
+          end
+        end
+      end
+    end
+  end
+end

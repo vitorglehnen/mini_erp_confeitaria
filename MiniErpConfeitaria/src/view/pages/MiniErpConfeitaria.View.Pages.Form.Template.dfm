@@ -22,287 +22,325 @@ object FormTemplate: TFormTemplate
     Width = 1106
     Height = 623
     Align = alClient
-    BevelOuter = bvNone
     TabOrder = 0
-    object pnlTop: TPanel
-      Left = 0
-      Top = 0
-      Width = 1106
-      Height = 141
-      Align = alTop
-      BevelOuter = bvNone
-      Padding.Left = 200
-      Padding.Top = 30
-      Padding.Right = 200
-      ParentBackground = False
-      TabOrder = 0
-      object pnlCabecalho: TPanel
-        Left = 200
-        Top = 30
-        Width = 193
-        Height = 111
-        Align = alLeft
-        BevelOuter = bvNone
-        TabOrder = 0
-        object lblNomePagina: TLabel
-          Left = 0
-          Top = 0
-          Width = 193
-          Height = 16
-          Align = alTop
-          Caption = 'Nome da p'#225'gina'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -13
-          Font.Name = 'Tahoma'
-          Font.Style = []
-          ParentFont = False
-          ExplicitWidth = 93
-        end
-        object pnlLinhaNomePagina: TPanel
-          Left = 0
-          Top = 16
-          Width = 193
-          Height = 2
-          Align = alTop
-          TabOrder = 0
-        end
-        object pnlBodyBotao: TPanel
-          Left = 0
-          Top = 18
-          Width = 193
-          Height = 93
-          Align = alClient
-          BevelOuter = bvNone
-          ParentBackground = False
-          TabOrder = 1
-          object btnAtualizar: TSpeedButton
-            Left = 94
-            Top = 0
-            Width = 94
-            Height = 93
-            Align = alLeft
-            Caption = 'Atualizar'
-            ImageIndex = 1
-            Flat = True
-            Layout = blGlyphTop
-            ExplicitLeft = 0
-            ExplicitHeight = 94
-          end
-          object btnCadastro: TSpeedButton
-            Left = 0
-            Top = 0
-            Width = 94
-            Height = 93
-            Align = alLeft
-            Caption = 'Novo'
-            ImageIndex = 0
-            Flat = True
-            Layout = blGlyphTop
-            OnClick = btnCadastroClick
-            ExplicitTop = 4
-          end
-        end
-      end
-    end
-    object pnlCenter: TPanel
-      Left = 0
-      Top = 141
-      Width = 1106
-      Height = 482
+    object CardPanel1: TCardPanel
+      Left = 1
+      Top = 1
+      Width = 1104
+      Height = 621
       Align = alClient
+      ActiveCard = cardGrid
       BevelOuter = bvNone
-      Padding.Left = 150
-      Padding.Top = 10
-      Padding.Right = 150
-      Padding.Bottom = 50
-      ParentBackground = False
-      TabOrder = 1
-      object pnlBodyData: TPanel
-        Left = 480
-        Top = 10
-        Width = 476
-        Height = 422
-        Align = alClient
-        BevelOuter = bvNone
-        ParentBackground = False
+      Caption = 'CardPanel1'
+      TabOrder = 0
+      object cardGrid: TCard
+        Left = 0
+        Top = 0
+        Width = 1104
+        Height = 621
+        Caption = 'cardGrid'
+        CardIndex = 0
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
         TabOrder = 0
-        object DBGrid1: TDBGrid
-          Left = 332
-          Top = 49
-          Width = 144
-          Height = 332
-          Align = alRight
-          DataSource = DataSource1
+        object pnlTop: TPanel
+          Left = 0
+          Top = 0
+          Width = 1104
+          Height = 161
+          Align = alTop
+          Anchors = [akTop, akRight]
+          BevelOuter = bvNone
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clWindowText
           Font.Height = -13
-          Font.Name = 'Tahoma'
-          Font.Style = [fsBold]
-          Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Padding.Left = 100
+          Padding.Right = 100
           ParentFont = False
           TabOrder = 0
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -13
-          TitleFont.Name = 'Tahoma'
-          TitleFont.Style = []
-          OnDblClick = DBGrid1DblClick
-          OnTitleClick = DBGrid1TitleClick
-        end
-        object pnlBodyPesquisa: TPanel
-          Left = 0
-          Top = 0
-          Width = 476
-          Height = 49
-          Align = alTop
-          BevelOuter = bvNone
-          Padding.Right = 15
-          Padding.Bottom = 5
-          TabOrder = 1
           object pnlPesquisa: TPanel
-            Left = 187
+            Left = 716
             Top = 0
-            Width = 274
-            Height = 44
+            Width = 288
+            Height = 161
             Align = alRight
             BevelOuter = bvNone
             TabOrder = 0
             object lblPesquisa: TLabel
               Left = 0
-              Top = 0
-              Width = 274
-              Height = 16
-              Align = alTop
-              Caption = 'Pesquisa'
-              ExplicitWidth = 50
+              Top = 114
+              Width = 288
+              Height = 20
+              Align = alBottom
+              Caption = 'Pesquisar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              ExplicitTop = 109
+              ExplicitWidth = 61
             end
             object edtPesquisa: TEdit
               Left = 0
-              Top = 16
-              Width = 274
-              Height = 22
-              Align = alTop
+              Top = 134
+              Width = 288
+              Height = 25
+              Align = alBottom
+              BevelOuter = bvNone
               BorderStyle = bsNone
-              CharCase = ecUpperCase
-              Color = clBtnFace
               TabOrder = 0
-              OnKeyPress = edtPesquisaKeyPress
             end
             object pnlLinhaPesquisa: TPanel
               Left = 0
-              Top = 38
-              Width = 274
+              Top = 159
+              Width = 288
               Height = 2
-              Align = alTop
+              Align = alBottom
               TabOrder = 1
             end
           end
+          object pnlBodyCabecalho: TPanel
+            Left = 100
+            Top = 0
+            Width = 229
+            Height = 161
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 1
+            object pnlTitulo: TPanel
+              Left = 0
+              Top = 0
+              Width = 229
+              Height = 50
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 0
+              object lblNomePagina: TLabel
+                Left = 0
+                Top = 0
+                Width = 229
+                Height = 50
+                Align = alClient
+                Caption = 'T'#237'tulo'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -20
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                ParentFont = False
+                Layout = tlCenter
+                ExplicitWidth = 50
+                ExplicitHeight = 28
+              end
+            end
+            object pnlBotoes: TPanel
+              Left = 0
+              Top = 50
+              Width = 229
+              Height = 85
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 1
+              object btnAtualizar: TSpeedButton
+                Left = 73
+                Top = 0
+                Width = 73
+                Height = 85
+                Align = alLeft
+                Caption = 'Atualizar'
+                Flat = True
+                Layout = blGlyphTop
+                ExplicitHeight = 45
+              end
+              object btnAdicionar: TSpeedButton
+                Left = 0
+                Top = 0
+                Width = 73
+                Height = 85
+                Align = alLeft
+                Caption = 'Adicionar'
+                Flat = True
+                Layout = blGlyphTop
+                OnClick = btnAdicionarClick
+                ExplicitLeft = -6
+                ExplicitTop = 6
+              end
+            end
+          end
         end
-        object pnlBotoesPagina: TPanel
+        object pnlBodyGrid: TPanel
           Left = 0
-          Top = 381
-          Width = 476
-          Height = 41
-          Align = alBottom
+          Top = 161
+          Width = 1104
+          Height = 460
+          Align = alClient
           BevelOuter = bvNone
-          TabOrder = 2
-          object btnVoltarPagina: TSpeedButton
-            Left = 338
+          TabOrder = 1
+          object pnlGrid: TPanel
+            Left = 0
             Top = 0
-            Width = 50
-            Height = 41
-            Align = alRight
-            ImageIndex = 7
-            Flat = True
-            OnClick = btnVoltarPaginaClick
-            ExplicitLeft = 260
-            ExplicitTop = 6
-          end
-          object btnProximaPagina: TSpeedButton
-            Left = 426
-            Top = 0
-            Width = 50
-            Height = 41
-            Align = alRight
-            ImageIndex = 6
-            Flat = True
-            OnClick = btnProximaPaginaClick
-            ExplicitLeft = 353
-          end
-          object lblNumeroPagina: TLabel
-            Left = 388
-            Top = 0
-            Width = 38
-            Height = 41
-            Align = alRight
-            Caption = 'P'#225'gina'
-            Layout = tlCenter
-            ExplicitHeight = 16
+            Width = 1104
+            Height = 460
+            Align = alClient
+            BevelOuter = bvNone
+            Padding.Left = 100
+            Padding.Top = 20
+            Padding.Right = 100
+            Padding.Bottom = 20
+            TabOrder = 0
+            ExplicitTop = 4
+            object DBGrid1: TDBGrid
+              Left = 100
+              Top = 20
+              Width = 904
+              Height = 379
+              Align = alClient
+              BorderStyle = bsNone
+              DataSource = DataSource1
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -13
+              Font.Name = 'Segoe UI'
+              Font.Style = [fsBold]
+              Options = [dgTitles, dgIndicator, dgColumnResize, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+              ParentFont = False
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -13
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = []
+            end
+            object Panel1: TPanel
+              Left = 100
+              Top = 399
+              Width = 904
+              Height = 41
+              Align = alBottom
+              BevelOuter = bvNone
+              TabOrder = 1
+              ExplicitLeft = 592
+              ExplicitTop = 272
+              ExplicitWidth = 185
+              object btnProximaPagina: TSpeedButton
+                Left = 864
+                Top = 0
+                Width = 40
+                Height = 41
+                Align = alRight
+                Flat = True
+              end
+              object Label1: TLabel
+                Left = 792
+                Top = 0
+                Width = 72
+                Height = 41
+                Align = alRight
+                Alignment = taCenter
+                Caption = 'P'#225'gina'
+                Layout = tlCenter
+              end
+              object btnVoltarPagina: TSpeedButton
+                Left = 752
+                Top = 0
+                Width = 40
+                Height = 41
+                Align = alRight
+                Flat = True
+                ExplicitLeft = 740
+                ExplicitTop = 6
+              end
+            end
           end
         end
       end
-      object pnlCadastro: TPanel
-        Left = 150
-        Top = 10
-        Width = 330
-        Height = 422
-        Align = alLeft
-        BevelOuter = bvNone
+      object cardCadastro: TCard
+        Left = 0
+        Top = 0
+        Width = 1104
+        Height = 621
+        Caption = 'cardCadastro'
+        CardIndex = 1
         TabOrder = 1
-        object pnlAcoes: TPanel
+        object pnlBodyCadastro: TPanel
           Left = 0
-          Top = 357
-          Width = 330
-          Height = 65
-          Align = alBottom
+          Top = 0
+          Width = 345
+          Height = 560
+          Align = alLeft
           BevelOuter = bvNone
           TabOrder = 0
-          object btFechar: TSpeedButton
-            Left = 137
+          ExplicitHeight = 621
+        end
+        object pnlBodyBotoes: TPanel
+          Left = 0
+          Top = 560
+          Width = 1104
+          Height = 61
+          Align = alBottom
+          BevelOuter = bvNone
+          Padding.Left = 100
+          TabOrder = 1
+          object pnlBotoesCrud: TPanel
+            Left = 100
             Top = 0
-            Width = 65
-            Height = 65
-            Align = alRight
-            Caption = 'Fechar'
-            ImageIndex = 5
-            Flat = True
-            Layout = blGlyphTop
-            OnClick = btFecharClick
-            ExplicitLeft = -6
-          end
-          object btnSalvar: TSpeedButton
-            Left = 266
-            Top = 0
-            Width = 64
-            Height = 65
-            Align = alRight
-            Caption = 'Salvar'
-            ImageIndex = 3
-            Flat = True
-            Layout = blGlyphTop
-            OnClick = btnSalvarClick
-            ExplicitLeft = 71
-          end
-          object btExcluir: TSpeedButton
-            Left = 202
-            Top = 0
-            Width = 64
-            Height = 65
-            Align = alRight
-            Caption = 'Excluir'
-            ImageIndex = 4
-            Flat = True
-            Layout = blGlyphTop
-            OnClick = btExcluirClick
-            ExplicitLeft = 71
+            Width = 297
+            Height = 61
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 0
+            ExplicitTop = 6
+            object btnExcluir: TSpeedButton
+              Left = 130
+              Top = 0
+              Width = 65
+              Height = 61
+              Align = alLeft
+              Caption = 'Excluir'
+              Flat = True
+              Layout = blGlyphTop
+              ExplicitLeft = 136
+              ExplicitTop = 6
+            end
+            object btnFechar: TSpeedButton
+              Left = 65
+              Top = 0
+              Width = 65
+              Height = 61
+              Align = alLeft
+              Caption = 'Fechar'
+              Flat = True
+              Layout = blGlyphTop
+              OnClick = btnFecharClick
+              ExplicitLeft = 59
+              ExplicitTop = 6
+            end
+            object btnSalvar: TSpeedButton
+              Left = 0
+              Top = 0
+              Width = 65
+              Height = 61
+              Align = alLeft
+              Caption = 'Salvar'
+              Flat = True
+              Layout = blGlyphTop
+              ExplicitTop = 6
+            end
           end
         end
       end
     end
   end
   object DataSource1: TDataSource
-    Left = 1016
-    Top = 157
+    Left = 960
+    Top = 469
   end
 end

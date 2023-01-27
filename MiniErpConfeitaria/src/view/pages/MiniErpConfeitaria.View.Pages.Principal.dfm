@@ -28,7 +28,7 @@ object FormPrincipal: TFormPrincipal
       Left = 0
       Top = 0
       Width = 1037
-      Height = 113
+      Height = 89
       Align = alTop
       BevelOuter = bvNone
       Padding.Left = 5
@@ -41,7 +41,7 @@ object FormPrincipal: TFormPrincipal
         Left = 133
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Pedidos'
@@ -63,7 +63,7 @@ object FormPrincipal: TFormPrincipal
         Left = 389
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Produtos'
@@ -85,7 +85,7 @@ object FormPrincipal: TFormPrincipal
         Left = 517
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Relat'#243'rios'
@@ -106,7 +106,7 @@ object FormPrincipal: TFormPrincipal
         Left = 645
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Configura'#231#245'es'
@@ -127,7 +127,7 @@ object FormPrincipal: TFormPrincipal
         Left = 261
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'Clientes'
@@ -150,7 +150,7 @@ object FormPrincipal: TFormPrincipal
         Left = 5
         Top = 5
         Width = 128
-        Height = 103
+        Height = 79
         Align = alLeft
         BiDiMode = bdLeftToRight
         Caption = 'P'#225'gina inicial'
@@ -172,20 +172,20 @@ object FormPrincipal: TFormPrincipal
     end
     object pnlCenter: TPanel
       Left = 0
-      Top = 113
+      Top = 89
       Width = 1037
-      Height = 625
+      Height = 649
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 81
-      ExplicitHeight = 657
+      ExplicitTop = 113
+      ExplicitHeight = 625
       object imgLogoTipo: TImage
         Left = 0
         Top = 0
         Width = 1037
-        Height = 625
+        Height = 649
         Align = alClient
         Center = True
         Picture.Data = {

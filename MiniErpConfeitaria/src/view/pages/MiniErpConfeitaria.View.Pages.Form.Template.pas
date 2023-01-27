@@ -29,12 +29,27 @@ uses
   MiniErpConfeitaria.Model.DAO.Rest,
   MIniErpConfeitaria.View.Styles.Colors,
   RESTRequest4D,
-  MiniErpConfeitaria.Model.DAO.Interfaces;
+  MiniErpConfeitaria.Model.DAO.Interfaces, Vcl.WinXPanels;
 
 type
   TTypeOperation = (toNull, toPost, toPut);
 
   TFormTemplate = class(TForm, iRouter4DComponent)
+
+    [AdjustResponsive]
+    DBGrid1: TDBGrid;
+
+    DataSource1: TDataSource;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    CardPanel1: TCardPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    cardGrid: TCard;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    cardCadastro: TCard;
+
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlMain: TPanel;
 
@@ -42,73 +57,62 @@ type
     pnlTop: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlCenter: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlCabecalho: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBodyData: TPanel;
+    pnlPesquisa: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlLinhaPesquisa: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlPesquisa: TPanel;
+    pnlBodyGrid: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlLinhaNomePagina: TPanel;
+    pnlGrid: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlCadastro: TPanel;
+    pnlBodyCabecalho: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBodyBotao: TPanel;
+    pnlTitulo: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBodyPesquisa: TPanel;
+    pnlBotoes: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBotoesPagina: TPanel;
+    pnlBodyCadastro: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlAcoes: TPanel;
+    pnlBodyBotoes: TPanel;
 
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_TITLE, FONT_COLOR)]
-    lblNomePagina: TLabel;
-
-    lblPesquisa: TLabel;
-
-    lblNumeroPagina: TLabel;
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesCrud: TPanel;
 
     [ImageAttribute('ico_atualizar')]
     btnAtualizar: TSpeedButton;
 
     [ImageAttribute('ico_adicionar')]
-    btnCadastro: TSpeedButton;
+    btnAdicionar: TSpeedButton;
+
+    [ImageAttribute('ico_excluir')]
+    btnExcluir: TSpeedButton;
 
     [ImageAttribute('ico_cancelar')]
-    btFechar: TSpeedButton;
+    btnFechar: TSpeedButton;
 
     [ImageAttribute('ico_salvar')]
     btnSalvar: TSpeedButton;
 
-    [ImageAttribute('ico_excluir')]
-    btExcluir: TSpeedButton;
-
-    [ImageAttribute('ico_anterior')]
-    btnVoltarPagina: TSpeedButton;
+    lblNomePagina: TLabel;
+    lblPesquisa: TLabel;
+    edtPesquisa: TEdit;
+    Panel1: TPanel;
 
     [ImageAttribute('ico_proximo')]
     btnProximaPagina: TSpeedButton;
 
-    [AdjustResponsive]
-    DBGrid1: TDBGrid;
+    Label1: TLabel;
 
-    DataSource1: TDataSource;
-
-    [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
-    edtPesquisa: TEdit;
+    [ImageAttribute('ico_anterior')]
+    btnVoltarPagina: TSpeedButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
@@ -120,6 +124,8 @@ type
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure btnProximaPaginaClick(Sender: TObject);
     procedure btnVoltarPaginaClick(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -129,7 +135,6 @@ type
     procedure ApplyStyle;
     procedure GetData;
     procedure formataLista;
-    procedure AlteraForm;
     procedure restOperationPost;
     procedure restOperationPut;
   public
@@ -149,22 +154,18 @@ implementation
 procedure TFormTemplate.ApplyStyle;
 begin
   lblNomePagina.Caption := FTitle;
-  DBGrid1.Align := AlClient;
-  pnlCadastro.Visible := False;
-  pnlCadastro.Align := AlClient;
+  CardPanel1.ActiveCard := cardGrid;
 end;
 
 procedure TFormTemplate.btExcluirClick(Sender: TObject);
 begin
   FDAO.Delete;
   GetData;
-  AlteraForm;
   FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.btFecharClick(Sender: TObject);
 begin
-  AlteraForm;
   TBind4D
     .New
       .Form(self)
@@ -173,16 +174,25 @@ begin
   FTypeOperation := toNull;
 end;
 
+procedure TFormTemplate.btnAdicionarClick(Sender: TObject);
+begin
+  CardPanel1.ActiveCard := cardCadastro;
+end;
+
 procedure TFormTemplate.btnCadastroClick(Sender: TObject);
 begin
   FTypeOperation := toPost;
-  AlteraForm;
   formataLista;
 
   TBind4D
     .New
       .Form(Self)
       .ClearFieldForm;
+end;
+
+procedure TFormTemplate.btnFecharClick(Sender: TObject);
+begin
+  CardPanel1.ActiveCard := cardGrid;
 end;
 
 procedure TFormTemplate.btnProximaPaginaClick(Sender: TObject);
@@ -209,8 +219,6 @@ begin
     toPost : restOperationPost;
     toPut: restOperationPut;
   end;
-
-  AlteraForm;
 end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
@@ -220,8 +228,6 @@ begin
     .New
       .Form(self)
       .BindDataSetToForm(FDAO.DataSet);
-
-  AlteraForm;
 end;
 
 procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
@@ -304,11 +310,6 @@ begin
 
 end;
 
-procedure TFormTemplate.AlteraForm;
-begin
-  pnlCadastro.Visible := not pnlCadastro.Visible;
-end;
-
 procedure TFormTemplate.formataLista;
 begin
   TBind4D
@@ -317,7 +318,7 @@ begin
       .BindFormatListDataSet(FDAO.DataSet, DBGrid1)
       .ResponsiveAdjustment;
 
-  lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
+  //lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
 end;
 
 end.

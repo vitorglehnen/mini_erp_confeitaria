@@ -1,0 +1,85 @@
+unit MiniErpConfeitaria.View.Pages.Clientes;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+  Vcl.ComCtrls,
+  Vcl.ImgList,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  Data.DB,
+  System.ImageList,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.View.Styles.Colors,
+  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.Mask;
+
+type
+  [FormRest('/users', 'guuid', 'name', 'asc')]
+  [FormDefault('Clientes')]
+  TPageClientes = class(TFormTemplate)
+    Panel1: TPanel;
+    pnlLeftCadastro: TStackPanel;
+    lblDataNascimento: TLabel;
+    dateNascimento: TDateTimePicker;
+    lblUltimaTransacao: TLabel;
+    dateUltimaTransacao: TDateTimePicker;
+    lblCpf: TLabel;
+    edtCpf: TEdit;
+    lblCnpj: TLabel;
+    edtCnpj: TEdit;
+    pnlRightCadastro: TStackPanel;
+    lblCodigo: TLabel;
+    edtCodigo: TEdit;
+    lblCodigoOcupacao: TLabel;
+    edtCodigoOcupacao: TEdit;
+    lblNome: TLabel;
+    edtNome: TEdit;
+    lblTelefone: TLabel;
+    edtTelefone: TEdit;
+    lblProfissao: TLabel;
+    edtProfissao: TEdit;
+    lblSaldo: TLabel;
+    edtSaldo: TEdit;
+    pnlBodyImgCliente: TPanel;
+    pnlImgCliente: TPanel;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  PageClientes: TPageClientes;
+
+implementation
+
+{$R *.dfm}
+
+
+end.

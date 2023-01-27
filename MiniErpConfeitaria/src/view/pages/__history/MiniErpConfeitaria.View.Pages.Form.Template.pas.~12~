@@ -20,24 +20,20 @@ uses
   Vcl.DBGrids,
   Vcl.Buttons,
   Vcl.ImgList,
-  FireDAC.Stan.Intf,
-  FireDAC.Stan.Option,
-  FireDAC.Stan.Param,
-  FireDAC.Stan.Error,
-  FireDAC.DatS,
-  FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf,
-  FireDAC.Comp.DataSet,
-  FireDAC.Comp.Client,
+  System.JSON,
 
   Bind4D,
   Bind4D.Attributes,
   Bind4D.Types,
   Router4D.Interfaces,
+  MiniErpConfeitaria.Model.DAO.Rest,
   MIniErpConfeitaria.View.Styles.Colors,
-  RESTRequest4D;
+  RESTRequest4D,
+  MiniErpConfeitaria.Model.DAO.Interfaces;
 
 type
+  TTypeOperation = (toNull, toPost, toPut);
+
   TFormTemplate = class(TForm, iRouter4DComponent)
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlMain: TPanel;
@@ -72,51 +68,78 @@ type
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlBodyPesquisa: TPanel;
 
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesPagina: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlAcoes: TPanel;
+
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_TITLE, FONT_COLOR)]
     lblNomePagina: TLabel;
 
     lblPesquisa: TLabel;
 
+    lblNumeroPagina: TLabel;
+
+    [ImageAttribute('ico_atualizar')]
     btnAtualizar: TSpeedButton;
+
+    [ImageAttribute('ico_adicionar')]
     btnCadastro: TSpeedButton;
 
+    [ImageAttribute('ico_cancelar')]
+    btFechar: TSpeedButton;
+
+    [ImageAttribute('ico_salvar')]
+    btnSalvar: TSpeedButton;
+
+    [ImageAttribute('ico_excluir')]
+    btExcluir: TSpeedButton;
+
+    [ImageAttribute('ico_anterior')]
+    btnVoltarPagina: TSpeedButton;
+
+    [ImageAttribute('ico_proximo')]
+    btnProximaPagina: TSpeedButton;
+
+    [AdjustResponsive]
     DBGrid1: TDBGrid;
-    lstImagens: TImageList;
-    FDMemTable1: TFDMemTable;
+
     DataSource1: TDataSource;
 
     [ComponentBindStyle(COLOR_EDIT, FONT_SIZE_EDIT, FONT_COLOR)]
     edtPesquisa: TEdit;
-    pnlAcoes: TPanel;
-    btFechar: TSpeedButton;
-    btSalvar: TSpeedButton;
 
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
-    procedure FormResize(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
     procedure btFecharClick(Sender: TObject);
-    procedure btSalvarClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btExcluirClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnProximaPaginaClick(Sender: TObject);
+    procedure btnVoltarPaginaClick(Sender: TObject);
+
   private
     { Private declarations }
+    FTypeOperation : TTypeOperation;
     FEndPoint, FPK, FSort, FOrder, FTitle : String;
+    FDAO : IDAOInterface;
     procedure ApplyStyle;
-    procedure GetEndPoint;
+    procedure GetData;
     procedure formataLista;
     procedure AlteraForm;
+    procedure restOperationPost;
+    procedure restOperationPut;
   public
     { Public declarations }
     function Render : TForm;
     procedure UnRender;
   end;
 
-var
-  FormTemplate : TFormTemplate;
 
 implementation
-
-uses
-  System.JSON;
 
 
 {$R *.dfm}
@@ -131,13 +154,28 @@ begin
   pnlCadastro.Align := AlClient;
 end;
 
+procedure TFormTemplate.btExcluirClick(Sender: TObject);
+begin
+  FDAO.Delete;
+  GetData;
+  AlteraForm;
+  FTypeOperation := toNull;
+end;
+
 procedure TFormTemplate.btFecharClick(Sender: TObject);
 begin
   AlteraForm;
+  TBind4D
+    .New
+      .Form(self)
+      .ClearFieldForm;
+
+  FTypeOperation := toNull;
 end;
 
 procedure TFormTemplate.btnCadastroClick(Sender: TObject);
 begin
+  FTypeOperation := toPost;
   AlteraForm;
   formataLista;
 
@@ -147,22 +185,29 @@ begin
       .ClearFieldForm;
 end;
 
-procedure TFormTemplate.btSalvarClick(Sender: TObject);
-var
-  aJson : TJsonObject;
-  aTeste : String;
+procedure TFormTemplate.btnProximaPaginaClick(Sender: TObject);
 begin
-  aJson := TBind4D.New.Form(self).FormToJson(fbPost);
-  aTeste := aJson.ToString;
-  try
-    TRequest
-      .New
-        .BaseURL('http://localhost:9000' + FEndPoint)
-        .Accept('application/json')
-        .AddBody(aJson.ToString)
-    .Post;
-  finally
-    aJson.Free;
+  if FDAO.Page < FDAO.Pages then
+  begin
+    FDAO.Page(FDAO.Page + 1);
+    GetData;
+  end;
+end;
+
+procedure TFormTemplate.btnVoltarPaginaClick(Sender: TObject);
+begin
+  if FDAO.Page > 1 then
+  begin
+    FDAO.Page(FDAO.Page - 1);
+    GetData;
+  end;
+end;
+
+procedure TFormTemplate.btnSalvarClick(Sender: TObject);
+begin
+  case FTypeOperation of
+    toPost : restOperationPost;
+    toPut: restOperationPut;
   end;
 
   AlteraForm;
@@ -170,38 +215,67 @@ end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
 begin
+  FTypeOperation := toPut;
   TBind4D
     .New
       .Form(self)
-      .BindDataSetToForm(FDMemTable1);
+      .BindDataSetToForm(FDAO.DataSet);
 
   AlteraForm;
 end;
 
+procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
+begin
+  FDAO
+    .AddParam('sort', Column.Field.FullName)
+    .AddParam('order', FOrder)
+  .Get;
+
+  if FOrder = 'asc' then FOrder := 'desc' else FOrder := 'asc';
+  formataLista;
+end;
+
+procedure TFormTemplate.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #$D then
+  begin
+    Key := #$0;
+    FDAO
+      .AddParam('sort', FSort)
+      .AddParam('order', FOrder)
+      .AddParam('searchfields', 'name')
+      .AddParam('searchvalue', edtPesquisa.Text)
+    .Get;
+
+    FormataLista;
+  end;
+
+end;
+
 procedure TFormTemplate.FormCreate(Sender: TObject);
 begin
+  FTypeOperation := toNull;
+  FDAO := TDAOREST.New(Self).DataSource(DataSource1);
+
   TBind4D
     .New
       .Form(Self)
       .BindFormDefault(FTitle)
       .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .SetImageComponents
       .SetStyleComponents;
+
   ApplyStyle;
+  GetData;
 end;
 
-procedure TFormTemplate.FormResize(Sender: TObject);
+procedure TFormTemplate.GetData;
 begin
-  GetEndPoint;
-end;
-
-procedure TFormTemplate.GetEndPoint;
-begin
-  TRequest
-    .New
-      .BaseURL('http://localhost:9000' + FEndPoint)
-      .Accept('application/json')
-      .DataSetAdapter(FDMemTable1)
-    .Get;
+  FDAO
+    .AddParam('sort', FSort)
+    .AddParam('order', FOrder)
+    .Page(FDAO.Page)
+  .Get;
 
   formataLista;
 end;
@@ -211,14 +285,28 @@ begin
   Result := Self;
 end;
 
+procedure TFormTemplate.restOperationPost;
+begin
+  FDAO.Post;
+  GetData;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.restOperationPut;
+begin
+  FDAO.Put;
+  GetData;
+  FTypeOperation := toNull;
+end;
+
 procedure TFormTemplate.UnRender;
 begin
-  //
+
 end;
 
 procedure TFormTemplate.AlteraForm;
 begin
-  pnlCadastro.Visible := True;
+  pnlCadastro.Visible := not pnlCadastro.Visible;
 end;
 
 procedure TFormTemplate.formataLista;
@@ -226,7 +314,10 @@ begin
   TBind4D
     .New
       .Form(self)
-      .BindFormatListDataSet(FDMemTable1, DBGrid1);
+      .BindFormatListDataSet(FDAO.DataSet, DBGrid1)
+      .ResponsiveAdjustment;
+
+  lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
 end;
 
 end.

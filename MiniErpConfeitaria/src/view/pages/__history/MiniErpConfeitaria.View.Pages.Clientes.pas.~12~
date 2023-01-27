@@ -1,0 +1,59 @@
+unit MiniErpConfeitaria.View.Pages.Clientes;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+  Vcl.ComCtrls,
+  Vcl.ImgList,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  Data.DB,
+  System.ImageList,
+  FireDAC.Stan.Intf,
+  FireDAC.Stan.Option,
+  FireDAC.Stan.Param,
+  FireDAC.Stan.Error,
+  FireDAC.DatS,
+  FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf,
+  FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client,
+
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  MIniErpConfeitaria.View.Styles.Colors,
+  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.Mask;
+
+type
+  [FormRest('/users', 'guuid', 'name', 'asc')]
+  [FormDefault('Clientes')]
+  TPageClientes = class(TFormTemplate)
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  PageClientes: TPageClientes;
+
+implementation
+
+{$R *.dfm}
+
+end.

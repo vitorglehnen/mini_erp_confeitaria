@@ -1,0 +1,25 @@
+inherited PagePedidos: TPagePedidos
+  Caption = 'PagePedidos'
+  ExplicitLeft = 2
+  PixelsPerInch = 115
+  TextHeight = 16
+  inherited pnlMain: TPanel
+    inherited CardPanel1: TCardPanel
+      inherited Card1: TCard
+        inherited pnlBodyPesquisa: TPanel
+          inherited pnlPesquisa: TPanel
+            inherited lblPesquisa: TLabel
+              Width = 50
+            end
+          end
+        end
+        inherited pnlBotoesPagina: TPanel
+          inherited lblNumeroPagina: TLabel
+            Height = 16
+            ExplicitLeft = 1018
+          end
+        end
+      end
+    end
+  end
+end

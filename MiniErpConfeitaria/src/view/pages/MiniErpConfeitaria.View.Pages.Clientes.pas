@@ -41,46 +41,16 @@ uses
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]
   [FormDefault('Clientes')]
-
   TPageClientes = class(TFormTemplate)
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlCadastro: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlLeftCadastro: TStackPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlRightCadastro: TStackPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBodyAcoes: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlBodyImgCliente: TPanel;
-
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
-    pnlImgCliente: TPanel;
-
-    [FieldJsonBind('guuid'), FbIgnorePost, FbIgnorePut]
-    [FieldDataSetBind('guuid', ftString, False, 0, 'Código')]
-    edtCodigo: TEdit;
-
-    [FieldJsonBind('idoccupation')]
-    [FieldDataSetBind('idoccupation', ftString, False, 0, 'Código da profissão')]
-    edtCodigoOcupacao: TEdit;
-
-    [FieldJsonBind('name')]
-    [FieldDataSetBind('name', ftString, True, 20, 'Nome', '', taLeftJustify)]
-    [fvNotNull('Campo Nome não pode ser Nulo', COLOR_BACKGROUND)]
-    edtNome: TEdit;
-
-    [FieldJsonBind('phone')]
-    [FieldDataSetBind('phone', ftString, True, 10, 'Telefone', '!\(##\) #####-####;0;_', taLeftJustify)]
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCell)]
-    edtTelefone: TEdit;
-
-    [FieldJsonBind('balance')]
-    [FieldDataSetBind('balance', ftCurrency, True, 5, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
-    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCoin)]
-    edtSaldo: TEdit;
 
     [FieldJsonBind('birthdate')]
     [FieldDataSetBind('birthdate', ftDate, True, 10, 'Data Nasc', '##/##/####;0;_', taLeftJustify)]
@@ -100,24 +70,49 @@ type
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME, teCNPJ)]
     edtCnpj: TEdit;
 
+    [FieldJsonBind('guuid'), FbIgnorePost, FbIgnorePut]
+    [FieldDataSetBind('guuid', ftString, False, 0, 'Código')]
+    edtCodigo: TEdit;
+
+    [FieldJsonBind('idoccupation')]
+    [FieldDataSetBind('idoccupation', ftString, False, 0, 'Código da profissão')]
+    edtCodigoOcupacao: TEdit;
+
+    [FieldJsonBind('name')]
+    [FieldDataSetBind('name', ftString, True, 20, 'Nome', '', taLeftJustify)]
+    [fvNotNull('Campo Nome não pode ser Nulo', COLOR_BACKGROUND)]
+    edtNome: TEdit;
+
+    [FieldJsonBind('phone')]
+    [FieldDataSetBind('phone', ftString, True, 10, 'Telefone', '!\(##\) #####-####;0;_', taLeftJustify)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCell)]
+    edtTelefone: TEdit;
+
     [FieldJsonBind('occupation')]
     [FieldDataSetBind('occupation', ftString, True, 10, 'Profissão', '', taLeftJustify)]
     edtProfissao: TEdit;
+
+    [FieldJsonBind('balance')]
+    [FieldDataSetBind('balance', ftCurrency, True, 5, 'Saldo', 'R$ ###,###,##0.00', taLeftJustify)]
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_EDIT, FONT_COLOR, FONT_NAME, teCoin)]
+    edtSaldo: TEdit;
 
     [FieldJsonBind('picture')]
     [FieldDataSetBind('picture', ftBlob, False, 0, 'Foto')]
     imgCliente: TImage;
 
-    lblCodigo: TLabel;
-    lblNome: TLabel;
-    lblTelefone: TLabel;
-    lblProfissao: TLabel;
-    lblSaldo: TLabel;
-    lblDataNascimento: TLabel;
     lblUltimaTransacao: TLabel;
     lblCpf: TLabel;
-    lblCnpj: TLabel;
+    lblDataNascimento: TLabel;
+    lblSaldo: TLabel;
+    lblProfissao: TLabel;
+    lblTelefone: TLabel;
     lblCodigoOcupacao: TLabel;
+    lblCodigo: TLabel;
+    lblNome: TLabel;
+    lblCnpj: TLabel;
+    pnlBodyImageCliente: TPanel;
+    pnlImageCliente: TPanel;
 
   private
     { Private declarations }
@@ -131,7 +126,6 @@ var
 implementation
 
 {$R *.dfm}
-
 
 
 end.

@@ -1,0 +1,311 @@
+object FormTemplate: TFormTemplate
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsNone
+  Caption = 'FormTemplate'
+  ClientHeight = 623
+  ClientWidth = 1106
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  OnCreate = FormCreate
+  PixelsPerInch = 115
+  TextHeight = 16
+  object pnlMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 1106
+    Height = 623
+    Align = alClient
+    TabOrder = 0
+    ExplicitLeft = 400
+    ExplicitTop = 192
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+    object CardPanel1: TCardPanel
+      Left = 1
+      Top = 1
+      Width = 1104
+      Height = 621
+      Align = alClient
+      ActiveCard = cardGrid
+      BevelOuter = bvNone
+      Caption = 'CardPanel1'
+      TabOrder = 0
+      ExplicitLeft = 312
+      ExplicitTop = 272
+      ExplicitWidth = 300
+      ExplicitHeight = 200
+      object cardGrid: TCard
+        Left = 0
+        Top = 0
+        Width = 1104
+        Height = 621
+        Caption = 'cardGrid'
+        CardIndex = 0
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object pnlTop: TPanel
+          Left = 0
+          Top = 0
+          Width = 1104
+          Height = 161
+          Align = alTop
+          Anchors = [akTop, akRight]
+          BevelOuter = bvNone
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          Padding.Left = 100
+          Padding.Right = 100
+          ParentFont = False
+          TabOrder = 0
+          object pnlPesquisa: TPanel
+            Left = 716
+            Top = 0
+            Width = 288
+            Height = 161
+            Align = alRight
+            BevelOuter = bvNone
+            TabOrder = 0
+            object lblPesquisa: TLabel
+              Left = 0
+              Top = 109
+              Width = 288
+              Height = 25
+              Align = alBottom
+              Caption = 'Pesquisar'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -15
+              Font.Name = 'Segoe UI'
+              Font.Style = []
+              ParentFont = False
+              ExplicitTop = -1
+            end
+            object edtPesquisa: TEdit
+              Left = 0
+              Top = 134
+              Width = 288
+              Height = 25
+              Align = alBottom
+              BevelOuter = bvNone
+              BorderStyle = bsNone
+              TabOrder = 0
+              ExplicitTop = 31
+            end
+            object pnlLinhaPesquisa: TPanel
+              Left = 0
+              Top = 159
+              Width = 288
+              Height = 2
+              Align = alBottom
+              TabOrder = 1
+              ExplicitTop = 50
+              ExplicitWidth = 185
+            end
+          end
+          object pnlBodyCabecalho: TPanel
+            Left = 100
+            Top = 0
+            Width = 229
+            Height = 161
+            Align = alLeft
+            BevelOuter = bvNone
+            TabOrder = 1
+            ExplicitHeight = 121
+            object pnlTitulo: TPanel
+              Left = 0
+              Top = 0
+              Width = 229
+              Height = 50
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 0
+              ExplicitWidth = 213
+              object lblNomePagina: TLabel
+                Left = 0
+                Top = 0
+                Width = 229
+                Height = 50
+                Align = alClient
+                Caption = 'T'#237'tulo'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -20
+                Font.Name = 'Segoe UI'
+                Font.Style = []
+                ParentFont = False
+                Layout = tlCenter
+                ExplicitWidth = 50
+                ExplicitHeight = 28
+              end
+            end
+            object pnlBotoes: TPanel
+              Left = 0
+              Top = 50
+              Width = 229
+              Height = 85
+              Align = alTop
+              BevelOuter = bvNone
+              TabOrder = 1
+              ExplicitTop = 56
+              object btnAtualizar: TSpeedButton
+                Left = 73
+                Top = 0
+                Width = 73
+                Height = 85
+                Align = alLeft
+                Caption = 'Atualizar'
+                Flat = True
+                Layout = blGlyphTop
+                ExplicitHeight = 45
+              end
+              object btnAdicionar: TSpeedButton
+                Left = 0
+                Top = 0
+                Width = 73
+                Height = 85
+                Align = alLeft
+                Caption = 'Adicionar'
+                Flat = True
+                Layout = blGlyphTop
+                ExplicitHeight = 45
+              end
+            end
+          end
+        end
+        object pnlBodyGrid: TPanel
+          Left = 0
+          Top = 161
+          Width = 1104
+          Height = 460
+          Align = alClient
+          BevelOuter = bvNone
+          Padding.Top = 20
+          TabOrder = 1
+          ExplicitLeft = 808
+          ExplicitTop = 320
+          ExplicitWidth = 185
+          ExplicitHeight = 41
+          object pnlGrid: TPanel
+            Left = 0
+            Top = 20
+            Width = 1104
+            Height = 440
+            Align = alClient
+            BevelOuter = bvNone
+            Padding.Left = 100
+            Padding.Right = 100
+            Padding.Bottom = 100
+            TabOrder = 0
+            ExplicitLeft = -1
+            ExplicitTop = 6
+            ExplicitHeight = 500
+            object DBGrid1: TDBGrid
+              Left = 100
+              Top = 0
+              Width = 904
+              Height = 340
+              Align = alClient
+              DataSource = DataSource1
+              TabOrder = 0
+              TitleFont.Charset = DEFAULT_CHARSET
+              TitleFont.Color = clWindowText
+              TitleFont.Height = -13
+              TitleFont.Name = 'Segoe UI'
+              TitleFont.Style = []
+            end
+          end
+        end
+      end
+      object cardCadastro: TCard
+        Left = 0
+        Top = 0
+        Width = 1104
+        Height = 621
+        Caption = 'cardCadastro'
+        CardIndex = 1
+        TabOrder = 1
+        ExplicitWidth = 185
+        ExplicitHeight = 41
+        object pnlCadastro: TPanel
+          Left = 0
+          Top = 0
+          Width = 330
+          Height = 621
+          Align = alLeft
+          BevelOuter = bvNone
+          TabOrder = 0
+          ExplicitLeft = 8
+          object pnlAcoes: TPanel
+            Left = 0
+            Top = 556
+            Width = 330
+            Height = 65
+            Align = alBottom
+            BevelOuter = bvNone
+            TabOrder = 0
+            object btFechar: TSpeedButton
+              Left = 137
+              Top = 0
+              Width = 65
+              Height = 65
+              Align = alRight
+              Caption = 'Fechar'
+              ImageIndex = 5
+              Flat = True
+              Layout = blGlyphTop
+              OnClick = btFecharClick
+              ExplicitLeft = -6
+            end
+            object btnSalvar: TSpeedButton
+              Left = 266
+              Top = 0
+              Width = 64
+              Height = 65
+              Align = alRight
+              Caption = 'Salvar'
+              ImageIndex = 3
+              Flat = True
+              Layout = blGlyphTop
+              OnClick = btnSalvarClick
+              ExplicitLeft = 71
+            end
+            object btExcluir: TSpeedButton
+              Left = 202
+              Top = 0
+              Width = 64
+              Height = 65
+              Align = alRight
+              Caption = 'Excluir'
+              ImageIndex = 4
+              Flat = True
+              Layout = blGlyphTop
+              OnClick = btExcluirClick
+              ExplicitLeft = 71
+            end
+          end
+        end
+      end
+    end
+  end
+  object DataSource1: TDataSource
+    Left = 960
+    Top = 469
+  end
+end
