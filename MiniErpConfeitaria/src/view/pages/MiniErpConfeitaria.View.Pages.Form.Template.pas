@@ -86,6 +86,9 @@ type
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
     pnlBotoesCrud: TPanel;
 
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesPage: TPanel;
+
     [ImageAttribute('ico_atualizar')]
     btnAtualizar: TSpeedButton;
 
@@ -104,12 +107,10 @@ type
     lblNomePagina: TLabel;
     lblPesquisa: TLabel;
     edtPesquisa: TEdit;
-    Panel1: TPanel;
 
     [ImageAttribute('ico_proximo')]
     btnProximaPagina: TSpeedButton;
-
-    Label1: TLabel;
+    lblNumeroPagina: TLabel;
 
     [ImageAttribute('ico_anterior')]
     btnVoltarPagina: TSpeedButton;
@@ -117,15 +118,14 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnCadastroClick(Sender: TObject);
     procedure DBGrid1DblClick(Sender: TObject);
-    procedure btFecharClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
-    procedure btExcluirClick(Sender: TObject);
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
     procedure btnProximaPaginaClick(Sender: TObject);
     procedure btnVoltarPaginaClick(Sender: TObject);
     procedure btnAdicionarClick(Sender: TObject);
     procedure btnFecharClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
 
   private
     { Private declarations }
@@ -157,23 +157,6 @@ begin
   CardPanel1.ActiveCard := cardGrid;
 end;
 
-procedure TFormTemplate.btExcluirClick(Sender: TObject);
-begin
-  FDAO.Delete;
-  GetData;
-  FTypeOperation := toNull;
-end;
-
-procedure TFormTemplate.btFecharClick(Sender: TObject);
-begin
-  TBind4D
-    .New
-      .Form(self)
-      .ClearFieldForm;
-
-  FTypeOperation := toNull;
-end;
-
 procedure TFormTemplate.btnAdicionarClick(Sender: TObject);
 begin
   CardPanel1.ActiveCard := cardCadastro;
@@ -190,8 +173,23 @@ begin
       .ClearFieldForm;
 end;
 
+procedure TFormTemplate.btnExcluirClick(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja excluir este cliente?', 'Excluir cliente',
+  + MB_ICONQUESTION + MB_YESNO) = MrYes then
+    FDAO.Delete;
+    GetData;
+    FTypeOperation := toNull;
+end;
+
 procedure TFormTemplate.btnFecharClick(Sender: TObject);
 begin
+  TBind4D
+    .New
+      .Form(self)
+      .ClearFieldForm;
+
+  FTypeOperation := toNull;
   CardPanel1.ActiveCard := cardGrid;
 end;
 
@@ -219,6 +217,8 @@ begin
     toPost : restOperationPost;
     toPut: restOperationPut;
   end;
+
+  CardPanel1.ActiveCard := cardGrid;
 end;
 
 procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
@@ -228,6 +228,8 @@ begin
     .New
       .Form(self)
       .BindDataSetToForm(FDAO.DataSet);
+
+  CardPanel1.ActiveCard := cardCadastro;
 end;
 
 procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
@@ -318,7 +320,7 @@ begin
       .BindFormatListDataSet(FDAO.DataSet, DBGrid1)
       .ResponsiveAdjustment;
 
-  //lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
+  lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
 end;
 
 end.

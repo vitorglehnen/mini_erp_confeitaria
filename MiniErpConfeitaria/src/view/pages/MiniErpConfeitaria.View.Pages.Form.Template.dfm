@@ -22,6 +22,7 @@ object FormTemplate: TFormTemplate
     Width = 1106
     Height = 623
     Align = alClient
+    ParentBackground = False
     TabOrder = 0
     object CardPanel1: TCardPanel
       Left = 1
@@ -29,9 +30,10 @@ object FormTemplate: TFormTemplate
       Width = 1104
       Height = 621
       Align = alClient
-      ActiveCard = cardGrid
+      ActiveCard = cardCadastro
       BevelOuter = bvNone
       Caption = 'CardPanel1'
+      ParentBackground = False
       TabOrder = 0
       object cardGrid: TCard
         Left = 0
@@ -45,6 +47,7 @@ object FormTemplate: TFormTemplate
         Font.Height = -13
         Font.Name = 'Segoe UI'
         Font.Style = []
+        ParentBackground = False
         ParentFont = False
         TabOrder = 0
         object pnlTop: TPanel
@@ -62,6 +65,7 @@ object FormTemplate: TFormTemplate
           Font.Style = []
           Padding.Left = 100
           Padding.Right = 100
+          ParentBackground = False
           ParentFont = False
           TabOrder = 0
           object pnlPesquisa: TPanel
@@ -71,13 +75,16 @@ object FormTemplate: TFormTemplate
             Height = 161
             Align = alRight
             BevelOuter = bvNone
+            ParentBackground = False
             TabOrder = 0
             object lblPesquisa: TLabel
               Left = 0
-              Top = 114
+              Top = 104
               Width = 288
-              Height = 20
+              Height = 30
               Align = alBottom
+              Anchors = [akLeft, akRight]
+              AutoSize = False
               Caption = 'Pesquisar'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWindowText
@@ -85,8 +92,6 @@ object FormTemplate: TFormTemplate
               Font.Name = 'Segoe UI'
               Font.Style = []
               ParentFont = False
-              ExplicitTop = 109
-              ExplicitWidth = 61
             end
             object edtPesquisa: TEdit
               Left = 0
@@ -97,6 +102,7 @@ object FormTemplate: TFormTemplate
               BevelOuter = bvNone
               BorderStyle = bsNone
               TabOrder = 0
+              OnKeyPress = edtPesquisaKeyPress
             end
             object pnlLinhaPesquisa: TPanel
               Left = 0
@@ -104,6 +110,7 @@ object FormTemplate: TFormTemplate
               Width = 288
               Height = 2
               Align = alBottom
+              ParentBackground = False
               TabOrder = 1
             end
           end
@@ -114,6 +121,7 @@ object FormTemplate: TFormTemplate
             Height = 161
             Align = alLeft
             BevelOuter = bvNone
+            ParentBackground = False
             TabOrder = 1
             object pnlTitulo: TPanel
               Left = 0
@@ -122,6 +130,7 @@ object FormTemplate: TFormTemplate
               Height = 50
               Align = alTop
               BevelOuter = bvNone
+              ParentBackground = False
               TabOrder = 0
               object lblNomePagina: TLabel
                 Left = 0
@@ -148,6 +157,7 @@ object FormTemplate: TFormTemplate
               Height = 85
               Align = alTop
               BevelOuter = bvNone
+              ParentBackground = False
               TabOrder = 1
               object btnAtualizar: TSpeedButton
                 Left = 73
@@ -183,6 +193,7 @@ object FormTemplate: TFormTemplate
           Height = 460
           Align = alClient
           BevelOuter = bvNone
+          ParentBackground = False
           TabOrder = 1
           object pnlGrid: TPanel
             Left = 0
@@ -195,8 +206,8 @@ object FormTemplate: TFormTemplate
             Padding.Top = 20
             Padding.Right = 100
             Padding.Bottom = 20
+            ParentBackground = False
             TabOrder = 0
-            ExplicitTop = 4
             object DBGrid1: TDBGrid
               Left = 100
               Top = 20
@@ -218,18 +229,18 @@ object FormTemplate: TFormTemplate
               TitleFont.Height = -13
               TitleFont.Name = 'Segoe UI'
               TitleFont.Style = []
+              OnDblClick = DBGrid1DblClick
+              OnTitleClick = DBGrid1TitleClick
             end
-            object Panel1: TPanel
+            object pnlBotoesPage: TPanel
               Left = 100
               Top = 399
               Width = 904
               Height = 41
               Align = alBottom
               BevelOuter = bvNone
+              ParentBackground = False
               TabOrder = 1
-              ExplicitLeft = 592
-              ExplicitTop = 272
-              ExplicitWidth = 185
               object btnProximaPagina: TSpeedButton
                 Left = 864
                 Top = 0
@@ -237,26 +248,31 @@ object FormTemplate: TFormTemplate
                 Height = 41
                 Align = alRight
                 Flat = True
+                OnClick = btnProximaPaginaClick
+                ExplicitLeft = 873
+                ExplicitTop = 6
               end
-              object Label1: TLabel
-                Left = 792
+              object lblNumeroPagina: TLabel
+                Left = 825
                 Top = 0
-                Width = 72
+                Width = 39
                 Height = 41
                 Align = alRight
                 Alignment = taCenter
                 Caption = 'P'#225'gina'
                 Layout = tlCenter
+                ExplicitLeft = 841
+                ExplicitTop = 6
               end
               object btnVoltarPagina: TSpeedButton
-                Left = 752
+                Left = 785
                 Top = 0
                 Width = 40
                 Height = 41
                 Align = alRight
                 Flat = True
-                ExplicitLeft = 740
-                ExplicitTop = 6
+                OnClick = btnVoltarPaginaClick
+                ExplicitLeft = 779
               end
             end
           end
@@ -277,8 +293,8 @@ object FormTemplate: TFormTemplate
           Height = 560
           Align = alLeft
           BevelOuter = bvNone
+          ParentBackground = False
           TabOrder = 0
-          ExplicitHeight = 621
         end
         object pnlBodyBotoes: TPanel
           Left = 0
@@ -288,6 +304,7 @@ object FormTemplate: TFormTemplate
           Align = alBottom
           BevelOuter = bvNone
           Padding.Left = 100
+          ParentBackground = False
           TabOrder = 1
           object pnlBotoesCrud: TPanel
             Left = 100
@@ -296,8 +313,8 @@ object FormTemplate: TFormTemplate
             Height = 61
             Align = alLeft
             BevelOuter = bvNone
+            ParentBackground = False
             TabOrder = 0
-            ExplicitTop = 6
             object btnExcluir: TSpeedButton
               Left = 130
               Top = 0
@@ -307,6 +324,7 @@ object FormTemplate: TFormTemplate
               Caption = 'Excluir'
               Flat = True
               Layout = blGlyphTop
+              OnClick = btnExcluirClick
               ExplicitLeft = 136
               ExplicitTop = 6
             end
@@ -332,6 +350,7 @@ object FormTemplate: TFormTemplate
               Caption = 'Salvar'
               Flat = True
               Layout = blGlyphTop
+              OnClick = btnSalvarClick
               ExplicitTop = 6
             end
           end

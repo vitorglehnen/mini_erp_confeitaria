@@ -2,8 +2,8 @@ inherited PageClientes: TPageClientes
   Caption = 'PageClientes'
   ClientHeight = 794
   ClientWidth = 1350
-  ExplicitLeft = -59
-  ExplicitTop = 2
+  ExplicitLeft = -156
+  ExplicitTop = -185
   ExplicitWidth = 1350
   ExplicitHeight = 794
   PixelsPerInch = 115
@@ -17,40 +17,56 @@ inherited PageClientes: TPageClientes
       Width = 1348
       Height = 792
       ExplicitWidth = 1348
-      ExplicitHeight = 752
+      ExplicitHeight = 792
       inherited cardGrid: TCard
         Width = 1348
         Height = 792
         ExplicitWidth = 1348
-        ExplicitHeight = 752
+        ExplicitHeight = 792
         inherited pnlTop: TPanel
           Width = 1348
           ExplicitWidth = 1348
           inherited pnlPesquisa: TPanel
             Left = 960
             ExplicitLeft = 960
-            inherited lblPesquisa: TLabel
-              ExplicitTop = 114
-            end
           end
         end
         inherited pnlBodyGrid: TPanel
           Width = 1348
           Height = 631
           ExplicitWidth = 1348
-          ExplicitHeight = 591
+          ExplicitHeight = 631
           inherited pnlGrid: TPanel
             Width = 1348
             Height = 631
             ExplicitWidth = 1348
-            ExplicitHeight = 571
+            ExplicitHeight = 631
             inherited DBGrid1: TDBGrid
               Width = 1148
               Height = 550
             end
-            inherited Panel1: TPanel
+            inherited pnlBotoesPage: TPanel
               Top = 570
               Width = 1148
+              ExplicitTop = 576
+              ExplicitWidth = 1148
+              inherited btnProximaPagina: TSpeedButton
+                Left = 1108
+                ExplicitLeft = 1108
+              end
+              inherited lblNumeroPagina: TLabel
+                Left = 992
+                Width = 116
+                AutoSize = False
+                ExplicitLeft = 992
+                ExplicitTop = 0
+                ExplicitWidth = 116
+              end
+              inherited btnVoltarPagina: TSpeedButton
+                Left = 952
+                ExplicitLeft = 1023
+                ExplicitTop = 6
+              end
             end
           end
         end
@@ -59,13 +75,13 @@ inherited PageClientes: TPageClientes
         Width = 1348
         Height = 792
         ExplicitWidth = 1348
-        ExplicitHeight = 752
+        ExplicitHeight = 792
         inherited pnlBodyCadastro: TPanel
           Width = 1348
           Height = 731
           Align = alClient
           ExplicitWidth = 1348
-          ExplicitHeight = 691
+          ExplicitHeight = 731
           object pnlCadastro: TPanel
             Left = 0
             Top = 0
@@ -76,9 +92,6 @@ inherited PageClientes: TPageClientes
             Padding.Left = 100
             Padding.Top = 100
             TabOrder = 0
-            ExplicitLeft = -1
-            ExplicitTop = -6
-            ExplicitHeight = 691
             object pnlLeftCadastro: TStackPanel
               Left = 381
               Top = 100
@@ -113,7 +126,6 @@ inherited PageClientes: TPageClientes
                 end>
               Spacing = 6
               TabOrder = 0
-              ExplicitHeight = 591
               object lblDataNascimento: TLabel
                 Left = 0
                 Top = 0
@@ -222,9 +234,6 @@ inherited PageClientes: TPageClientes
                 end>
               Spacing = 6
               TabOrder = 1
-              ExplicitLeft = 165
-              ExplicitTop = 101
-              ExplicitHeight = 591
               object lblCodigo: TLabel
                 Left = 0
                 Top = 0
@@ -323,7 +332,6 @@ inherited PageClientes: TPageClientes
               Padding.Right = 40
               Padding.Bottom = 40
               TabOrder = 2
-              ExplicitHeight = 202
               object pnlImageCliente: TPanel
                 Left = 40
                 Top = 0
@@ -338,8 +346,6 @@ inherited PageClientes: TPageClientes
                 Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 0
-                ExplicitLeft = 0
-                ExplicitWidth = 296
                 object imgCliente: TImage
                   Left = 0
                   Top = 0
@@ -358,7 +364,7 @@ inherited PageClientes: TPageClientes
         inherited pnlBodyBotoes: TPanel
           Top = 731
           Width = 1348
-          ExplicitTop = 691
+          ExplicitTop = 731
           ExplicitWidth = 1348
         end
       end

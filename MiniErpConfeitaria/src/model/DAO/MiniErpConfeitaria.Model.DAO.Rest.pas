@@ -75,7 +75,7 @@ begin
   FBaseUrl := 'http://localhost:9000';
   FForm := aForm;
   FPage := 1;
-  FLimit := 20;
+  FLimit := 10;
 
   TBind4D
     .New
