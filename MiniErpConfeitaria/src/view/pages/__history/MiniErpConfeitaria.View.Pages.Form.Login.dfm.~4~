@@ -27,6 +27,10 @@ object Login: TLogin
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitLeft = 24
+    ExplicitTop = -32
+    ExplicitWidth = 736
+    ExplicitHeight = 467
     object pnlEsquerdoLogin: TPanel
       Left = 0
       Top = 0
@@ -40,6 +44,7 @@ object Login: TLogin
       Padding.Bottom = 140
       ParentBackground = False
       TabOrder = 0
+      ExplicitLeft = -6
       object imgLogo: TImage
         Left = 40
         Top = 140
@@ -3333,43 +3338,43 @@ object Login: TLogin
       Height = 479
       Align = alLeft
       BevelOuter = bvNone
-      Padding.Left = 90
-      Padding.Top = 10
-      Padding.Right = 90
+      Padding.Left = 120
+      Padding.Top = 90
+      Padding.Right = 120
       Padding.Bottom = 70
       ParentBackground = False
       TabOrder = 1
       ExplicitLeft = 279
       object cardpnlMain: TCardPanel
-        Left = 90
-        Top = 129
-        Width = 295
-        Height = 223
+        Left = 120
+        Top = 90
+        Width = 235
+        Height = 262
         Align = alClient
-        ActiveCard = cardLogin
+        ActiveCard = cardEsqueceuSenha
         BevelOuter = bvNone
         Caption = 'cardpnlMain'
         TabOrder = 0
         OnCardChange = cardpnlMainCardChange
-        ExplicitLeft = 120
-        ExplicitTop = 90
-        ExplicitWidth = 235
-        ExplicitHeight = 262
+        ExplicitLeft = 175
+        ExplicitTop = 142
+        ExplicitWidth = 300
+        ExplicitHeight = 200
         object cardLogin: TCard
           Left = 0
           Top = 0
-          Width = 295
-          Height = 223
+          Width = 235
+          Height = 262
           Caption = 'Login'
           CardIndex = 0
           TabOrder = 0
-          ExplicitWidth = 235
-          ExplicitHeight = 262
+          ExplicitWidth = 185
+          ExplicitHeight = 41
           object pnlLogin: TStackPanel
             Left = 0
             Top = 0
-            Width = 295
-            Height = 223
+            Width = 235
+            Height = 262
             Align = alClient
             BevelOuter = bvNone
             ControlCollection = <
@@ -3389,9 +3394,6 @@ object Login: TLogin
                 Control = pnlInvisivel
               end
               item
-                Control = chkMostrarSenhaLogin
-              end
-              item
                 Control = btnEntrar
                 HorizontalPositioning = sphpRight
                 VerticalPositioning = spvpFill
@@ -3409,10 +3411,10 @@ object Login: TLogin
               end>
             HorizontalPositioning = sphpCenter
             TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
+            ExplicitWidth = 233
+            ExplicitHeight = 287
             object lblUsuario: TLabel
-              Left = 90
+              Left = 60
               Top = 0
               Width = 114
               Height = 19
@@ -3426,7 +3428,7 @@ object Login: TLogin
               ParentFont = False
             end
             object edtUsuario: TEdit
-              Left = 87
+              Left = 57
               Top = 21
               Width = 121
               Height = 20
@@ -3440,7 +3442,7 @@ object Login: TLogin
               TabOrder = 0
             end
             object lblSenha: TLabel
-              Left = 89
+              Left = 59
               Top = 43
               Width = 117
               Height = 19
@@ -3454,7 +3456,7 @@ object Login: TLogin
               ParentFont = False
             end
             object edtSenha: TEdit
-              Left = 87
+              Left = 57
               Top = 64
               Width = 121
               Height = 20
@@ -3470,7 +3472,7 @@ object Login: TLogin
               TabOrder = 1
             end
             object pnlInvisivel: TPanel
-              Left = 44
+              Left = 14
               Top = 86
               Width = 206
               Height = 3
@@ -3478,24 +3480,9 @@ object Login: TLogin
               ParentBackground = False
               TabOrder = 2
             end
-            object chkMostrarSenhaLogin: TCheckBox
-              Left = 88
-              Top = 91
-              Width = 118
-              Height = 17
-              Caption = 'Mostrar senha'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -9
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 4
-              OnClick = chkMostrarSenhaLoginClick
-            end
             object btnEntrar: TSpeedButton
-              Left = 204
-              Top = 110
+              Left = 144
+              Top = 91
               Width = 91
               Height = 24
               Align = alRight
@@ -3509,8 +3496,8 @@ object Login: TLogin
               ParentFont = False
             end
             object lblEsqueceuSenha: TLabel
-              Left = 94
-              Top = 136
+              Left = 64
+              Top = 117
               Width = 106
               Height = 46
               AutoSize = False
@@ -3527,8 +3514,8 @@ object Login: TLogin
               OnMouseLeave = lblEsqueceuSenhaMouseLeave
             end
             object pnlInvisivel2: TPanel
-              Left = 55
-              Top = 184
+              Left = 25
+              Top = 165
               Width = 185
               Height = 61
               BevelOuter = bvNone
@@ -3536,7 +3523,7 @@ object Login: TLogin
             end
             object btnCadastrarNovoUsuario: TSpeedButton
               Left = 0
-              Top = 247
+              Top = 228
               Width = 137
               Height = 29
               Align = alLeft
@@ -3554,18 +3541,20 @@ object Login: TLogin
         object cardEsqueceuSenha: TCard
           Left = 0
           Top = 0
-          Width = 295
-          Height = 223
+          Width = 235
+          Height = 262
           Caption = 'Esqueceu Senha'
           CardIndex = 1
           TabOrder = 1
-          ExplicitWidth = 235
-          ExplicitHeight = 262
+          ExplicitLeft = 9
+          ExplicitTop = 2
+          ExplicitWidth = 298
+          ExplicitHeight = 198
           object StackPanel1: TStackPanel
             Left = 0
             Top = 0
-            Width = 295
-            Height = 223
+            Width = 235
+            Height = 262
             Align = alClient
             BevelOuter = bvNone
             ControlCollection = <
@@ -3602,8 +3591,7 @@ object Login: TLogin
               end>
             HorizontalPositioning = sphpCenter
             TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
+            ExplicitTop = -6
             object lblEmailEsqueceuSenha: TLabel
               Left = 0
               Top = 0
@@ -3667,7 +3655,7 @@ object Login: TLogin
               TabOrder = 0
             end
             object pnlInvisivel5: TPanel
-              Left = 44
+              Left = 14
               Top = 86
               Width = 206
               Height = 3
@@ -3675,7 +3663,7 @@ object Login: TLogin
               TabOrder = 2
             end
             object btnEnviarEmail: TSpeedButton
-              Left = 204
+              Left = 144
               Top = 91
               Width = 91
               Height = 24
@@ -3690,7 +3678,7 @@ object Login: TLogin
               ParentFont = False
             end
             object pnlInvisivel6: TPanel
-              Left = 55
+              Left = 25
               Top = 117
               Width = 185
               Height = 61
@@ -3702,18 +3690,18 @@ object Login: TLogin
         object cardNovoUsuario: TCard
           Left = 0
           Top = 0
-          Width = 295
-          Height = 223
+          Width = 235
+          Height = 262
           Caption = 'Novo Usu'#225'rio'
           CardIndex = 2
           TabOrder = 2
-          ExplicitWidth = 235
-          ExplicitHeight = 262
+          ExplicitWidth = 185
+          ExplicitHeight = 41
           object StackPanel2: TStackPanel
             Left = 0
             Top = 0
-            Width = 295
-            Height = 223
+            Width = 235
+            Height = 262
             Align = alClient
             BevelOuter = bvNone
             ControlCollection = <
@@ -3770,8 +3758,8 @@ object Login: TLogin
               end>
             HorizontalPositioning = sphpCenter
             TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
+            ExplicitWidth = 233
+            ExplicitHeight = 287
             object lblEmailCadastro: TLabel
               Left = 0
               Top = 0
@@ -3896,7 +3884,7 @@ object Login: TLogin
               TabOrder = 0
             end
             object pnlInvisivel3: TPanel
-              Left = 44
+              Left = 14
               Top = 172
               Width = 206
               Height = 3
@@ -3904,7 +3892,7 @@ object Login: TLogin
               TabOrder = 2
             end
             object btnCadastrarUsuario: TSpeedButton
-              Left = 204
+              Left = 144
               Top = 177
               Width = 91
               Height = 24
@@ -3919,7 +3907,7 @@ object Login: TLogin
               ParentFont = False
             end
             object pnlInvisivel4: TPanel
-              Left = 55
+              Left = 25
               Top = 203
               Width = 185
               Height = 6
@@ -3930,16 +3918,14 @@ object Login: TLogin
         end
       end
       object pnlBotoes: TPanel
-        Left = 90
+        Left = 120
         Top = 352
-        Width = 295
+        Width = 235
         Height = 57
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
         Visible = False
-        ExplicitLeft = 120
-        ExplicitWidth = 235
         object btnFechar: TSpeedButton
           Left = 0
           Top = 0
@@ -3953,35 +3939,6 @@ object Login: TLogin
           OnClick = btnFecharClick
           ExplicitLeft = 8
           ExplicitHeight = 41
-        end
-      end
-      object pnlTitulo: TPanel
-        Left = 90
-        Top = 10
-        Width = 295
-        Height = 119
-        Align = alTop
-        BevelOuter = bvNone
-        TabOrder = 2
-        ExplicitLeft = 120
-        ExplicitWidth = 235
-        object lblTitulo: TLabel
-          Left = 0
-          Top = 0
-          Width = 295
-          Height = 119
-          Align = alClient
-          Alignment = taCenter
-          AutoSize = False
-          Caption = 'Mini Erp'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -21
-          Font.Name = 'Segoe UI'
-          Font.Style = [fsBold, fsItalic]
-          ParentFont = False
-          ExplicitWidth = 235
-          ExplicitHeight = 49
         end
       end
     end

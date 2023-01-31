@@ -74,9 +74,6 @@ type
 
     [ImageAttribute('ico_cancelar')]
     btnFechar: TSpeedButton;
-    chkMostrarSenhaLogin: TCheckBox;
-    pnlTitulo: TPanel;
-    lblTitulo: TLabel;
 
     procedure FormCreate(Sender: TObject);
     procedure lblEsqueceuSenhaMouseEnter(Sender: TObject);
@@ -86,7 +83,6 @@ type
     procedure btnFecharClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure cardpnlMainCardChange(Sender: TObject; PrevCard, NextCard: TCard);
-    procedure chkMostrarSenhaLoginClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,18 +120,6 @@ begin
   end;
 end;
 
-procedure TLogin.chkMostrarSenhaLoginClick(Sender: TObject);
-begin
-  if chkMostrarSenhaLogin.Checked then
-  begin
-    edtSenha.PasswordChar := #0;
-  end
-  else
-  begin
-    edtSenha.PasswordChar := '*';
-  end;
-end;
-
 procedure TLogin.FormCreate(Sender: TObject);
 begin
   TBind4D
@@ -143,8 +127,6 @@ begin
       .Form(Self)
       .SetImageComponents
       .SetStyleComponents;
-
-  cardpnlMain.ActiveCard := cardLogin;
 end;
 
 procedure TLogin.FormResize(Sender: TObject);
