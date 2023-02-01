@@ -1,0 +1,37 @@
+unit MiniErpConfeitaria.View.Pages.Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
+  Vcl.WinXPanels;
+
+type
+  TPageLogin = class(TForm)
+    Panel1: TPanel;
+    pnlLogin: TStackPanel;
+    lblUsuario: TLabel;
+    edtUsuario: TEdit;
+    lblSenha: TLabel;
+    edtSenha: TEdit;
+    pnlInvisivel: TPanel;
+    chkMostrarSenhaLogin: TCheckBox;
+    btnEntrar: TSpeedButton;
+    lblEsqueceuSenha: TLabel;
+    pnlInvisivel2: TPanel;
+    btnCadastrarNovoUsuario: TSpeedButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  PageLogin: TPageLogin;
+
+implementation
+
+{$R *.dfm}
+
+end.

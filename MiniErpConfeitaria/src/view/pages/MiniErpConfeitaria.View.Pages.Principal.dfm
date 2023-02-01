@@ -1,9 +1,10 @@
 object FormPrincipal: TFormPrincipal
   Left = 0
   Top = 0
+  BorderStyle = bsNone
   Caption = 'Mini Erp'
-  ClientHeight = 738
-  ClientWidth = 1037
+  ClientHeight = 783
+  ClientWidth = 1055
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,16 +19,18 @@ object FormPrincipal: TFormPrincipal
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 1037
-    Height = 738
+    Width = 1055
+    Height = 783
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 1037
+    ExplicitHeight = 738
     object pnlTop: TPanel
       Left = 0
       Top = 0
-      Width = 1037
+      Width = 1055
       Height = 89
       Align = alTop
       BevelOuter = bvNone
@@ -37,6 +40,7 @@ object FormPrincipal: TFormPrincipal
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 1037
       object btnPedidos: TSpeedButton
         Left = 133
         Top = 5
@@ -173,19 +177,19 @@ object FormPrincipal: TFormPrincipal
     object pnlCenter: TPanel
       Left = 0
       Top = 89
-      Width = 1037
-      Height = 649
+      Width = 1055
+      Height = 694
       Align = alClient
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitTop = 113
-      ExplicitHeight = 625
+      ExplicitWidth = 1037
+      ExplicitHeight = 649
       object imgLogoTipo: TImage
         Left = 0
         Top = 0
-        Width = 1037
-        Height = 649
+        Width = 1055
+        Height = 694
         Align = alClient
         Center = True
         Picture.Data = {

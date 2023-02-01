@@ -15,7 +15,11 @@ uses
   MiniErpConfeitaria.Model.DAO.Interfaces in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Interfaces.pas',
   MiniErpConfeitaria.Model.DAO.Rest in 'src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas',
   MiniErpConfeitaria.Model.Services.Register in 'src\model\Services\MiniErpConfeitaria.Model.Services.Register.pas',
-  MiniErpConfeitaria.View.Pages.Form.Login in 'src\view\pages\MiniErpConfeitaria.View.Pages.Form.Login.pas' {Login};
+  MiniErpConfeitaria.View.Pages.Form.Login in 'src\view\pages\MiniErpConfeitaria.View.Pages.Form.Login.pas' {FormLogin},
+  MiniErpConfeitaria.View.Pages.Login.Cadastro in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.Cadastro.pas' {PageLoginCadastro},
+  MiniErpConfeitaria.View.Pages.Login in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.pas' {PageLogin},
+  MiniErpConfeitaria.View.Pages.Login.AlterarSenha in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.AlterarSenha.pas' {PageAlterarSenha},
+  MiniErpConfeitaria.View.Pages.Index in 'src\view\pages\MiniErpConfeitaria.View.Pages.Index.pas' {PageIndex};
 
 {$R *.res}
 
@@ -23,6 +27,6 @@ begin
   Application.Initialize;
   ReportMemoryLeaksOnShutdown := True;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TLogin, Login);
+  Application.CreateForm(TFormLogin, FormLogin);
   Application.Run;
 end.

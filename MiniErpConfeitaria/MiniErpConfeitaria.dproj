@@ -130,7 +130,23 @@
         <DCCReference Include="src\model\DAO\MiniErpConfeitaria.Model.DAO.Rest.pas"/>
         <DCCReference Include="src\model\Services\MiniErpConfeitaria.Model.Services.Register.pas"/>
         <DCCReference Include="src\view\pages\MiniErpConfeitaria.View.Pages.Form.Login.pas">
-            <Form>Login</Form>
+            <Form>FormLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\MiniErpConfeitaria.View.Pages.Login.Cadastro.pas">
+            <Form>PageLoginCadastro</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\MiniErpConfeitaria.View.Pages.Login.pas">
+            <Form>PageLogin</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\MiniErpConfeitaria.View.Pages.Login.AlterarSenha.pas">
+            <Form>PageAlterarSenha</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="src\view\pages\MiniErpConfeitaria.View.Pages.Index.pas">
+            <Form>PageIndex</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <RcItem Include="assets\icons\ico_adicionar.png">

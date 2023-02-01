@@ -79,6 +79,9 @@ var
 
 implementation
 
+uses
+  MiniErpConfeitaria.View.Pages.Form.Login;
+
 {$R *.dfm}
 
 procedure TFormPrincipal.btnClientesClick(Sender: TObject);
@@ -103,7 +106,6 @@ end;
 
 procedure TFormPrincipal.FormCreate(Sender: TObject);
 begin
-  TRouter4D.Render<TPagePadrao>.SetElement(pnlCenter, pnlMain);
   TBind4D
     .New
       .Form(Self)
@@ -114,6 +116,8 @@ end;
 function TFormPrincipal.Render: TForm;
 begin
   Result := Self;
+
+  TRouter4D.Render<TPagePadrao>.SetElement(pnlCenter);
 end;
 
 procedure TFormPrincipal.UnRender;

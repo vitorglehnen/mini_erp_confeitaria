@@ -1,11 +1,10 @@
-object Login: TLogin
+object FormLogin: TFormLogin
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  BorderStyle = bsSingle
-  Caption = 'Login'
-  ClientHeight = 479
-  ClientWidth = 748
+  Caption = 'FormLogin'
+  ClientHeight = 467
+  ClientWidth = 736
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -15,23 +14,24 @@ object Login: TLogin
   OldCreateOrder = False
   Position = poScreenCenter
   OnCreate = FormCreate
-  OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 748
-    Height = 479
+    Width = 736
+    Height = 467
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 748
+    ExplicitHeight = 479
     object pnlEsquerdoLogin: TPanel
       Left = 0
       Top = 0
       Width = 273
-      Height = 479
+      Height = 467
       Align = alLeft
       BevelOuter = bvNone
       Padding.Left = 40
@@ -40,11 +40,12 @@ object Login: TLogin
       Padding.Bottom = 140
       ParentBackground = False
       TabOrder = 0
+      ExplicitHeight = 479
       object imgLogo: TImage
         Left = 40
         Top = 140
         Width = 193
-        Height = 199
+        Height = 187
         Align = alClient
         Center = True
         Picture.Data = {
@@ -3330,646 +3331,26 @@ object Login: TLogin
       Left = 273
       Top = 0
       Width = 475
-      Height = 479
+      Height = 467
       Align = alLeft
       BevelOuter = bvNone
-      Padding.Left = 90
-      Padding.Top = 10
-      Padding.Right = 90
-      Padding.Bottom = 70
       ParentBackground = False
       TabOrder = 1
       ExplicitLeft = 279
-      object cardpnlMain: TCardPanel
-        Left = 90
-        Top = 129
-        Width = 295
-        Height = 223
-        Align = alClient
-        ActiveCard = cardLogin
-        BevelOuter = bvNone
-        Caption = 'cardpnlMain'
-        TabOrder = 0
-        OnCardChange = cardpnlMainCardChange
-        ExplicitLeft = 120
-        ExplicitTop = 90
-        ExplicitWidth = 235
-        ExplicitHeight = 262
-        object cardLogin: TCard
-          Left = 0
-          Top = 0
-          Width = 295
-          Height = 223
-          Caption = 'Login'
-          CardIndex = 0
-          TabOrder = 0
-          ExplicitWidth = 235
-          ExplicitHeight = 262
-          object pnlLogin: TStackPanel
-            Left = 0
-            Top = 0
-            Width = 295
-            Height = 223
-            Align = alClient
-            BevelOuter = bvNone
-            ControlCollection = <
-              item
-                Control = lblUsuario
-              end
-              item
-                Control = edtUsuario
-              end
-              item
-                Control = lblSenha
-              end
-              item
-                Control = edtSenha
-              end
-              item
-                Control = pnlInvisivel
-              end
-              item
-                Control = chkMostrarSenhaLogin
-              end
-              item
-                Control = btnEntrar
-                HorizontalPositioning = sphpRight
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = lblEsqueceuSenha
-              end
-              item
-                Control = pnlInvisivel2
-              end
-              item
-                Control = btnCadastrarNovoUsuario
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end>
-            HorizontalPositioning = sphpCenter
-            TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
-            object lblUsuario: TLabel
-              Left = 90
-              Top = 0
-              Width = 114
-              Height = 19
-              AutoSize = False
-              Caption = 'Usu'#225'rio'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtUsuario: TEdit
-              Left = 87
-              Top = 21
-              Width = 121
-              Height = 20
-              CharCase = ecUpperCase
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              TabOrder = 0
-            end
-            object lblSenha: TLabel
-              Left = 89
-              Top = 43
-              Width = 117
-              Height = 19
-              AutoSize = False
-              Caption = 'Senha'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtSenha: TEdit
-              Left = 87
-              Top = 64
-              Width = 121
-              Height = 20
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              PasswordChar = '*'
-              ShowHint = False
-              TabOrder = 1
-            end
-            object pnlInvisivel: TPanel
-              Left = 44
-              Top = 86
-              Width = 206
-              Height = 3
-              BevelOuter = bvNone
-              ParentBackground = False
-              TabOrder = 2
-            end
-            object chkMostrarSenhaLogin: TCheckBox
-              Left = 88
-              Top = 91
-              Width = 118
-              Height = 17
-              Caption = 'Mostrar senha'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -9
-              Font.Name = 'Tahoma'
-              Font.Style = []
-              ParentFont = False
-              TabOrder = 4
-              OnClick = chkMostrarSenhaLoginClick
-            end
-            object btnEntrar: TSpeedButton
-              Left = 204
-              Top = 110
-              Width = 91
-              Height = 24
-              Align = alRight
-              Caption = 'Entrar'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clGreen
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              Layout = blGlyphRight
-              ParentFont = False
-            end
-            object lblEsqueceuSenha: TLabel
-              Left = 94
-              Top = 136
-              Width = 106
-              Height = 46
-              AutoSize = False
-              Caption = 'Esqueceu a senha?'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              Layout = tlCenter
-              OnClick = lblEsqueceuSenhaClick
-              OnMouseEnter = lblEsqueceuSenhaMouseEnter
-              OnMouseLeave = lblEsqueceuSenhaMouseLeave
-            end
-            object pnlInvisivel2: TPanel
-              Left = 55
-              Top = 184
-              Width = 185
-              Height = 61
-              BevelOuter = bvNone
-              TabOrder = 3
-            end
-            object btnCadastrarNovoUsuario: TSpeedButton
-              Left = 0
-              Top = 247
-              Width = 137
-              Height = 29
-              Align = alLeft
-              Caption = 'Cadastrar novo usu'#225'rio'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              OnClick = btnCadastrarNovoUsuarioClick
-            end
-          end
-        end
-        object cardEsqueceuSenha: TCard
-          Left = 0
-          Top = 0
-          Width = 295
-          Height = 223
-          Caption = 'Esqueceu Senha'
-          CardIndex = 1
-          TabOrder = 1
-          ExplicitWidth = 235
-          ExplicitHeight = 262
-          object StackPanel1: TStackPanel
-            Left = 0
-            Top = 0
-            Width = 295
-            Height = 223
-            Align = alClient
-            BevelOuter = bvNone
-            ControlCollection = <
-              item
-                Control = lblEmailEsqueceuSenha
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtEmailEsqueceuSenha
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = lblUsuarioEsqueceuSenha
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtUsuarioEsqueceuSenha
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = pnlInvisivel5
-              end
-              item
-                Control = btnEnviarEmail
-                HorizontalPositioning = sphpRight
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = pnlInvisivel6
-              end>
-            HorizontalPositioning = sphpCenter
-            TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
-            object lblEmailEsqueceuSenha: TLabel
-              Left = 0
-              Top = 0
-              Width = 205
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Email'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtEmailEsqueceuSenha: TEdit
-              Left = 0
-              Top = 21
-              Width = 233
-              Height = 20
-              Align = alLeft
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              PasswordChar = '*'
-              ShowHint = False
-              TabOrder = 1
-            end
-            object lblUsuarioEsqueceuSenha: TLabel
-              Left = 0
-              Top = 43
-              Width = 231
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Usu'#225'rio'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtUsuarioEsqueceuSenha: TEdit
-              Left = 0
-              Top = 64
-              Width = 105
-              Height = 20
-              Align = alLeft
-              CharCase = ecUpperCase
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              TabOrder = 0
-            end
-            object pnlInvisivel5: TPanel
-              Left = 44
-              Top = 86
-              Width = 206
-              Height = 3
-              BevelOuter = bvNone
-              TabOrder = 2
-            end
-            object btnEnviarEmail: TSpeedButton
-              Left = 204
-              Top = 91
-              Width = 91
-              Height = 24
-              Align = alRight
-              Caption = 'Enviar'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clGreen
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              Layout = blGlyphRight
-              ParentFont = False
-            end
-            object pnlInvisivel6: TPanel
-              Left = 55
-              Top = 117
-              Width = 185
-              Height = 61
-              BevelOuter = bvNone
-              TabOrder = 3
-            end
-          end
-        end
-        object cardNovoUsuario: TCard
-          Left = 0
-          Top = 0
-          Width = 295
-          Height = 223
-          Caption = 'Novo Usu'#225'rio'
-          CardIndex = 2
-          TabOrder = 2
-          ExplicitWidth = 235
-          ExplicitHeight = 262
-          object StackPanel2: TStackPanel
-            Left = 0
-            Top = 0
-            Width = 295
-            Height = 223
-            Align = alClient
-            BevelOuter = bvNone
-            ControlCollection = <
-              item
-                Control = lblEmailCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtEmailCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = lblUsuarioCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtUsuarioCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = lblSenhaCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtSenhaCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = lblConfirmarSenhaCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = edtConfirmarSenhaCadastro
-                HorizontalPositioning = sphpLeft
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = pnlInvisivel3
-              end
-              item
-                Control = btnCadastrarUsuario
-                HorizontalPositioning = sphpRight
-                VerticalPositioning = spvpFill
-              end
-              item
-                Control = pnlInvisivel4
-              end>
-            HorizontalPositioning = sphpCenter
-            TabOrder = 0
-            ExplicitWidth = 235
-            ExplicitHeight = 262
-            object lblEmailCadastro: TLabel
-              Left = 0
-              Top = 0
-              Width = 205
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Email'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtEmailCadastro: TEdit
-              Left = 0
-              Top = 21
-              Width = 233
-              Height = 20
-              Align = alLeft
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              ParentShowHint = False
-              ShowHint = False
-              TabOrder = 1
-            end
-            object lblUsuarioCadastro: TLabel
-              Left = 0
-              Top = 43
-              Width = 231
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Usu'#225'rio'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtUsuarioCadastro: TEdit
-              Left = 0
-              Top = 64
-              Width = 105
-              Height = 20
-              Align = alLeft
-              CharCase = ecUpperCase
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              TabOrder = 4
-            end
-            object lblSenhaCadastro: TLabel
-              Left = 0
-              Top = 86
-              Width = 231
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Senha'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtSenhaCadastro: TEdit
-              Left = 0
-              Top = 107
-              Width = 105
-              Height = 20
-              Align = alLeft
-              CharCase = ecUpperCase
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              PasswordChar = '*'
-              TabOrder = 5
-            end
-            object lblConfirmarSenhaCadastro: TLabel
-              Left = 0
-              Top = 129
-              Width = 231
-              Height = 19
-              Align = alLeft
-              AutoSize = False
-              Caption = 'Confirmar senha'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object edtConfirmarSenhaCadastro: TEdit
-              Left = 0
-              Top = 150
-              Width = 105
-              Height = 20
-              Align = alLeft
-              CharCase = ecUpperCase
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -10
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              ParentFont = False
-              PasswordChar = '*'
-              TabOrder = 0
-            end
-            object pnlInvisivel3: TPanel
-              Left = 44
-              Top = 172
-              Width = 206
-              Height = 3
-              BevelOuter = bvNone
-              TabOrder = 2
-            end
-            object btnCadastrarUsuario: TSpeedButton
-              Left = 204
-              Top = 177
-              Width = 91
-              Height = 24
-              Align = alRight
-              Caption = 'Cadastrar'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clGreen
-              Font.Height = -11
-              Font.Name = 'Tahoma'
-              Font.Style = [fsBold]
-              Layout = blGlyphRight
-              ParentFont = False
-            end
-            object pnlInvisivel4: TPanel
-              Left = 55
-              Top = 203
-              Width = 185
-              Height = 6
-              BevelOuter = bvNone
-              TabOrder = 3
-            end
-          end
-        end
-      end
-      object pnlBotoes: TPanel
-        Left = 90
-        Top = 352
-        Width = 295
-        Height = 57
-        Align = alBottom
-        BevelOuter = bvNone
-        TabOrder = 1
-        Visible = False
-        ExplicitLeft = 120
-        ExplicitWidth = 235
-        object btnFechar: TSpeedButton
-          Left = 0
-          Top = 0
-          Width = 65
-          Height = 57
-          Align = alLeft
-          Caption = 'Fechar'
-          Flat = True
-          Layout = blGlyphTop
-          Visible = False
-          OnClick = btnFecharClick
-          ExplicitLeft = 8
-          ExplicitHeight = 41
-        end
-      end
+      ExplicitHeight = 479
       object pnlTitulo: TPanel
-        Left = 90
-        Top = 10
-        Width = 295
-        Height = 119
+        Left = 0
+        Top = 0
+        Width = 475
+        Height = 73
         Align = alTop
         BevelOuter = bvNone
-        TabOrder = 2
-        ExplicitLeft = 120
-        ExplicitWidth = 235
+        TabOrder = 0
         object lblTitulo: TLabel
           Left = 0
           Top = 0
-          Width = 295
-          Height = 119
+          Width = 475
+          Height = 73
           Align = alClient
           Alignment = taCenter
           AutoSize = False
@@ -3980,9 +3361,21 @@ object Login: TLogin
           Font.Name = 'Segoe UI'
           Font.Style = [fsBold, fsItalic]
           ParentFont = False
-          ExplicitWidth = 235
-          ExplicitHeight = 49
+          Layout = tlCenter
+          ExplicitHeight = 35
         end
+      end
+      object pnlCenter: TPanel
+        Left = 0
+        Top = 73
+        Width = 475
+        Height = 394
+        Align = alClient
+        BevelOuter = bvNone
+        TabOrder = 1
+        ExplicitLeft = 6
+        ExplicitTop = 41
+        ExplicitHeight = 438
       end
     end
   end

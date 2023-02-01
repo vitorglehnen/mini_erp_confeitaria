@@ -22,7 +22,12 @@ uses
   MiniErpConfeitaria.View.Pages.Clientes,
   MiniErpConfeitaria.View.Pages.Padrao,
   MiniErpConfeitaria.View.Pages.Pedidos,
-  MiniErpConfeitaria.View.Pages.Produtos;
+  MiniErpConfeitaria.View.Pages.Produtos,
+  MiniErpConfeitaria.View.Pages.Form.Login,
+  MiniErpConfeitaria.View.Pages.Login,
+  MiniErpConfeitaria.View.Pages.Login.AlterarSenha,
+  MiniErpConfeitaria.View.Pages.Login.Cadastro,
+  MiniErpConfeitaria.View.Pages.Principal;
 
 
 { TRouters }
@@ -32,9 +37,13 @@ begin
   TRouter4D
     .Switch
       .Router('Clientes', TPageClientes)
-        .Router('Padrao', TPagePadrao)
-          .Router('Pedidos', TPagePedidos)
-            .Router('Produtos', TPageProdutos);
+      .Router('Padrao', TPagePadrao)
+      .Router('Pedidos', TPagePedidos)
+      .Router('Produtos', TPageProdutos)
+      .Router('Login', TPageLogin)
+      .Router('LoginSenha', TPageAlterarSenha)
+      .Router('LoginCadastro', TPageLoginCadastro)
+      .Router('Principal', TFormPrincipal);
 end;
 
 destructor TRouters.Destroy;

@@ -17,15 +17,18 @@ uses
   Bind4D,
   Bind4D.Attributes,
   Bind4D.Types,
-  Router4D.Interfaces,
   MiniErpConfeitaria.Model.DAO.Rest,
   MIniErpConfeitaria.View.Styles.Colors,
   RESTRequest4D,
-  MiniErpConfeitaria.Model.DAO.Interfaces, Vcl.StdCtrls, Vcl.WinXPanels,
-  Vcl.Buttons, Vcl.Imaging.pngimage;
+  MiniErpConfeitaria.Model.DAO.Interfaces,
+  Router4D.Interfaces,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+  Vcl.Buttons,
+  Vcl.Imaging.pngimage;
 
 type
-  TLogin = class(TForm)
+  TFormLogin = class(TForm)
     pnlMain: TPanel;
 
     [ComponentBindStyle(COLOR_TOP, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
@@ -35,58 +38,13 @@ type
     pnlDireitoLogin: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
-    pnlInvisivel: TPanel;
-    pnlLogin: TStackPanel;
-    lblUsuario: TLabel;
-    edtUsuario: TEdit;
-    lblSenha: TLabel;
-    edtSenha: TEdit;
-    btnEntrar: TSpeedButton;
-    lblEsqueceuSenha: TLabel;
-    pnlInvisivel2: TPanel;
-    btnCadastrarNovoUsuario: TSpeedButton;
     imgLogo: TImage;
-    cardpnlMain: TCardPanel;
-    cardLogin: TCard;
-    cardEsqueceuSenha: TCard;
-    StackPanel1: TStackPanel;
-    lblUsuarioEsqueceuSenha: TLabel;
-    edtUsuarioEsqueceuSenha: TEdit;
-    lblEmailEsqueceuSenha: TLabel;
-    edtEmailEsqueceuSenha: TEdit;
-    pnlInvisivel5: TPanel;
-    btnEnviarEmail: TSpeedButton;
-    pnlInvisivel6: TPanel;
-    cardNovoUsuario: TCard;
-    StackPanel2: TStackPanel;
-    lblEmailCadastro: TLabel;
-    edtEmailCadastro: TEdit;
-    lblConfirmarSenhaCadastro: TLabel;
-    edtConfirmarSenhaCadastro: TEdit;
-    pnlInvisivel3: TPanel;
-    btnCadastrarUsuario: TSpeedButton;
-    pnlInvisivel4: TPanel;
-    lblUsuarioCadastro: TLabel;
-    edtUsuarioCadastro: TEdit;
-    edtSenhaCadastro: TEdit;
-    lblSenhaCadastro: TLabel;
-    pnlBotoes: TPanel;
 
-    [ImageAttribute('ico_cancelar')]
-    btnFechar: TSpeedButton;
-    chkMostrarSenhaLogin: TCheckBox;
     pnlTitulo: TPanel;
     lblTitulo: TLabel;
+    pnlCenter: TPanel;
 
     procedure FormCreate(Sender: TObject);
-    procedure lblEsqueceuSenhaMouseEnter(Sender: TObject);
-    procedure lblEsqueceuSenhaMouseLeave(Sender: TObject);
-    procedure lblEsqueceuSenhaClick(Sender: TObject);
-    procedure btnCadastrarNovoUsuarioClick(Sender: TObject);
-    procedure btnFecharClick(Sender: TObject);
-    procedure FormResize(Sender: TObject);
-    procedure cardpnlMainCardChange(Sender: TObject; PrevCard, NextCard: TCard);
-    procedure chkMostrarSenhaLoginClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -94,80 +52,25 @@ type
   end;
 
 var
-  Login: TLogin;
+  FormLogin: TFormLogin;
 
 implementation
 
+uses
+  Router4D,
+  MiniErpConfeitaria.View.Pages.Login;
+
+
 {$R *.dfm}
 
-
-procedure TLogin.btnCadastrarNovoUsuarioClick(Sender: TObject);
+procedure TFormLogin.FormCreate(Sender: TObject);
 begin
-  cardpnlMain.ActiveCard := cardNovoUsuario;
-end;
-
-procedure TLogin.btnFecharClick(Sender: TObject);
-begin
-  cardpnlMain.ActiveCard := cardLogin;
-end;
-
-procedure TLogin.cardpnlMainCardChange(Sender: TObject; PrevCard,
-  NextCard: TCard);
-begin
-  if cardpnlMain.ActiveCard = cardLogin then
-  begin
-    pnlBotoes.Visible := False;
-  end
-  else
-  begin
-    pnlBotoes.Visible := True;
-  end;
-end;
-
-procedure TLogin.chkMostrarSenhaLoginClick(Sender: TObject);
-begin
-  if chkMostrarSenhaLogin.Checked then
-  begin
-    edtSenha.PasswordChar := #0;
-  end
-  else
-  begin
-    edtSenha.PasswordChar := '*';
-  end;
-end;
-
-procedure TLogin.FormCreate(Sender: TObject);
-begin
+  TRouter4D.Render<TPageLogin>.SetElement(pnlCenter, pnlMain);
   TBind4D
     .New
       .Form(Self)
       .SetImageComponents
       .SetStyleComponents;
-
-  cardpnlMain.ActiveCard := cardLogin;
-end;
-
-procedure TLogin.FormResize(Sender: TObject);
-begin
-  if cardpnlMain.ActiveCard = cardLogin then
-    btnFechar.Visible := False;
-
-  btnFechar.Visible := True;
-end;
-
-procedure TLogin.lblEsqueceuSenhaClick(Sender: TObject);
-begin
-  cardpnlMain.ActiveCard := cardEsqueceuSenha;
-end;
-
-procedure TLogin.lblEsqueceuSenhaMouseEnter(Sender: TObject);
-begin
-  lblEsqueceuSenha.Font.Color := clWindowFrame;
-end;
-
-procedure TLogin.lblEsqueceuSenhaMouseLeave(Sender: TObject);
-begin
-  lblEsqueceuSenha.Font.Color := clWindowText;
 end;
 
 end.

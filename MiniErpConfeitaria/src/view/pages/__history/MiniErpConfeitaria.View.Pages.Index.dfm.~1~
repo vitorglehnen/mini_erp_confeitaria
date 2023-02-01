@@ -1,0 +1,30 @@
+object PageIndex: TPageIndex
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'PageIndex'
+  ClientHeight = 512
+  ClientWidth = 728
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  OldCreateOrder = False
+  PixelsPerInch = 115
+  TextHeight = 16
+  object pnlMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 728
+    Height = 512
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    ExplicitLeft = 128
+    ExplicitTop = 256
+    ExplicitWidth = 185
+    ExplicitHeight = 41
+  end
+end
