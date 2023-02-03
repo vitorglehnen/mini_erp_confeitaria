@@ -2,9 +2,10 @@ object FormLogin: TFormLogin
   Left = 0
   Top = 0
   BorderIcons = [biSystemMenu, biMinimize]
-  Caption = 'FormLogin'
-  ClientHeight = 467
-  ClientWidth = 736
+  BorderStyle = bsSingle
+  Caption = 'Mini ERP Confeitaria'
+  ClientHeight = 477
+  ClientWidth = 745
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -19,33 +20,33 @@ object FormLogin: TFormLogin
   object pnlMain: TPanel
     Left = 0
     Top = 0
-    Width = 736
-    Height = 467
+    Width = 745
+    Height = 477
     Align = alClient
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 748
-    ExplicitHeight = 479
+    ExplicitWidth = 918
+    ExplicitHeight = 467
     object pnlEsquerdoLogin: TPanel
       Left = 0
       Top = 0
       Width = 273
-      Height = 467
+      Height = 477
       Align = alLeft
       BevelOuter = bvNone
-      Padding.Left = 40
-      Padding.Top = 140
-      Padding.Right = 40
-      Padding.Bottom = 140
+      Padding.Left = 30
+      Padding.Top = 120
+      Padding.Right = 30
+      Padding.Bottom = 120
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 479
+      ExplicitHeight = 467
       object imgLogo: TImage
-        Left = 40
-        Top = 140
-        Width = 193
-        Height = 187
+        Left = 30
+        Top = 120
+        Width = 213
+        Height = 237
         Align = alClient
         Center = True
         Picture.Data = {
@@ -3321,23 +3322,22 @@ object FormLogin: TFormLogin
           049D20088220BA00127482200882E80248D009822008A20B204127088220882E
           E03F032F43D37FCE147CAA0000000049454E44AE426082}
         Proportional = True
-        ExplicitLeft = 60
-        ExplicitTop = 142
-        ExplicitWidth = 173
-        ExplicitHeight = 177
+        ExplicitLeft = 40
+        ExplicitTop = 128
+        ExplicitWidth = 227
+        ExplicitHeight = 199
       end
     end
     object pnlDireitoLogin: TPanel
       Left = 273
       Top = 0
       Width = 475
-      Height = 467
+      Height = 477
       Align = alLeft
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitLeft = 279
-      ExplicitHeight = 479
+      ExplicitHeight = 467
       object pnlTitulo: TPanel
         Left = 0
         Top = 0
@@ -3345,6 +3345,7 @@ object FormLogin: TFormLogin
         Height = 73
         Align = alTop
         BevelOuter = bvNone
+        ParentBackground = False
         TabOrder = 0
         object lblTitulo: TLabel
           Left = 0
@@ -3369,13 +3370,12 @@ object FormLogin: TFormLogin
         Left = 0
         Top = 73
         Width = 475
-        Height = 394
+        Height = 404
         Align = alClient
         BevelOuter = bvNone
+        ParentBackground = False
         TabOrder = 1
-        ExplicitLeft = 6
-        ExplicitTop = 41
-        ExplicitHeight = 438
+        ExplicitHeight = 394
       end
     end
   end

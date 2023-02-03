@@ -29,20 +29,6 @@ object PageLogin: TPageLogin
     Padding.Bottom = 100
     ParentBackground = False
     TabOrder = 0
-    object btnCadastrarUsuario: TSpeedButton
-      Left = 296
-      Top = 312
-      Width = 129
-      Height = 29
-      Caption = 'Cadastrar usu'#225'rio'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      ParentFont = False
-      OnClick = btnCadastrarUsuarioClick
-    end
     object pnlLogin: TStackPanel
       Left = 170
       Top = 80
@@ -72,7 +58,7 @@ object PageLogin: TPageLogin
         end
         item
           Control = btnEntrar
-          HorizontalPositioning = sphpRight
+          HorizontalPositioning = sphpFill
           VerticalPositioning = spvpFill
         end
         item
@@ -83,11 +69,6 @@ object PageLogin: TPageLogin
         end
         item
           Control = pnlInvisivel2
-        end
-        item
-          Control = btnCadastrarNovoUsuario
-          HorizontalPositioning = sphpLeft
-          VerticalPositioning = spvpFill
         end>
       HorizontalPositioning = sphpCenter
       TabOrder = 0
@@ -160,6 +141,7 @@ object PageLogin: TPageLogin
         Anchors = []
         BevelOuter = bvNone
         Color = clWhite
+        ParentBackground = False
         TabOrder = 2
       end
       object chkMostrarSenhaLogin: TCheckBox
@@ -178,26 +160,29 @@ object PageLogin: TPageLogin
         TabOrder = 4
         OnClick = chkMostrarSenhaLoginClick
       end
-      object btnEntrar: TSpeedButton
-        Left = 44
+      object btnEntrar: TPanel
+        Left = 0
         Top = 110
-        Width = 91
-        Height = 24
+        Width = 135
+        Height = 25
         Cursor = crHandPoint
-        Align = alRight
+        Align = alClient
+        BevelOuter = bvNone
         Caption = 'Entrar'
+        Color = clMenu
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clGreen
-        Font.Height = -11
-        Font.Name = 'Tahoma'
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Layout = blGlyphRight
+        ParentBackground = False
         ParentFont = False
+        TabOrder = 6
         OnClick = btnEntrarClick
       end
       object pnlInvisivel3: TPanel
         Left = -25
-        Top = 136
+        Top = 137
         Width = 185
         Height = 25
         BevelOuter = bvNone
@@ -205,7 +190,7 @@ object PageLogin: TPageLogin
       end
       object lblEsqueceuSenha: TLabel
         Left = 14
-        Top = 163
+        Top = 164
         Width = 106
         Height = 22
         Cursor = crHandPoint
@@ -224,27 +209,31 @@ object PageLogin: TPageLogin
       end
       object pnlInvisivel2: TPanel
         Left = -25
-        Top = 187
+        Top = 188
         Width = 185
         Height = 61
         BevelOuter = bvNone
         TabOrder = 3
       end
-      object btnCadastrarNovoUsuario: TSpeedButton
-        Left = 0
-        Top = 250
-        Width = 137
-        Height = 29
-        Cursor = crHandPoint
-        Align = alLeft
-        Caption = 'Cadastrar novo usu'#225'rio'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -10
-        Font.Name = 'Tahoma'
-        Font.Style = [fsBold]
-        ParentFont = False
-      end
+    end
+    object btnCadastrarUsuario: TPanel
+      Left = 274
+      Top = 308
+      Width = 135
+      Height = 26
+      Cursor = crHandPoint
+      BevelOuter = bvNone
+      Caption = 'Cadastrar usu'#225'rio'
+      Color = clMenu
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnCadastrarUsuarioClick
     end
   end
 end

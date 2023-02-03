@@ -1,4 +1,4 @@
-object PageLoginCadastro: TPageLoginCadastro
+﻿object PageLoginCadastro: TPageLoginCadastro
   Left = 0
   Top = 0
   BorderStyle = bsNone
@@ -23,34 +23,16 @@ object PageLoginCadastro: TPageLoginCadastro
     BevelOuter = bvNone
     Color = clWhite
     Padding.Left = 120
-    Padding.Top = 90
+    Padding.Top = 60
     Padding.Right = 120
     Padding.Bottom = 90
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 589
-    ExplicitHeight = 449
-    object btnFechar: TSpeedButton
-      Left = 360
-      Top = 0
-      Width = 91
-      Height = 33
-      Cursor = crHandPoint
-      Caption = 'Fechar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      Layout = blGlyphRight
-      ParentFont = False
-      OnClick = btnFecharClick
-    end
     object stkpnlPrincipal: TStackPanel
       Left = 120
-      Top = 90
+      Top = 60
       Width = 235
-      Height = 226
+      Height = 256
       Align = alClient
       BevelOuter = bvNone
       ControlCollection = <
@@ -98,7 +80,7 @@ object PageLoginCadastro: TPageLoginCadastro
           Control = pnlInvisivel3
         end
         item
-          Control = btnCadastrarUsuario
+          Control = btnCadastrarUsuário
           HorizontalPositioning = sphpRight
           VerticalPositioning = spvpFill
         end
@@ -106,8 +88,9 @@ object PageLoginCadastro: TPageLoginCadastro
           Control = pnlInvisivel4
         end>
       TabOrder = 0
-      ExplicitTop = 100
-      ExplicitHeight = 206
+      ExplicitLeft = 112
+      ExplicitTop = 50
+      ExplicitHeight = 226
       object lblEmailCadastro: TLabel
         Left = 0
         Top = 0
@@ -239,30 +222,52 @@ object PageLoginCadastro: TPageLoginCadastro
         BevelOuter = bvNone
         TabOrder = 2
       end
-      object btnCadastrarUsuario: TSpeedButton
-        Left = 144
+      object btnCadastrarUsuário: TPanel
+        Left = 128
         Top = 177
-        Width = 91
-        Height = 24
+        Width = 107
+        Height = 26
         Cursor = crHandPoint
         Align = alRight
+        BevelOuter = bvNone
         Caption = 'Cadastrar'
+        Color = clMenu
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clGreen
-        Font.Height = -11
-        Font.Name = 'Tahoma'
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Layout = blGlyphRight
+        ParentBackground = False
         ParentFont = False
+        TabOrder = 6
       end
       object pnlInvisivel4: TPanel
         Left = 0
-        Top = 203
+        Top = 205
         Width = 235
         Height = 6
         BevelOuter = bvNone
         TabOrder = 3
       end
+    end
+    object btnFechar: TPanel
+      Left = 360
+      Top = 0
+      Width = 91
+      Height = 34
+      Cursor = crHandPoint
+      BevelOuter = bvNone
+      Caption = 'Fechar'
+      Color = clMenu
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnFecharClick
     end
   end
 end

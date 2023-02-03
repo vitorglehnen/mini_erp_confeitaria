@@ -13,6 +13,10 @@ uses
   Vcl.Forms,
   Vcl.Dialogs,
   Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.WinXPanels,
+  Vcl.Buttons,
+  Vcl.Imaging.pngimage,
 
   Bind4D,
   Bind4D.Attributes,
@@ -21,14 +25,12 @@ uses
   MIniErpConfeitaria.View.Styles.Colors,
   RESTRequest4D,
   MiniErpConfeitaria.Model.DAO.Interfaces,
-  Router4D.Interfaces,
-  Vcl.StdCtrls,
-  Vcl.WinXPanels,
-  Vcl.Buttons,
-  Vcl.Imaging.pngimage;
+  Router4D.Interfaces;
 
 type
   TFormLogin = class(TForm)
+
+    [ComponentBindStyle(COLOR_TOP, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlMain: TPanel;
 
     [ComponentBindStyle(COLOR_TOP, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
@@ -38,11 +40,16 @@ type
     pnlDireitoLogin: TPanel;
 
     [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
+    pnlCenter: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
+    pnlTitulo: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     imgLogo: TImage;
 
-    pnlTitulo: TPanel;
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     lblTitulo: TLabel;
-    pnlCenter: TPanel;
 
     procedure FormCreate(Sender: TObject);
   private

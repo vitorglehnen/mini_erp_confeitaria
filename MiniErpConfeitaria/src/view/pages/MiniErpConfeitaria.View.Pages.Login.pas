@@ -21,20 +21,30 @@ uses
 type
   TPageLogin = class(TForm, iRouter4DComponent)
 
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlMain: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlLogin: TStackPanel;
+
     lblUsuario: TLabel;
     edtUsuario: TEdit;
     lblSenha: TLabel;
     edtSenha: TEdit;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlInvisivel: TPanel;
+
     chkMostrarSenhaLogin: TCheckBox;
-    btnEntrar: TSpeedButton;
     lblEsqueceuSenha: TLabel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlInvisivel2: TPanel;
-    btnCadastrarNovoUsuario: TSpeedButton;
-    btnCadastrarUsuario: TSpeedButton;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlInvisivel3: TPanel;
+    btnEntrar: TPanel;
+    btnCadastrarUsuario: TPanel;
     procedure chkMostrarSenhaLoginClick(Sender: TObject);
     procedure lblEsqueceuSenhaMouseEnter(Sender: TObject);
     procedure lblEsqueceuSenhaMouseLeave(Sender: TObject);
@@ -65,12 +75,6 @@ begin
   TRouter4D.Link.&To('LoginCadastro');
 end;
 
-procedure TPageLogin.btnEntrarClick(Sender: TObject);
-begin
-  FormLogin.WindowState := TWindowState.wsMaximized;
-  TRouter4D.Link.IndexLink('Principal');
-end;
-
 procedure TPageLogin.chkMostrarSenhaLoginClick(Sender: TObject);
 begin
   if chkMostrarSenhaLogin.Checked then
@@ -96,6 +100,13 @@ end;
 procedure TPageLogin.lblEsqueceuSenhaMouseLeave(Sender: TObject);
 begin
   lblEsqueceuSenha.Font.Color := clWindowText;
+end;
+
+procedure TPageLogin.btnEntrarClick(Sender: TObject);
+begin
+  FormLogin.WindowState := TWindowState.wsMaximized;
+  FormLogin.BorderIcons := [biSystemMenu,biMinimize,bimaximize];
+  TRouter4D.Link.IndexLink('Principal');
 end;
 
 function TPageLogin.Render: TForm;

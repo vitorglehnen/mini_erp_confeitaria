@@ -28,9 +28,9 @@ type
     lblUsuarioEsqueceuSenha: TLabel;
     edtUsuarioEsqueceuSenha: TEdit;
     pnlInvisivel5: TPanel;
-    btnEnviarEmail: TSpeedButton;
     pnlInvisivel6: TPanel;
-    btnFechar: TSpeedButton;
+    btnEnviarEmail: TPanel;
+    btnFechar: TPanel;
     procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }

@@ -33,9 +33,9 @@ type
     lblConfirmarSenhaCadastro: TLabel;
     edtConfirmarSenhaCadastro: TEdit;
     pnlInvisivel3: TPanel;
-    btnCadastrarUsuario: TSpeedButton;
     pnlInvisivel4: TPanel;
-    btnFechar: TSpeedButton;
+    btnCadastrarUsuário: TPanel;
+    btnFechar: TPanel;
     procedure btnFecharClick(Sender: TObject);
   private
     { Private declarations }

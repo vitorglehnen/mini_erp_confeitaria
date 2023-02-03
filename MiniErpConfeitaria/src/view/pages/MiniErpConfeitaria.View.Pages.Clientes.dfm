@@ -2,8 +2,8 @@ inherited PageClientes: TPageClientes
   Caption = 'PageClientes'
   ClientHeight = 794
   ClientWidth = 1350
-  ExplicitLeft = -156
-  ExplicitTop = -185
+  ExplicitLeft = -168
+  ExplicitTop = -246
   ExplicitWidth = 1350
   ExplicitHeight = 794
   PixelsPerInch = 115
@@ -16,6 +16,7 @@ inherited PageClientes: TPageClientes
     inherited CardPanel1: TCardPanel
       Width = 1348
       Height = 792
+      ActiveCard = cardGrid
       ExplicitWidth = 1348
       ExplicitHeight = 792
       inherited cardGrid: TCard
@@ -29,6 +30,14 @@ inherited PageClientes: TPageClientes
           inherited pnlPesquisa: TPanel
             Left = 960
             ExplicitLeft = 960
+          end
+          inherited pnlBodyCabecalho: TPanel
+            inherited pnlTitulo: TPanel
+              inherited lblNomePagina: TLabel
+                Width = 229
+                Height = 50
+              end
+            end
           end
         end
         inherited pnlBodyGrid: TPanel
@@ -48,22 +57,19 @@ inherited PageClientes: TPageClientes
             inherited pnlBotoesPage: TPanel
               Top = 570
               Width = 1148
-              ExplicitTop = 576
+              ExplicitTop = 570
               ExplicitWidth = 1148
               inherited btnProximaPagina: TSpeedButton
                 Left = 1108
                 ExplicitLeft = 1108
               end
               inherited lblNumeroPagina: TLabel
-                Left = 992
-                Width = 116
-                AutoSize = False
-                ExplicitLeft = 992
-                ExplicitTop = 0
-                ExplicitWidth = 116
+                Left = 1069
+                Height = 41
+                ExplicitLeft = 1069
               end
               inherited btnVoltarPagina: TSpeedButton
-                Left = 952
+                Left = 1029
                 ExplicitLeft = 1023
                 ExplicitTop = 6
               end

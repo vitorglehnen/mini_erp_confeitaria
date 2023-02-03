@@ -22,34 +22,16 @@ object PageAlterarSenha: TPageAlterarSenha
     Align = alClient
     BevelOuter = bvNone
     Color = clWhite
-    Padding.Left = 150
+    Padding.Left = 120
     Padding.Top = 100
-    Padding.Right = 150
+    Padding.Right = 120
     Padding.Bottom = 100
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 651
-    ExplicitHeight = 535
-    object btnFechar: TSpeedButton
-      Left = 358
-      Top = 0
-      Width = 91
-      Height = 33
-      Cursor = crHandPoint
-      Caption = 'Fechar'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clBlack
-      Font.Height = -11
-      Font.Name = 'Tahoma'
-      Font.Style = [fsBold]
-      Layout = blGlyphRight
-      ParentFont = False
-      OnClick = btnFecharClick
-    end
     object StackPanel1: TStackPanel
-      Left = 150
+      Left = 120
       Top = 100
-      Width = 175
+      Width = 235
       Height = 206
       Align = alClient
       BevelOuter = bvNone
@@ -87,8 +69,8 @@ object PageAlterarSenha: TPageAlterarSenha
         end>
       HorizontalPositioning = sphpCenter
       TabOrder = 0
-      ExplicitWidth = 351
-      ExplicitHeight = 335
+      ExplicitLeft = 150
+      ExplicitWidth = 175
       object lblEmailEsqueceuSenha: TLabel
         Left = 0
         Top = 0
@@ -152,37 +134,59 @@ object PageAlterarSenha: TPageAlterarSenha
         TabOrder = 0
       end
       object pnlInvisivel5: TPanel
-        Left = -15
+        Left = 14
         Top = 86
         Width = 206
         Height = 3
         BevelOuter = bvNone
         TabOrder = 2
       end
-      object btnEnviarEmail: TSpeedButton
-        Left = 84
+      object btnEnviarEmail: TPanel
+        Left = 136
         Top = 91
-        Width = 91
-        Height = 24
+        Width = 99
+        Height = 26
         Cursor = crHandPoint
         Align = alRight
-        Caption = 'Enviar'
+        BevelOuter = bvNone
+        Caption = 'Cadastrar'
+        Color = clMenu
         Font.Charset = DEFAULT_CHARSET
-        Font.Color = clGreen
-        Font.Height = -11
-        Font.Name = 'Tahoma'
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = 'Segoe UI'
         Font.Style = [fsBold]
-        Layout = blGlyphRight
+        ParentBackground = False
         ParentFont = False
+        TabOrder = 4
       end
       object pnlInvisivel6: TPanel
-        Left = -5
-        Top = 117
+        Left = 25
+        Top = 119
         Width = 185
         Height = 61
         BevelOuter = bvNone
         TabOrder = 3
       end
+    end
+    object btnFechar: TPanel
+      Left = 360
+      Top = 0
+      Width = 91
+      Height = 34
+      Cursor = crHandPoint
+      BevelOuter = bvNone
+      Caption = 'Fechar'
+      Color = clMenu
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnFecharClick
     end
   end
 end
