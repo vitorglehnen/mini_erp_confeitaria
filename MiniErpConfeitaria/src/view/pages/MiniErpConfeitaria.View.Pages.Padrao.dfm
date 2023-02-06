@@ -24,6 +24,7 @@ object PagePadrao: TPagePadrao
     Height = 617
     Align = alClient
     BevelOuter = bvNone
+    Color = clWhite
     ParentBackground = False
     TabOrder = 0
     object Image1: TImage

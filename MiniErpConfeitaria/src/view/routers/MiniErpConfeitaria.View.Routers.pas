@@ -29,7 +29,6 @@ uses
   MiniErpConfeitaria.View.Pages.Login.Cadastro,
   MiniErpConfeitaria.View.Pages.Principal;
 
-
 { TRouters }
 
 constructor TRouters.Create;
@@ -43,7 +42,8 @@ begin
       .Router('Login', TPageLogin)
       .Router('LoginSenha', TPageAlterarSenha)
       .Router('LoginCadastro', TPageLoginCadastro)
-      .Router('Principal', TFormPrincipal);
+      .Router('Principal', TFormPrincipal)
+      .Router('LoginPrincipal', TFormLogin);
 end;
 
 destructor TRouters.Destroy;

@@ -58,11 +58,13 @@ type
     btnInicial: TSpeedButton;
 
     imgLogoTipo: TImage;
+    btnSair: TSpeedButton;
 
     procedure btnClientesClick(Sender: TObject);
     procedure btnInicialClick(Sender: TObject);
     procedure btnPedidosClick(Sender: TObject);
     procedure btnProdutosClick(Sender: TObject);
+    procedure btnSairClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -102,6 +104,11 @@ end;
 procedure TFormPrincipal.btnProdutosClick(Sender: TObject);
 begin
   TRouter4D.Link.&To('Produtos');
+end;
+
+procedure TFormPrincipal.btnSairClick(Sender: TObject);
+begin
+  Application.Terminate;
 end;
 
 procedure TFormPrincipal.FormCreate(Sender: TObject);

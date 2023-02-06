@@ -20,6 +20,7 @@ uses
   Vcl.Grids,
   Vcl.DBGrids,
   Vcl.Buttons,
+  Vcl.Mask,
   Data.DB,
   System.ImageList,
   FireDAC.Stan.Intf,
@@ -36,7 +37,7 @@ uses
   Bind4D.Attributes,
   Bind4D.Types,
   MIniErpConfeitaria.View.Styles.Colors,
-  MiniErpConfeitaria.View.Pages.Form.Template, Vcl.Mask;
+  MiniErpConfeitaria.View.Pages.Form.Template;
 
 type
   [FormRest('/users', 'guuid', 'name', 'asc')]

@@ -65,7 +65,7 @@ var
 implementation
 
 uses
-  Router4D, MiniErpConfeitaria.View.Pages.Index,
+  Router4D,
   MiniErpConfeitaria.View.Pages.Form.Login;
 
 {$R *.dfm}

@@ -25,8 +25,6 @@ object FormPrincipal: TFormPrincipal
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 1037
-    ExplicitHeight = 738
     object pnlTop: TPanel
       Left = 0
       Top = 0
@@ -34,15 +32,14 @@ object FormPrincipal: TFormPrincipal
       Height = 89
       Align = alTop
       BevelOuter = bvNone
-      Padding.Left = 5
+      Padding.Left = 20
       Padding.Top = 5
-      Padding.Right = 5
+      Padding.Right = 20
       Padding.Bottom = 5
       ParentBackground = False
       TabOrder = 0
-      ExplicitWidth = 1037
       object btnPedidos: TSpeedButton
-        Left = 133
+        Left = 148
         Top = 5
         Width = 128
         Height = 79
@@ -64,7 +61,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitHeight = 71
       end
       object btnProdutos: TSpeedButton
-        Left = 389
+        Left = 404
         Top = 5
         Width = 128
         Height = 79
@@ -86,7 +83,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitHeight = 71
       end
       object btnRelatorios: TSpeedButton
-        Left = 517
+        Left = 532
         Top = 5
         Width = 128
         Height = 79
@@ -107,7 +104,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitHeight = 71
       end
       object btnConfiguracoes: TSpeedButton
-        Left = 645
+        Left = 660
         Top = 5
         Width = 128
         Height = 79
@@ -128,7 +125,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitHeight = 71
       end
       object btnClientes: TSpeedButton
-        Left = 261
+        Left = 276
         Top = 5
         Width = 128
         Height = 79
@@ -151,7 +148,7 @@ object FormPrincipal: TFormPrincipal
         ExplicitHeight = 71
       end
       object btnInicial: TSpeedButton
-        Left = 5
+        Left = 20
         Top = 5
         Width = 128
         Height = 79
@@ -173,6 +170,27 @@ object FormPrincipal: TFormPrincipal
         ExplicitTop = 4
         ExplicitHeight = 71
       end
+      object btnSair: TSpeedButton
+        Left = 907
+        Top = 5
+        Width = 128
+        Height = 79
+        Align = alRight
+        BiDiMode = bdLeftToRight
+        Caption = 'Sair'
+        ImageIndex = 3
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        Layout = blGlyphTop
+        ParentFont = False
+        ParentBiDiMode = False
+        OnClick = btnSairClick
+        ExplicitTop = 4
+      end
     end
     object pnlCenter: TPanel
       Left = 0
@@ -183,8 +201,6 @@ object FormPrincipal: TFormPrincipal
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitWidth = 1037
-      ExplicitHeight = 649
       object imgLogoTipo: TImage
         Left = 0
         Top = 0

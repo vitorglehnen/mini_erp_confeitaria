@@ -2,8 +2,6 @@ inherited PageClientes: TPageClientes
   Caption = 'PageClientes'
   ClientHeight = 794
   ClientWidth = 1350
-  ExplicitLeft = -168
-  ExplicitTop = -246
   ExplicitWidth = 1350
   ExplicitHeight = 794
   PixelsPerInch = 115
@@ -30,6 +28,9 @@ inherited PageClientes: TPageClientes
           inherited pnlPesquisa: TPanel
             Left = 960
             ExplicitLeft = 960
+            inherited lblPesquisa: TLabel
+              ExplicitTop = 98
+            end
           end
           inherited pnlBodyCabecalho: TPanel
             inherited pnlTitulo: TPanel

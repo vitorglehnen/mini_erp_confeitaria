@@ -28,7 +28,7 @@ uses
   Router4D.Interfaces;
 
 type
-  TFormLogin = class(TForm)
+  TFormLogin = class(TForm, iRouter4DComponent)
 
     [ComponentBindStyle(COLOR_TOP, FONT_SIZE_LABEL, FONT_COLOR, FONT_NAME)]
     pnlMain: TPanel;
@@ -55,7 +55,8 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
   end;
 
 var
@@ -67,7 +68,6 @@ uses
   Router4D,
   MiniErpConfeitaria.View.Pages.Login;
 
-
 {$R *.dfm}
 
 procedure TFormLogin.FormCreate(Sender: TObject);
@@ -78,6 +78,16 @@ begin
       .Form(Self)
       .SetImageComponents
       .SetStyleComponents;
+end;
+
+function TFormLogin.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormLogin.UnRender;
+begin
+
 end;
 
 end.

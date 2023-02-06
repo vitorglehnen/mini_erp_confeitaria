@@ -26,8 +26,6 @@ object FormLogin: TFormLogin
     BevelOuter = bvNone
     ParentBackground = False
     TabOrder = 0
-    ExplicitWidth = 918
-    ExplicitHeight = 467
     object pnlEsquerdoLogin: TPanel
       Left = 0
       Top = 0
@@ -41,7 +39,6 @@ object FormLogin: TFormLogin
       Padding.Bottom = 120
       ParentBackground = False
       TabOrder = 0
-      ExplicitHeight = 467
       object imgLogo: TImage
         Left = 30
         Top = 120
@@ -3337,7 +3334,6 @@ object FormLogin: TFormLogin
       BevelOuter = bvNone
       ParentBackground = False
       TabOrder = 1
-      ExplicitHeight = 467
       object pnlTitulo: TPanel
         Left = 0
         Top = 0
@@ -3375,7 +3371,6 @@ object FormLogin: TFormLogin
         BevelOuter = bvNone
         ParentBackground = False
         TabOrder = 1
-        ExplicitHeight = 394
       end
     end
   end

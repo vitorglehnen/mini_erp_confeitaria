@@ -18,8 +18,7 @@ uses
   MiniErpConfeitaria.View.Pages.Form.Login in 'src\view\pages\MiniErpConfeitaria.View.Pages.Form.Login.pas' {FormLogin},
   MiniErpConfeitaria.View.Pages.Login.Cadastro in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.Cadastro.pas' {PageLoginCadastro},
   MiniErpConfeitaria.View.Pages.Login in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.pas' {PageLogin},
-  MiniErpConfeitaria.View.Pages.Login.AlterarSenha in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.AlterarSenha.pas' {PageAlterarSenha},
-  MiniErpConfeitaria.View.Pages.Index in 'src\view\pages\MiniErpConfeitaria.View.Pages.Index.pas' {PageIndex};
+  MiniErpConfeitaria.View.Pages.Login.AlterarSenha in 'src\view\pages\MiniErpConfeitaria.View.Pages.Login.AlterarSenha.pas' {PageAlterarSenha};
 
 {$R *.res}
 
