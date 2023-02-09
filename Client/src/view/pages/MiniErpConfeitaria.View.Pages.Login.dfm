@@ -1,0 +1,238 @@
+object PageLogin: TPageLogin
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  Caption = 'PageLogin'
+  ClientHeight = 406
+  ClientWidth = 475
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  KeyPreview = True
+  OldCreateOrder = False
+  PixelsPerInch = 115
+  TextHeight = 16
+  object pnlMain: TPanel
+    Left = 0
+    Top = 0
+    Width = 475
+    Height = 406
+    Align = alClient
+    Anchors = []
+    BevelOuter = bvNone
+    Color = clWhite
+    Padding.Left = 170
+    Padding.Top = 80
+    Padding.Right = 170
+    Padding.Bottom = 100
+    ParentBackground = False
+    TabOrder = 0
+    object pnlLogin: TStackPanel
+      Left = 170
+      Top = 80
+      Width = 135
+      Height = 226
+      Align = alClient
+      Anchors = []
+      BevelOuter = bvNone
+      ControlCollection = <
+        item
+          Control = lblEmail
+        end
+        item
+          Control = edtEmail
+        end
+        item
+          Control = lblSenha
+        end
+        item
+          Control = edtSenha
+        end
+        item
+          Control = pnlInvisivel
+        end
+        item
+          Control = chkMostrarSenhaLogin
+        end
+        item
+          Control = btnEntrar
+          HorizontalPositioning = sphpFill
+          VerticalPositioning = spvpFill
+        end
+        item
+          Control = pnlInvisivel3
+        end
+        item
+          Control = lblEsqueceuSenha
+        end
+        item
+          Control = pnlInvisivel2
+        end>
+      HorizontalPositioning = sphpCenter
+      TabOrder = 0
+      DesignSize = (
+        135
+        226)
+      object lblEmail: TLabel
+        Left = 10
+        Top = 0
+        Width = 114
+        Height = 19
+        AutoSize = False
+        Caption = 'Email'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -10
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object edtEmail: TEdit
+        Left = 7
+        Top = 21
+        Width = 121
+        Height = 20
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -10
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+        OnKeyPress = edtEmailKeyPress
+      end
+      object lblSenha: TLabel
+        Left = 9
+        Top = 43
+        Width = 117
+        Height = 19
+        AutoSize = False
+        Caption = 'Senha'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -10
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object edtSenha: TEdit
+        Left = 7
+        Top = 64
+        Width = 121
+        Height = 20
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -10
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ParentShowHint = False
+        PasswordChar = '*'
+        ShowHint = False
+        TabOrder = 1
+        OnKeyPress = edtSenhaKeyPress
+      end
+      object pnlInvisivel: TPanel
+        Left = -35
+        Top = 86
+        Width = 206
+        Height = 3
+        Anchors = []
+        BevelOuter = bvNone
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 3
+      end
+      object chkMostrarSenhaLogin: TCheckBox
+        Left = 8
+        Top = 91
+        Width = 118
+        Height = 17
+        Cursor = crHandPoint
+        Caption = 'Mostrar senha'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -9
+        Font.Name = 'Tahoma'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 5
+        OnClick = chkMostrarSenhaLoginClick
+      end
+      object btnEntrar: TButton
+        Left = 0
+        Top = 110
+        Width = 135
+        Height = 25
+        Align = alClient
+        Caption = 'Entrar'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -10
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 2
+        OnClick = btnEntrarClick
+        OnKeyPress = btnEntrarKeyPress
+      end
+      object pnlInvisivel3: TPanel
+        Left = -25
+        Top = 137
+        Width = 185
+        Height = 25
+        BevelOuter = bvNone
+        TabOrder = 6
+      end
+      object lblEsqueceuSenha: TLabel
+        Left = 14
+        Top = 164
+        Width = 106
+        Height = 22
+        Cursor = crHandPoint
+        AutoSize = False
+        Caption = 'Esqueceu a senha?'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'Tahoma'
+        Font.Style = [fsBold]
+        ParentFont = False
+        Layout = tlCenter
+        OnClick = lblEsqueceuSenhaClick
+        OnMouseEnter = lblEsqueceuSenhaMouseEnter
+        OnMouseLeave = lblEsqueceuSenhaMouseLeave
+      end
+      object pnlInvisivel2: TPanel
+        Left = -25
+        Top = 188
+        Width = 185
+        Height = 61
+        BevelOuter = bvNone
+        TabOrder = 4
+      end
+    end
+    object btnCadastrarUsuario: TPanel
+      Left = 274
+      Top = 308
+      Width = 135
+      Height = 26
+      Cursor = crHandPoint
+      BevelOuter = bvNone
+      Caption = 'Cadastrar usu'#225'rio'
+      Color = clMenu
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 1
+      OnClick = btnCadastrarUsuarioClick
+    end
+  end
+end

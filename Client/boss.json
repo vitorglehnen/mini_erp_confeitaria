@@ -1,0 +1,14 @@
+{
+	"name": "MiniErpConfeitaria",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "",
+	"mainsrc": "./",
+	"projects": [],
+	"dependencies": {
+		"https://github.com/academiadocodigo/bind4d": "^1.0.26",
+		"https://github.com/academiadocodigo/router4delphi": "^1.0.3",
+		"https://github.com/viniciussanchez/dataset-serialize": "^v2.3.0",
+		"https://github.com/viniciussanchez/restrequest4delphi": "^v3.0.5"
+	}
+}

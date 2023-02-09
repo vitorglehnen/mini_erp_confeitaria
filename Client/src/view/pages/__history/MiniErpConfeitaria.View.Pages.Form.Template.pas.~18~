@@ -1,0 +1,328 @@
+unit MiniErpConfeitaria.View.Pages.Form.Template;
+
+interface
+
+uses
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  System.ImageList,
+  Data.DB,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.Grids,
+  Vcl.DBGrids,
+  Vcl.Buttons,
+  Vcl.ImgList,
+  System.JSON,
+
+  Bind4D,
+  Bind4D.Attributes,
+  Bind4D.Types,
+  Router4D.Interfaces,
+  MiniErpConfeitaria.Model.DAO.Rest,
+  MIniErpConfeitaria.View.Styles.Colors,
+  RESTRequest4D,
+  MiniErpConfeitaria.Model.DAO.Interfaces, Vcl.WinXPanels;
+
+type
+  TTypeOperation = (toNull, toPost, toPut);
+
+  TFormTemplate = class(TForm, iRouter4DComponent)
+
+    [AdjustResponsive]
+    DBGrid1: TDBGrid;
+
+    DataSource1: TDataSource;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    CardPanel1: TCardPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    cardGrid: TCard;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    cardCadastro: TCard;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlMain: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlTop: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlLinhaPesquisa: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyGrid: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlGrid: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyCabecalho: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlTitulo: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoes: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyCadastro: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBodyBotoes: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesCrud: TPanel;
+
+    [ComponentBindStyle(COLOR_BACKGROUND, FONT_SIZE_LABEL, FONT_COLOR)]
+    pnlBotoesPage: TPanel;
+
+    [ImageAttribute('ico_atualizar')]
+    btnAtualizar: TSpeedButton;
+
+    [ImageAttribute('ico_adicionar')]
+    btnAdicionar: TSpeedButton;
+
+    [ImageAttribute('ico_excluir')]
+    btnExcluir: TSpeedButton;
+
+    [ImageAttribute('ico_cancelar')]
+    btnFechar: TSpeedButton;
+
+    [ImageAttribute('ico_salvar')]
+    btnSalvar: TSpeedButton;
+
+    lblNomePagina: TLabel;
+    lblPesquisa: TLabel;
+    edtPesquisa: TEdit;
+
+    [ImageAttribute('ico_proximo')]
+    btnProximaPagina: TSpeedButton;
+    lblNumeroPagina: TLabel;
+
+    [ImageAttribute('ico_anterior')]
+    btnVoltarPagina: TSpeedButton;
+
+    procedure FormCreate(Sender: TObject);
+    procedure btnCadastroClick(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure DBGrid1TitleClick(Column: TColumn);
+    procedure edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+    procedure btnProximaPaginaClick(Sender: TObject);
+    procedure btnVoltarPaginaClick(Sender: TObject);
+    procedure btnAdicionarClick(Sender: TObject);
+    procedure btnFecharClick(Sender: TObject);
+    procedure btnExcluirClick(Sender: TObject);
+
+  private
+    { Private declarations }
+    FTypeOperation : TTypeOperation;
+    FEndPoint, FPK, FSort, FOrder, FTitle, FToken : String;
+    FDAO : IDAOInterface;
+    procedure ApplyStyle;
+    procedure GetData;
+    procedure formataLista;
+    procedure restOperationPost;
+    procedure restOperationPut;
+  public
+    { Public declarations }
+    function Render : TForm;
+    procedure UnRender;
+  end;
+
+
+implementation
+
+
+{$R *.dfm}
+
+{ TFormTemplate }
+
+procedure TFormTemplate.ApplyStyle;
+begin
+  lblNomePagina.Caption := FTitle;
+  CardPanel1.ActiveCard := cardGrid;
+end;
+
+procedure TFormTemplate.btnAdicionarClick(Sender: TObject);
+begin
+  CardPanel1.ActiveCard := cardCadastro;
+end;
+
+procedure TFormTemplate.btnCadastroClick(Sender: TObject);
+begin
+  FTypeOperation := toPost;
+  formataLista;
+
+  TBind4D
+    .New
+      .Form(Self)
+      .ClearFieldForm;
+end;
+
+procedure TFormTemplate.btnExcluirClick(Sender: TObject);
+begin
+  if Application.MessageBox('Deseja excluir este cliente?', 'Excluir cliente',
+  + MB_ICONQUESTION + MB_YESNO) = MrYes then
+    FDAO.Delete;
+    GetData;
+    FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.btnFecharClick(Sender: TObject);
+begin
+  TBind4D
+    .New
+      .Form(self)
+      .ClearFieldForm;
+
+  FTypeOperation := toNull;
+  CardPanel1.ActiveCard := cardGrid;
+end;
+
+procedure TFormTemplate.btnProximaPaginaClick(Sender: TObject);
+begin
+  if FDAO.Page < FDAO.Pages then
+  begin
+    FDAO.Page(FDAO.Page + 1);
+    GetData;
+  end;
+end;
+
+procedure TFormTemplate.btnVoltarPaginaClick(Sender: TObject);
+begin
+  if FDAO.Page > 1 then
+  begin
+    FDAO.Page(FDAO.Page - 1);
+    GetData;
+  end;
+end;
+
+procedure TFormTemplate.btnSalvarClick(Sender: TObject);
+begin
+  case FTypeOperation of
+    toPost : restOperationPost;
+    toPut: restOperationPut;
+  end;
+
+  CardPanel1.ActiveCard := cardGrid;
+end;
+
+procedure TFormTemplate.DBGrid1DblClick(Sender: TObject);
+begin
+  FTypeOperation := toPut;
+  TBind4D
+    .New
+      .Form(self)
+      .BindDataSetToForm(FDAO.DataSet);
+
+  CardPanel1.ActiveCard := cardCadastro;
+end;
+
+procedure TFormTemplate.DBGrid1TitleClick(Column: TColumn);
+begin
+  FDAO
+    .AddParam('sort', Column.Field.FullName)
+    .AddParam('order', FOrder)
+  .Get;
+
+  if FOrder = 'asc' then FOrder := 'desc' else FOrder := 'asc';
+  formataLista;
+end;
+
+procedure TFormTemplate.edtPesquisaKeyPress(Sender: TObject; var Key: Char);
+begin
+  if Key = #$D then
+  begin
+    Key := #$0;
+    FDAO
+      .AddParam('sort', FSort)
+      .AddParam('order', FOrder)
+      .AddParam('searchfields', 'name')
+      .AddParam('searchvalue', edtPesquisa.Text)
+    .Get;
+
+    FormataLista;
+  end;
+
+end;
+
+procedure TFormTemplate.FormCreate(Sender: TObject);
+begin
+  FTypeOperation := toNull;
+  FDAO := TDAOREST.New(Self).DataSource(DataSource1);
+  FToken := LocalCache.Instance('auth').GetItem('token');
+
+  TBind4D
+    .New
+      .Form(Self)
+      .BindFormDefault(FTitle)
+      .BindFormRest(FEndPoint, FPK, FSort, FOrder)
+      .Token('Bearer ' + FToken)
+      .SetImageComponents
+      .SetStyleComponents;
+
+  ApplyStyle;
+  GetData;
+end;
+
+procedure TFormTemplate.GetData;
+begin
+  FDAO
+    .AddParam('sort', FSort)
+    .AddParam('order', FOrder)
+    .Page(FDAO.Page)
+  .Get;
+
+  formataLista;
+end;
+
+function TFormTemplate.Render: TForm;
+begin
+  Result := Self;
+end;
+
+procedure TFormTemplate.restOperationPost;
+begin
+  FDAO.Post;
+  GetData;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.restOperationPut;
+begin
+  FDAO.Put;
+  GetData;
+  FTypeOperation := toNull;
+end;
+
+procedure TFormTemplate.UnRender;
+begin
+
+end;
+
+procedure TFormTemplate.formataLista;
+begin
+  TBind4D
+    .New
+      .Form(self)
+      .BindFormatListDataSet(FDAO.DataSet, DBGrid1)
+      .ResponsiveAdjustment;
+
+  lblNumeroPagina.Caption := 'Página ' + IntToStr(FDAO.Page) + ' de ' + IntToStr(FDAO.Pages);
+end;
+
+end.
